@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ivy by RagaAI — Verification of Benefits</title>
+<meta name="description" content="Ivy automates VOB for allergy & immunology practices. Three landing page concepts." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   SHARED ROOT
+============================================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #050710;
+  color: #F8FAFC;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ============================================================
+   VARIANT SWITCHER (top fixed bar)
+============================================================ */
+.switcher {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(5,7,16,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-family: 'Inter', sans-serif;
+}
+.switcher .label {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #94A3B8; margin-right: 12px; font-weight: 600;
+}
+.switcher button {
+  padding: 8px 18px; border-radius: 9999px;
+  background: transparent; color: #D1D7E0;
+  border: 1px solid rgba(255,255,255,0.12);
+  font-family: inherit; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+}
+.switcher button:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.switcher button.active {
+  background: linear-gradient(135deg, #3C83F6, #7C3BED);
+  color: #fff; border-color: transparent;
+  box-shadow: 0 6px 20px -6px rgba(124,59,237,0.6);
+}
+.switcher .badge {
+  font-size: 10px; padding: 2px 6px;
+  border-radius: 4px; margin-left: 6px;
+  background: rgba(255,255,255,0.1); color: #94A3B8;
+}
+.switcher button.active .badge { background: rgba(255,255,255,0.25); color: #fff; }
+
+.variant { display: none; padding-top: 56px; }
+.variant.active { display: block; }
+.container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+/* shared button base */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 9999px;
+  font-size: 14px; font-weight: 600; font-family: inherit;
+  border: 0; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #3C83F6 0%, #7C3BED 100%); color: #fff;
+  box-shadow: 0 12px 28px -10px rgba(60,131,246,0.7);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 38px -10px rgba(124,59,237,0.7); }
+.btn-ghost { background: transparent; color: #F8FAFC; border: 1px solid rgba(255,255,255,0.2); }
+.btn-ghost:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.35); }
+.btn-sm { padding: 10px 20px; font-size: 13px; }
+
+/* ============================================================
+   ============================================================
+   VARIANT A — SIGNATURE (RagaAI house style, refined)
+   ============================================================
+============================================================ */
+.va { font-family: 'Poppins', system-ui, sans-serif; background: #080C16; }
+.va a, .va button { font-family: inherit; }
+
+.va .nav {
+  position: sticky; top: 56px; z-index: 50;
+  backdrop-filter: blur(20px);
+  background: rgba(8,12,22,0.75);
+  border-bottom: 1px solid #232F43;
+}
+.va .nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1240px; margin: 0 auto;
+}
+.va .logo-wrap { display: flex; align-items: center; gap: 12px; }
+.va .logo-mark {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, #3C83F6, #7C3BED);
+  display: grid; place-items: center;
+  font-weight: 800; font-size: 18px; color: #fff;
+  box-shadow: 0 8px 24px -8px rgba(60,131,246,0.6);
+}
+.va .logo-text { font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+.va .logo-text .by { color: #94A3B8; font-weight: 400; font-size: 13px; margin-left: 4px; }
+.va .nav ul { display: flex; gap: 4px; list-style: none; }
+.va .nav ul a { padding: 8px 16px; border-radius: 9999px; color: #D1D7E0; font-size: 14px; font-weight: 500; transition: 0.2s; }
+.va .nav ul a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+.va .hero { position: relative; padding: 88px 0 96px; overflow: hidden; }
+.va .hero::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(900px 500px at 20% 0%, rgba(60,131,246,0.18), transparent 60%),
+    radial-gradient(700px 500px at 90% 30%, rgba(124,59,237,0.20), transparent 60%);
+  pointer-events: none;
+}
+.va .hero .container { position: relative; }
+.va .pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(60,131,246,0.18), rgba(124,59,237,0.18));
+  border: 1px solid rgba(124,59,237,0.35);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+  color: #C7D2FE; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.va .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: #91E600; box-shadow: 0 0 12px #91E600; }
+.va .hero h1 { font-size: clamp(40px, 6vw, 76px); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; }
+.va .hero h1 .grad,
+.va .grad { background: linear-gradient(135deg, #3C83F6, #7C3BED); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.va .lede { font-size: 20px; color: #D1D7E0; max-width: 720px; margin-bottom: 36px; }
+.va .ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+.va .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding-top: 40px; border-top: 1px solid #232F43; }
+.va .hero-stats .num { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(135deg, #3C83F6, #7C3BED); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.va .hero-stats .lbl { font-size: 13px; color: #94A3B8; margin-top: 4px; }
+
+.va section { padding: 96px 0; }
+.va .eyebrow { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; color: #3C83F6; text-transform: uppercase; margin-bottom: 16px; }
+.va h2.section { font-size: clamp(32px, 4.5vw, 56px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 18px; }
+.va p.section-lede { font-size: 18px; color: #D1D7E0; max-width: 720px; margin-bottom: 56px; }
+
+.va .problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.va .problem-card { background: #0F1729; border: 1px solid #232F43; border-radius: 20px; padding: 28px; transition: 0.25s; }
+.va .problem-card:hover { transform: translateY(-4px); border-color: #2E3B55; }
+.va .problem-card .big { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: #F87171; margin-bottom: 8px; }
+.va .problem-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+.va .problem-card p { font-size: 14px; color: #D1D7E0; margin-bottom: 16px; }
+.va .problem-card .cost { display: inline-block; padding: 6px 12px; border-radius: 8px; background: rgba(248,113,113,0.1); color: #FCA5A5; font-size: 12px; font-weight: 600; border: 1px solid rgba(248,113,113,0.25); }
+
+.va .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.va .trio-card { background: linear-gradient(180deg, #141F38, #0F1729); border: 1px solid #232F43; border-radius: 24px; padding: 36px 28px; transition: 0.25s; }
+.va .trio-card:hover { transform: translateY(-4px); border-color: rgba(60,131,246,0.5); }
+.va .icon-tile { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, rgba(60,131,246,0.18), rgba(124,59,237,0.18)); border: 1px solid rgba(60,131,246,0.35); display: grid; place-items: center; margin-bottom: 20px; }
+.va .icon-tile svg { width: 28px; height: 28px; stroke: #93C5FD; }
+.va .trio-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+.va .trio-card p { color: #D1D7E0; font-size: 15px; }
+
+.va .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.va .step { background: #0F1729; border: 1px solid #232F43; border-radius: 18px; padding: 28px 22px; }
+.va .step-num { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #3C83F6, #7C3BED); display: grid; place-items: center; font-weight: 700; color: #fff; margin-bottom: 16px; box-shadow: 0 8px 20px -6px rgba(60,131,246,0.6); }
+.va .step h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.va .step p { font-size: 13px; color: #D1D7E0; line-height: 1.5; }
+
+.va .impact-wrap { background: linear-gradient(180deg, #141F38, #0F1729); border: 1px solid #232F43; border-radius: 32px; padding: 56px; position: relative; overflow: hidden; }
+.va .impact-wrap::before { content:""; position:absolute; inset:0; background: radial-gradient(600px 300px at 80% 0%, rgba(124,59,237,0.18), transparent 60%); pointer-events:none; }
+.va .impact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; position: relative; margin-bottom: 48px; }
+.va .impact-stat .num { font-size: 64px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; background: linear-gradient(135deg, #3C83F6, #7C3BED); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 12px; }
+.va .impact-stat h4 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+.va .impact-stat p { color: #94A3B8; font-size: 14px; }
+.va .staffing { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 32px; border-radius: 20px; background: rgba(11,15,25,0.6); border: 1px solid #232F43; position: relative; }
+.va .staffing h5 { font-size: 13px; color: #94A3B8; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+.va .staffing .fte { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+.va .staffing .fte.before { color: #94A3B8; text-decoration: line-through; }
+.va .staffing .fte.after { color: #91E600; }
+.va .staffing p { font-size: 14px; color: #D1D7E0; }
+
+.va .payers-head { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; margin-bottom: 48px; }
+.va .big-num { font-size: 96px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; background: linear-gradient(135deg, #3C83F6, #7C3BED); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.va .big-num + .lbl { font-size: 12px; letter-spacing: 0.16em; color: #94A3B8; text-transform: uppercase; }
+.va .payers-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.va .payer-card { background: #0F1729; border: 1px solid #232F43; border-radius: 16px; padding: 24px; transition: 0.25s; }
+.va .payer-card:hover { border-color: rgba(60,131,246,0.45); transform: translateY(-3px); }
+.va .payer-card .name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.va .payer-card .count { font-size: 13px; color: #3C83F6; font-weight: 600; margin-bottom: 12px; }
+.va .payer-card .plans { font-size: 12px; color: #94A3B8; line-height: 1.5; }
+
+.va .ehr-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.va .ehr-card { background: #0F1729; border: 1px solid #232F43; border-radius: 24px; padding: 36px 28px; transition: 0.25s; }
+.va .ehr-card.recommended { border-color: rgba(60,131,246,0.5); background: linear-gradient(180deg, rgba(60,131,246,0.08), #0F1729 60%); }
+.va .ehr-card:hover { transform: translateY(-4px); }
+.va .ehr-card .tag { display: inline-block; padding: 4px 12px; border-radius: 9999px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; }
+.va .tag-rec { background: linear-gradient(135deg, #3C83F6, #7C3BED); color: #fff; }
+.va .tag-any { background: rgba(250,204,21,0.12); color: #FACC15; border: 1px solid rgba(250,204,21,0.3); }
+.va .tag-inst { background: rgba(16,183,127,0.12); color: #10B77F; border: 1px solid rgba(16,183,127,0.3); }
+.va .ehr-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
+.va .ehr-card p { color: #D1D7E0; font-size: 15px; }
+
+.va .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.va .conf-card { background: #0F1729; border: 1px solid #232F43; border-radius: 24px; padding: 36px; }
+.va .conf-card.high { border-color: rgba(16,183,127,0.35); background: linear-gradient(180deg, rgba(16,183,127,0.06), #0F1729 60%); }
+.va .conf-card.low { border-color: rgba(250,204,21,0.35); background: linear-gradient(180deg, rgba(250,204,21,0.06), #0F1729 60%); }
+.va .conf-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.va .conf-badge { padding: 6px 14px; border-radius: 9999px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.va .conf-badge.high { background: rgba(16,183,127,0.18); color: #10B77F; border: 1px solid rgba(16,183,127,0.4); }
+.va .conf-badge.low { background: rgba(250,204,21,0.18); color: #FACC15; border: 1px solid rgba(250,204,21,0.4); }
+.va .conf-card ul { list-style: none; }
+.va .conf-card li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; color: #D1D7E0; font-size: 15px; border-bottom: 1px solid #232F43; }
+.va .conf-card li:last-child { border-bottom: 0; }
+.va .conf-card li svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
+.va .conf-card.high svg { stroke: #10B77F; }
+.va .conf-card.low svg { stroke: #FACC15; }
+
+.va .cpt-wrap { background: #0F1729; border: 1px solid #232F43; border-radius: 24px; padding: 40px; }
+.va .cpt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.va .cpt { display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: rgba(11,15,25,0.7); border: 1px solid #232F43; border-radius: 12px; transition: 0.2s; }
+.va .cpt:hover { border-color: rgba(60,131,246,0.5); transform: translateY(-2px); }
+.va .cpt .code { font-weight: 700; font-size: 14px; color: #3C83F6; min-width: 56px; font-family: 'JetBrains Mono', monospace; }
+.va .cpt .label { font-size: 13px; color: #D1D7E0; }
+
+.va .closer { background: radial-gradient(800px 400px at 50% 0%, rgba(124,59,237,0.22), transparent 60%), #0B0F19; border-top: 1px solid #232F43; border-bottom: 1px solid #232F43; text-align: center; padding: 120px 0; }
+.va .closer h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 18px; }
+.va .closer p { font-size: 18px; color: #D1D7E0; max-width: 640px; margin: 0 auto 40px; }
+.va .closer .ctas { justify-content: center; }
+
+.va footer { padding: 56px 0 40px; color: #94A3B8; font-size: 13px; }
+.va footer .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-top: 32px; border-top: 1px solid #232F43; }
+.va footer .badges { display: flex; gap: 12px; }
+.va footer .badge { padding: 6px 12px; border: 1px solid #232F43; border-radius: 8px; font-size: 11px; letter-spacing: 0.08em; color: #D1D7E0; }
+
+@media (max-width: 1000px) {
+  .va .nav ul { display: none; }
+  .va .problem-grid, .va .trio, .va .ehr-grid, .va .steps, .va .payers-grid, .va .two-col, .va .impact-grid, .va .staffing { grid-template-columns: 1fr 1fr; }
+  .va .payers-head { grid-template-columns: 1fr; }
+  .va .impact-wrap { padding: 32px 24px; }
+}
+@media (max-width: 560px) {
+  .va .hero-stats, .va .problem-grid, .va .payers-grid, .va .steps, .va .trio, .va .ehr-grid, .va .two-col, .va .impact-grid, .va .staffing { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   ============================================================
+   VARIANT B — EDITORIAL (Stripe/Ramp-inspired, refined serif)
+   ============================================================
+============================================================ */
+.vb { font-family: 'Inter', system-ui, sans-serif; background: #05070D; color: #E8ECF3; }
+.vb a, .vb button { font-family: inherit; }
+.vb .serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
+.vb .italic { font-style: italic; }
+
+.vb .nav {
+  position: sticky; top: 56px; z-index: 50;
+  backdrop-filter: blur(24px);
+  background: rgba(5,7,13,0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.vb .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; max-width: 1280px; margin: 0 auto; }
+.vb .logo-wrap { display: flex; align-items: center; gap: 14px; }
+.vb .logo-mark { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #3C83F6, #7C3BED); display: grid; place-items: center; font-weight: 700; font-size: 16px; color: #fff; }
+.vb .logo-text { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+.vb .logo-text .by { color: #6B7280; font-weight: 400; font-size: 12px; margin-left: 4px; }
+.vb .nav ul { display: flex; gap: 32px; list-style: none; }
+.vb .nav ul a { font-size: 14px; color: #9CA3AF; transition: color 0.2s; }
+.vb .nav ul a:hover { color: #fff; }
+
+.vb-container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+/* Mesh background */
+.vb-mesh {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+}
+.vb-mesh::before, .vb-mesh::after {
+  content:""; position: absolute;
+  width: 600px; height: 600px; border-radius: 50%;
+  filter: blur(120px); opacity: 0.4;
+}
+.vb-mesh::before { background: #3C83F6; top: -200px; left: -100px; }
+.vb-mesh::after { background: #7C3BED; top: 100px; right: -150px; }
+
+.vb .hero { position: relative; padding: 120px 0 100px; overflow: hidden; }
+.vb .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; position: relative; }
+.vb .micro { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B7280; margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
+.vb .micro .line { width: 32px; height: 1px; background: #3C83F6; }
+.vb .hero h1 {
+  font-size: clamp(48px, 7vw, 92px); line-height: 0.95;
+  letter-spacing: -0.03em; font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 32px;
+}
+.vb .hero h1 .em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic; font-weight: 400;
+  background: linear-gradient(135deg, #93C5FD, #C4B5FD);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.vb .hero p { font-size: 19px; line-height: 1.6; color: #9CA3AF; max-width: 540px; margin-bottom: 40px; }
+.vb .hero .ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+.vb .hero .trust { display: flex; gap: 32px; flex-wrap: wrap; }
+.vb .hero .trust .item { display: flex; align-items: center; gap: 10px; }
+.vb .hero .trust .dot { width: 6px; height: 6px; border-radius: 50%; background: #10B77F; box-shadow: 0 0 10px #10B77F; }
+.vb .hero .trust .txt { font-size: 13px; color: #9CA3AF; }
+
+/* product mock */
+.vb-mock {
+  background: linear-gradient(180deg, #0B0F1A, #060812);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 0;
+  box-shadow: 0 40px 80px -30px rgba(60,131,246,0.4), 0 30px 60px -20px rgba(124,59,237,0.3);
+  position: relative; overflow: hidden;
+}
+.vb-mock-bar { display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }
+.vb-mock-bar .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+.vb-mock-bar .dot:nth-child(1) { background: #FF5F57; }
+.vb-mock-bar .dot:nth-child(2) { background: #FEBC2E; }
+.vb-mock-bar .dot:nth-child(3) { background: #28C840; }
+.vb-mock-bar .url { margin-left: 12px; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #9CA3AF; }
+.vb-mock-body { padding: 24px; }
+.vb-mock-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.vb-mock-head .pt-name { font-size: 16px; font-weight: 600; }
+.vb-mock-head .pt-sub { font-size: 12px; color: #6B7280; }
+.vb-mock-badge { padding: 4px 12px; border-radius: 9999px; background: rgba(16,183,127,0.15); border: 1px solid rgba(16,183,127,0.4); color: #34D399; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
+.vb-mock-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+.vb-mock-stat { padding: 14px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; }
+.vb-mock-stat .lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B7280; margin-bottom: 6px; }
+.vb-mock-stat .val { font-size: 20px; font-weight: 600; color: #fff; }
+.vb-mock-stat .val.blue { color: #60A5FA; }
+.vb-mock-stat .val.green { color: #34D399; }
+.vb-mock-rows { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; }
+.vb-mock-row { display: grid; grid-template-columns: 1fr 80px 80px; gap: 12px; padding: 10px 14px; font-size: 12px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.vb-mock-row:last-child { border-bottom: 0; }
+.vb-mock-row .code { font-family: 'JetBrains Mono', monospace; color: #60A5FA; font-weight: 600; }
+.vb-mock-row .desc { color: #9CA3AF; }
+.vb-mock-row .amt { text-align: right; font-weight: 500; color: #fff; }
+.vb-mock-row .status { text-align: right; font-size: 10px; color: #34D399; font-weight: 600; letter-spacing: 0.04em; }
+
+/* Sections */
+.vb section { padding: 120px 0; position: relative; }
+.vb .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; color: #6B7280; text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.vb .eyebrow .line { width: 32px; height: 1px; background: #3C83F6; }
+.vb h2.section { font-size: clamp(36px, 5vw, 64px); line-height: 1.05; letter-spacing: -0.025em; font-weight: 500; margin-bottom: 24px; max-width: 880px; }
+.vb h2.section .em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; background: linear-gradient(135deg, #93C5FD, #C4B5FD); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.vb p.section-lede { font-size: 19px; color: #9CA3AF; max-width: 640px; margin-bottom: 64px; line-height: 1.6; }
+
+/* Pull quote */
+.vb .pullquote {
+  border-left: 2px solid rgba(60,131,246,0.5);
+  padding: 24px 0 24px 32px; margin: 40px 0;
+  max-width: 720px;
+}
+.vb .pullquote .q { font-family: 'Instrument Serif', serif; font-size: 32px; font-style: italic; line-height: 1.3; color: #fff; margin-bottom: 12px; }
+.vb .pullquote .c { font-size: 13px; color: #6B7280; letter-spacing: 0.04em; }
+
+/* Editorial grid */
+.vb .edit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; overflow: hidden; }
+.vb .edit-cell { padding: 48px; background: #07091A; transition: background 0.3s; }
+.vb .edit-cell:hover { background: #0B0F1F; }
+.vb .edit-cell .stat { font-family: 'Instrument Serif', serif; font-size: 80px; font-weight: 400; line-height: 1; background: linear-gradient(135deg, #93C5FD, #C4B5FD); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 16px; letter-spacing: -0.02em; }
+.vb .edit-cell h3 { font-size: 22px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 12px; }
+.vb .edit-cell p { color: #9CA3AF; font-size: 15px; line-height: 1.6; max-width: 420px; }
+
+/* feature cards (glass) */
+.vb .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.vb .feat-card { padding: 36px 32px; border-radius: 20px; background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); transition: 0.3s; }
+.vb .feat-card:hover { border-color: rgba(124,59,237,0.4); background: rgba(124,59,237,0.04); }
+.vb .feat-card .ico { width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(60,131,246,0.15), rgba(124,59,237,0.15)); border: 1px solid rgba(255,255,255,0.06); display: grid; place-items: center; margin-bottom: 20px; }
+.vb .feat-card .ico svg { width: 22px; height: 22px; stroke: #93C5FD; }
+.vb .feat-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.01em; }
+.vb .feat-card p { color: #9CA3AF; font-size: 14px; line-height: 1.6; }
+
+/* timeline / flow */
+.vb .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; counter-reset: step; position: relative; }
+.vb .flow-item { position: relative; padding-top: 32px; }
+.vb .flow-item::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: rgba(255,255,255,0.08); }
+.vb .flow-item::after { content: ""; position: absolute; top: -3px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: #3C83F6; box-shadow: 0 0 16px #3C83F6; }
+.vb .flow-item .n { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6B7280; margin-bottom: 12px; }
+.vb .flow-item h4 { font-size: 17px; font-weight: 500; margin-bottom: 8px; letter-spacing: -0.01em; }
+.vb .flow-item p { font-size: 13px; color: #9CA3AF; line-height: 1.5; }
+
+/* payer rows */
+.vb .payer-list { border-top: 1px solid rgba(255,255,255,0.08); }
+.vb .payer-row { display: grid; grid-template-columns: 240px 100px 1fr; gap: 32px; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.08); align-items: center; transition: padding 0.3s; }
+.vb .payer-row:hover { padding-left: 12px; }
+.vb .payer-row .name { font-family: 'Instrument Serif', serif; font-size: 32px; font-style: italic; }
+.vb .payer-row .count { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #60A5FA; font-weight: 600; }
+.vb .payer-row .plans { font-size: 13px; color: #6B7280; line-height: 1.5; }
+
+/* CTA */
+.vb .closer { padding: 160px 0; text-align: center; position: relative; overflow: hidden; }
+.vb .closer h2 { font-size: clamp(48px, 7vw, 96px); line-height: 1; font-weight: 400; font-family: 'Instrument Serif', serif; letter-spacing: -0.03em; margin-bottom: 32px; }
+.vb .closer h2 .em { background: linear-gradient(135deg, #93C5FD, #C4B5FD); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.vb .closer p { font-size: 19px; color: #9CA3AF; max-width: 560px; margin: 0 auto 48px; line-height: 1.5; }
+.vb .closer .ctas { justify-content: center; }
+
+.vb footer { padding: 56px 0; border-top: 1px solid rgba(255,255,255,0.06); color: #6B7280; font-size: 13px; }
+.vb footer .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.vb footer .badges { display: flex; gap: 12px; }
+.vb footer .badge { padding: 6px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; font-size: 11px; letter-spacing: 0.1em; color: #9CA3AF; }
+
+@media (max-width: 1000px) {
+  .vb .nav ul { display: none; }
+  .vb .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .vb .edit-grid, .vb .feat-grid { grid-template-columns: 1fr; }
+  .vb .flow { grid-template-columns: 1fr 1fr; }
+  .vb .payer-row { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* ============================================================
+   ============================================================
+   VARIANT C — BENTO (Linear/Cal.com-inspired, conversion-focused)
+   ============================================================
+============================================================ */
+.vc { font-family: 'Inter', system-ui, sans-serif; background: #050710; color: #F1F5F9; }
+.vc a, .vc button { font-family: inherit; }
+
+.vc .nav {
+  position: sticky; top: 56px; z-index: 50;
+  background: rgba(5,7,16,0.8); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.vc .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1240px; margin: 0 auto; }
+.vc .logo-wrap { display: flex; align-items: center; gap: 12px; }
+.vc .logo-mark { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg, #3C83F6, #7C3BED); display: grid; place-items: center; font-weight: 800; font-size: 16px; color: #fff; }
+.vc .logo-text { font-weight: 700; font-size: 17px; letter-spacing: -0.02em; }
+.vc .logo-text .by { color: #64748B; font-weight: 400; font-size: 12px; margin-left: 4px; }
+.vc .nav ul { display: flex; gap: 6px; list-style: none; }
+.vc .nav ul a { padding: 8px 14px; border-radius: 8px; font-size: 14px; color: #CBD5E1; font-weight: 500; transition: 0.2s; }
+.vc .nav ul a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+.vc-container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+.vc .hero { position: relative; padding: 80px 0 60px; overflow: hidden; text-align: center; }
+.vc .hero-bg {
+  position: absolute; inset: 0; z-index: 0; opacity: 0.6;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(60,131,246,0.3), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(124,59,237,0.3), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(16,183,127,0.15), transparent 50%);
+}
+.vc .hero-bg::after {
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+}
+.vc .hero-inner { position: relative; z-index: 1; }
+.vc .pill-live {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 9999px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px; font-weight: 500; color: #CBD5E1;
+  margin-bottom: 32px;
+}
+.vc .pill-live .dot { width: 6px; height: 6px; border-radius: 50%; background: #34D399; box-shadow: 0 0 10px #34D399; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.vc .pill-live .arrow { color: #64748B; }
+
+.vc .hero h1 {
+  font-size: clamp(44px, 7vw, 88px); line-height: 1.0;
+  letter-spacing: -0.035em; font-weight: 700;
+  margin-bottom: 28px; max-width: 920px; margin-left: auto; margin-right: auto;
+}
+.vc .hero h1 .grad,
+.vc .grad-text { background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 50%, #F472B6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.vc .hero p { font-size: 20px; color: #94A3B8; max-width: 620px; margin: 0 auto 36px; line-height: 1.5; }
+.vc .hero .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
+
+/* Logo wall */
+.vc .logo-wall {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 0;
+}
+.vc .logo-wall .lbl { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #64748B; text-align: center; margin-bottom: 24px; }
+.vc .logo-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px; align-items: center; }
+.vc .logo-row .lg {
+  text-align: center; font-weight: 700; letter-spacing: -0.01em;
+  color: #64748B; font-size: 18px;
+  transition: color 0.3s; cursor: default;
+}
+.vc .logo-row .lg:hover { color: #CBD5E1; }
+.vc .logo-row .lg .sm { display: block; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.6; margin-top: 2px; }
+
+/* Sections */
+.vc section { padding: 96px 0; position: relative; }
+.vc .section-head { text-align: center; margin-bottom: 56px; max-width: 720px; margin-left: auto; margin-right: auto; }
+.vc .eyebrow {
+  display: inline-block;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #60A5FA, #A78BFA);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  margin-bottom: 16px;
+}
+.vc h2.section {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700; letter-spacing: -0.03em; line-height: 1.05;
+  margin-bottom: 16px;
+}
+.vc p.section-lede { font-size: 18px; color: #94A3B8; line-height: 1.5; }
+
+/* BENTO grid */
+.vc .bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: minmax(160px, auto); gap: 16px; }
+.vc .bento-card {
+  background: linear-gradient(180deg, #0E1424, #0A0F1E);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px; padding: 28px;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.vc .bento-card:hover { transform: translateY(-3px); border-color: rgba(96,165,250,0.4); }
+.vc .bento-card .label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #64748B; font-weight: 600; margin-bottom: 12px; }
+.vc .bento-card h3 { font-size: 22px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 10px; }
+.vc .bento-card p { color: #94A3B8; font-size: 14px; line-height: 1.5; }
+.vc .bento-card .big { font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.04em; background: linear-gradient(135deg, #60A5FA, #A78BFA); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 8px; }
+.vc .bento-card.col-3 { grid-column: span 3; }
+.vc .bento-card.col-2 { grid-column: span 2; }
+.vc .bento-card.col-4 { grid-column: span 4; }
+.vc .bento-card.col-6 { grid-column: span 6; }
+.vc .bento-card.row-2 { grid-row: span 2; }
+.vc .bento-card .ico-tile { width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, rgba(96,165,250,0.2), rgba(167,139,250,0.2)); border: 1px solid rgba(96,165,250,0.3); display: grid; place-items: center; margin-bottom: 16px; }
+.vc .bento-card .ico-tile svg { width: 22px; height: 22px; stroke: #93C5FD; }
+
+/* Glow corner accent on featured */
+.vc .bento-card.featured::before {
+  content:""; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(124,59,237,0.25), transparent 60%);
+  pointer-events: none;
+}
+
+/* Before/after compare */
+.vc .compare {
+  display: grid; grid-template-columns: 1fr 80px 1fr; gap: 16px; align-items: stretch;
+}
+.vc .compare-col {
+  border-radius: 24px; padding: 36px; position: relative;
+}
+.vc .compare-col.before { background: linear-gradient(180deg, rgba(248,113,113,0.06), rgba(248,113,113,0.02)); border: 1px solid rgba(248,113,113,0.2); }
+.vc .compare-col.after { background: linear-gradient(180deg, rgba(16,183,127,0.08), rgba(16,183,127,0.02)); border: 1px solid rgba(16,183,127,0.3); }
+.vc .compare-col .tag { display: inline-block; padding: 4px 12px; border-radius: 9999px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+.vc .compare-col.before .tag { background: rgba(248,113,113,0.15); color: #FCA5A5; }
+.vc .compare-col.after .tag { background: rgba(16,183,127,0.18); color: #34D399; }
+.vc .compare-col h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 24px; }
+.vc .compare-col ul { list-style: none; }
+.vc .compare-col li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; color: #CBD5E1; }
+.vc .compare-col li:last-child { border-bottom: 0; }
+.vc .compare-col li svg { flex-shrink: 0; width: 16px; height: 16px; margin-top: 3px; }
+.vc .compare-col.before li svg { stroke: #F87171; }
+.vc .compare-col.after li svg { stroke: #34D399; }
+.vc .compare-arrow { display: grid; place-items: center; }
+.vc .compare-arrow .a {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: linear-gradient(135deg, #3C83F6, #7C3BED);
+  display: grid; place-items: center; color: #fff;
+  box-shadow: 0 12px 30px -8px rgba(124,59,237,0.7);
+}
+
+/* Big stat strip */
+.vc .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; overflow: hidden; background: linear-gradient(180deg, #0E1424, #0A0F1E); }
+.vc .stat-cell { padding: 40px 32px; border-right: 1px solid rgba(255,255,255,0.06); }
+.vc .stat-cell:last-child { border-right: 0; }
+.vc .stat-cell .num { font-size: 56px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; background: linear-gradient(135deg, #60A5FA, #A78BFA); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 10px; }
+.vc .stat-cell .lbl { font-size: 14px; color: #94A3B8; }
+
+/* Product mockup */
+.vc .mock-wrap {
+  background: linear-gradient(180deg, #0E1424, #0A0F1E);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 40px 80px -20px rgba(60,131,246,0.25);
+}
+.vc .mock-tabs { display: flex; gap: 0; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }
+.vc .mock-tabs .t { padding: 6px 14px; border-radius: 8px; font-size: 12px; color: #64748B; cursor: default; }
+.vc .mock-tabs .t.active { background: rgba(96,165,250,0.15); color: #93C5FD; }
+.vc .mock-content { padding: 32px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+.vc .mock-left h4 { font-size: 14px; color: #94A3B8; font-weight: 500; margin-bottom: 16px; }
+.vc .mock-tbl { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; }
+.vc .mock-tbl .h, .vc .mock-tbl .r { display: grid; grid-template-columns: 80px 1fr 90px 90px 80px; gap: 12px; padding: 12px 16px; font-size: 12px; align-items: center; }
+.vc .mock-tbl .h { background: rgba(255,255,255,0.03); color: #64748B; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 10px; }
+.vc .mock-tbl .r { border-top: 1px solid rgba(255,255,255,0.05); color: #CBD5E1; }
+.vc .mock-tbl .r .code { font-family: 'JetBrains Mono', monospace; color: #93C5FD; font-weight: 600; }
+.vc .mock-tbl .r .amt { text-align: right; font-weight: 500; }
+.vc .mock-tbl .r .pill { font-size: 10px; padding: 3px 8px; border-radius: 4px; text-align: center; font-weight: 600; }
+.vc .mock-tbl .r .pill.ok { background: rgba(16,183,127,0.18); color: #34D399; }
+.vc .mock-tbl .r .pill.warn { background: rgba(250,204,21,0.18); color: #FACC15; }
+
+.vc .mock-right { display: flex; flex-direction: column; gap: 16px; }
+.vc .mock-stat { padding: 18px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; }
+.vc .mock-stat .lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #64748B; margin-bottom: 6px; }
+.vc .mock-stat .val { font-size: 24px; font-weight: 600; }
+.vc .mock-stat .val.g { color: #34D399; }
+.vc .mock-stat .val.b { color: #93C5FD; }
+.vc .mock-stat .sub { font-size: 11px; color: #64748B; margin-top: 4px; }
+.vc .mock-bar { background: rgba(255,255,255,0.05); height: 6px; border-radius: 3px; overflow: hidden; margin-top: 8px; }
+.vc .mock-bar > div { height: 100%; background: linear-gradient(90deg, #60A5FA, #A78BFA); }
+
+/* testimonial */
+.vc .testi-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 20px; }
+.vc .testi {
+  background: linear-gradient(180deg, #0E1424, #0A0F1E);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px; padding: 32px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.vc .testi.featured { background: linear-gradient(135deg, rgba(60,131,246,0.1), rgba(124,59,237,0.1)); border-color: rgba(124,59,237,0.3); }
+.vc .testi .quote { font-size: 18px; line-height: 1.55; color: #E2E8F0; margin-bottom: 24px; font-weight: 500; letter-spacing: -0.01em; }
+.vc .testi.featured .quote { font-size: 22px; }
+.vc .testi .who { display: flex; align-items: center; gap: 12px; }
+.vc .testi .avi { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #3C83F6, #7C3BED); display: grid; place-items: center; color: #fff; font-weight: 600; font-size: 14px; }
+.vc .testi .name { font-size: 14px; font-weight: 600; }
+.vc .testi .role { font-size: 12px; color: #64748B; }
+
+/* CTA */
+.vc .closer { padding: 120px 0; position: relative; overflow: hidden; }
+.vc .closer-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(60,131,246,0.12), rgba(124,59,237,0.12));
+  border: 1px solid rgba(124,59,237,0.3);
+  border-radius: 32px;
+  padding: 80px 56px;
+  text-align: center;
+  overflow: hidden;
+}
+.vc .closer-card::before {
+  content: ""; position: absolute; top: -50%; left: -10%; width: 120%; height: 200%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(60,131,246,0.3), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(124,59,237,0.3), transparent 40%);
+  pointer-events: none;
+}
+.vc .closer-card > * { position: relative; }
+.vc .closer-card h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 16px; }
+.vc .closer-card p { font-size: 18px; color: #CBD5E1; max-width: 600px; margin: 0 auto 36px; }
+.vc .closer-card .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+.vc footer { padding: 48px 0 32px; color: #64748B; font-size: 13px; border-top: 1px solid rgba(255,255,255,0.06); }
+.vc footer .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.vc footer .badges { display: flex; gap: 10px; }
+.vc footer .badge { padding: 5px 10px; border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; font-size: 11px; letter-spacing: 0.1em; color: #CBD5E1; }
+
+@media (max-width: 1000px) {
+  .vc .nav ul { display: none; }
+  .vc .bento { grid-template-columns: repeat(2, 1fr); }
+  .vc .bento-card.col-3, .vc .bento-card.col-2, .vc .bento-card.col-4, .vc .bento-card.col-6 { grid-column: span 2; }
+  .vc .compare { grid-template-columns: 1fr; }
+  .vc .compare-arrow .a { transform: rotate(90deg); margin: 0 auto; }
+  .vc .stat-strip { grid-template-columns: 1fr 1fr; }
+  .vc .stat-cell { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .vc .mock-content { grid-template-columns: 1fr; }
+  .vc .testi-grid { grid-template-columns: 1fr; }
+  .vc .logo-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .vc .bento { grid-template-columns: 1fr; }
+  .vc .bento-card.col-3, .vc .bento-card.col-2, .vc .bento-card.col-4, .vc .bento-card.col-6 { grid-column: span 1; }
+  .vc .stat-strip { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== VARIANT SWITCHER ==================== -->
+<div class="switcher">
+  <span class="label">Concept</span>
+  <button class="active" data-target="va">A · Signature <span class="badge">House style</span></button>
+  <button data-target="vb">B · Editorial <span class="badge">Stripe/Ramp</span></button>
+  <button data-target="vc">C · Bento <span class="badge">Linear/Cal.com</span></button>
+</div>
+
+<!-- ============================================================
+     VARIANT A — SIGNATURE
+============================================================ -->
+<div class="variant va active" id="va">
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="logo-wrap">
+        <div class="logo-mark">I</div>
+        <div class="logo-text">Ivy<span class="by">by RagaAI</span></div>
+      </div>
+      <ul>
+        <li><a href="#a-problem">The Problem</a></li>
+        <li><a href="#a-solution">Solution</a></li>
+        <li><a href="#a-how">How It Works</a></li>
+        <li><a href="#a-payers">Payers</a></li>
+        <li><a href="#a-impact">Impact</a></li>
+      </ul>
+      <a href="#a-demo" class="btn btn-ghost btn-sm">Book Demo</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="pill"><span class="dot"></span>Live in 22+ allergy clinics</div>
+      <h1>Verification of Benefits,<br /><span class="grad">solved in under 15 seconds.</span></h1>
+      <p class="lede">Ivy automates eligibility verification, cost estimation, and patient communication — purpose-built for allergy &amp; immunology. Save <strong style="color:#fff;">$800+ per provider per month</strong> on VOBs.</p>
+      <div class="ctas">
+        <a href="#a-demo" class="btn btn-primary">Schedule a Demo →</a>
+        <a href="#a-how" class="btn btn-ghost">See How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num">&lt; 15s</div><div class="lbl">Average VOB Time</div></div>
+        <div><div class="num">90%</div><div class="lbl">Pre-Visit Coverage</div></div>
+        <div><div class="num">98</div><div class="lbl">Payer Plans Live</div></div>
+        <div><div class="num">15+</div><div class="lbl">Allergy CPTs Covered</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="a-problem">
+    <div class="container">
+      <span class="eyebrow">The Problem</span>
+      <h2 class="section">Manual VOB is <span class="grad">broken.</span></h2>
+      <p class="section-lede">Every allergy practice faces the same verification nightmare — staff buried in phone calls, misrouted benefits, surprise bills, and revenue leaking through the cracks.</p>
+      <div class="problem-grid">
+        <div class="problem-card"><div class="big">45+ min</div><h3>Per VOB</h3><p>Staff spends 45–60 minutes per patient calling payers, waiting on hold, and manually transcribing benefits.</p><span class="cost">$15–20 labor cost per verification</span></div>
+        <div class="problem-card"><div class="big">30%</div><h3>Misrouted Benefits</h3><p>Confusion on co-ins and deductibles. Payer portals return wrong info 30% of the time.</p><span class="cost">$200–400 per misrouted benefit in rework</span></div>
+        <div class="problem-card"><div class="big">$80K</div><h3>At Risk Monthly</h3><p>Incorrect VOBs lead to surprise bills, delayed treatment starts, and preventable claim denials.</p><span class="cost">$15K–25K/month in denied revenue</span></div>
+        <div class="problem-card"><div class="big">0%</div><h3>Pre-Visit VOBs</h3><p>Practices only verify after the visit. Patients discover costs too late, eroding trust.</p><span class="cost">~20% patient drop-offs, 15% delayed collections</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="a-solution" style="padding-top:0;">
+    <div class="container">
+      <span class="eyebrow">What Ivy Does</span>
+      <h2 class="section">Three workflows. <span class="grad">Zero phone calls.</span></h2>
+      <p class="section-lede">Ivy runs verification, calculates patient responsibility, and communicates with patients — automatically, before they walk in.</p>
+      <div class="trio">
+        <div class="trio-card"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div><h3>Auto-Verify</h3><p>Eligibility checks run automatically for every confirmed appointment — pulled from your EHR or scheduled in advance.</p></div>
+        <div class="trio-card"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Cost Estimate</h3><p>Patient responsibility computed with deductible tracking and build-path options — Rush, Cluster, and Conventional.</p></div>
+        <div class="trio-card"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Patient Communication</h3><p>VOB documents auto-generated and emailed to patients before their visit. No more surprise bills.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="a-how" style="padding-top:0;">
+    <div class="container">
+      <span class="eyebrow">How It Works</span>
+      <h2 class="section">From appointment to verified — <span class="grad">in 5 steps.</span></h2>
+      <p class="section-lede">No integration headaches. Ivy slots into your existing workflow on day one.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h4>Auto-Sync or Upload</h4><p>Ivy connects to your EHR or staff uploads a file. Cancelled and self-pay filtered out.</p></div>
+        <div class="step"><div class="step-num">2</div><h4>Eligibility Check</h4><p>Calls run for each confirmed patient using allergy-specific CPT codes.</p></div>
+        <div class="step"><div class="step-num">3</div><h4>AI Confidence Scoring</h4><p>Each VOB scored. High-confidence auto-proceeds. Low-confidence flagged for review.</p></div>
+        <div class="step"><div class="step-num">4</div><h4>Cost Calculation</h4><p>Patient responsibility computed with Rush, Cluster, and Conventional build options.</p></div>
+        <div class="step"><div class="step-num">5</div><h4>Patient Communication</h4><p>VOB and cost estimate sent to the patient before their appointment.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="a-impact">
+    <div class="container">
+      <span class="eyebrow">Impact at Clinics</span>
+      <h2 class="section">Real numbers from <span class="grad">22+ live clinics.</span></h2>
+      <p class="section-lede">10 locations &nbsp;•&nbsp; 50 physicians &nbsp;•&nbsp; 300,000+ patients &nbsp;•&nbsp; Live since 2025</p>
+      <div class="impact-wrap">
+        <div class="impact-grid">
+          <div class="impact-stat"><div class="num">&lt; 15s</div><h4>Average VOB Processing Time</h4><p>Down from 45–60 minutes per verification</p></div>
+          <div class="impact-stat"><div class="num">90%</div><h4>Pre-Visit VOB Coverage</h4><p>A net-new capability for most practices</p></div>
+          <div class="impact-stat"><div class="num">$80K</div><h4>Monthly Value Generated</h4><p>Recovered revenue + reduced labor + fewer denials</p></div>
+        </div>
+        <div class="staffing">
+          <div><h5>VOB Staffing Today</h5><div class="fte before">0.5 FTE / provider</div><p>Roughly 1 staffer for every 2 providers — clinic standard.</p></div>
+          <div><h5>VOB Staffing With Ivy</h5><div class="fte after">0.1 FTE / provider</div><p>80% of staff time freed up — redirected to patient care.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="a-payers" style="padding-top:0;">
+    <div class="container">
+      <span class="eyebrow">Payer Coverage</span>
+      <div class="payers-head">
+        <div>
+          <h2 class="section">Verified across <span class="grad">major carriers.</span></h2>
+          <p class="section-lede" style="margin-bottom:0;">98 payer plans live across 5 major carrier families — and growing every week.</p>
+        </div>
+        <div style="text-align:right;"><div class="big-num">98</div><div class="lbl">Payers Live</div></div>
+      </div>
+      <div class="payers-grid">
+        <div class="payer-card"><div class="name">UnitedHealthcare</div><div class="count">42 plans</div><div class="plans">HMO, PPO, Choice Plus, Navigate, Charter, Oxford, AARP Medicare Advantage, Dual Complete, RMHP, GEHA, UMR, Surest</div></div>
+        <div class="payer-card"><div class="name">Cigna</div><div class="count">27 plans</div><div class="plans">HMO, PPO, Open Access, HealthSpring Medicare, Preferred/Premier/TotalCare, SureFit, Global, Allegiance, Luminare</div></div>
+        <div class="payer-card"><div class="name">Aetna</div><div class="count">14 plans</div><div class="plans">HMO, PPO, Medicare HMO/PPO, Student Health, International, Mailhandlers, Senior Supplement, ASR, Better Health KS</div></div>
+        <div class="payer-card"><div class="name">Anthem BCBS</div><div class="count">7 plans</div><div class="plans">BCBS, Ameriben, Medicare Advantage, CU Exclusive, CU Health Medicare PPO, BCBS Federal, BCBS Kansas</div></div>
+        <div class="payer-card"><div class="name">Government</div><div class="count">2 plans</div><div class="plans">Colorado Medicaid, Oscar Insurance — with Medicare Novitas, Palmetto, Tricare, Humana, and Kaiser coming next.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Works With Any EHR</span>
+      <h2 class="section">No integration required. <span class="grad">Three ways to start.</span></h2>
+      <p class="section-lede">Whether you're on Athena, NextGen, eCW, or a homegrown system, Ivy fits your workflow on day one.</p>
+      <div class="ehr-grid">
+        <div class="ehr-card recommended"><span class="tag tag-rec">Recommended</span><h3>Auto-Sync</h3><p>Ivy connects directly to your EHR and pulls confirmed appointments automatically. Verifications run on your schedule — 1, 3, 5, or 7 days before each appointment.</p></div>
+        <div class="ehr-card"><span class="tag tag-any">Any EHR</span><h3>File Upload</h3><p>Export appointments from any EHR and upload to Ivy. We preview, filter cancelled and self-pay, deduplicate on visit ID, and generate VOBs in bulk.</p></div>
+        <div class="ehr-card"><span class="tag tag-inst">Instant</span><h3>Live VOB</h3><p>Add a patient directly in Ivy and get a full VOB in under 15 seconds. No upload, no waiting. Built for walk-ins, same-day adds, and urgent cases.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <span class="eyebrow">AI Confidence Scoring</span>
+      <h2 class="section">High confidence flows. <span class="grad">Low confidence flags.</span></h2>
+      <p class="section-lede">Every VOB gets a confidence score so your staff only touches the ones that need a human.</p>
+      <div class="two-col">
+        <div class="conf-card high"><div class="conf-head"><span class="conf-badge high">High Confidence</span></div><ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Auto-generated VOB document</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cost calculator unlocked</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Patient email sent automatically</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No staff intervention required</li>
+        </ul></div>
+        <div class="conf-card low"><div class="conf-head"><span class="conf-badge low">Low Confidence</span></div><ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Flagged for staff review</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Cost calculator locked with warning</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Specific data gaps highlighted</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>One-click manual verification trigger</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Built for Allergy &amp; Immunology</span>
+      <h2 class="section">Generic RCM doesn't know <span class="grad">how allergy works.</span></h2>
+      <p class="section-lede">Build-path cost modeling. Dosage frequency limits per serum type. In-network status by procedure, not just plan. Payer-specific STC mapping for allergy codes.</p>
+      <div class="cpt-wrap">
+        <h3 style="font-size:18px; font-weight:600; margin-bottom:20px; color:#D1D7E0; letter-spacing:0.04em;">15+ Allergy-Specific CPT Codes Covered</h3>
+        <div class="cpt-grid">
+          <div class="cpt"><span class="code">95004</span><span class="label">Percutaneous Testing</span></div>
+          <div class="cpt"><span class="code">95017</span><span class="label">Prick — Inhalants</span></div>
+          <div class="cpt"><span class="code">95018</span><span class="label">Prick — Foods</span></div>
+          <div class="cpt"><span class="code">95024</span><span class="label">Intracutaneous (IDT)</span></div>
+          <div class="cpt"><span class="code">95044</span><span class="label">Patch Testing</span></div>
+          <div class="cpt"><span class="code">95076</span><span class="label">Ingestion Challenge</span></div>
+          <div class="cpt"><span class="code">95117</span><span class="label">Multiple Injections</span></div>
+          <div class="cpt"><span class="code">95165</span><span class="label">Serum Prep (Non-Venom)</span></div>
+          <div class="cpt"><span class="code">95180</span><span class="label">Rapid Desensitization</span></div>
+          <div class="cpt"><span class="code">94375</span><span class="label">Respiratory Flow Volume</span></div>
+          <div class="cpt"><span class="code">94010</span><span class="label">Spirometry</span></div>
+          <div class="cpt"><span class="code">99203</span><span class="label">New Patient Visit</span></div>
+          <div class="cpt"><span class="code">99213</span><span class="label">Established Visit</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="a-demo" class="closer">
+    <div class="container">
+      <h2>Leave the worry of <span class="grad">verification to us.</span></h2>
+      <p>Let Ivy handle the insurance complexity so your staff can focus on patient care. See Ivy verify a patient in under 15 seconds.</p>
+      <div class="ctas">
+        <a href="https://raga.ai" class="btn btn-primary">Schedule a Demo →</a>
+        <a href="https://raga.ai" class="btn btn-ghost">Learn About RagaAI</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">by RagaAI</span></div></div>
+        <div class="badges"><span class="badge">HIPAA</span><span class="badge">SOC 2</span><span class="badge">ISO 27001</span></div>
+        <div>© 2026 RagaAI &nbsp;·&nbsp; Built for allergy &amp; immunology</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     VARIANT B — EDITORIAL
+============================================================ -->
+<div class="variant vb" id="vb">
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="logo-wrap">
+        <div class="logo-mark">I</div>
+        <div class="logo-text">Ivy<span class="by">by RagaAI</span></div>
+      </div>
+      <ul>
+        <li><a href="#b-product">Product</a></li>
+        <li><a href="#b-impact">Impact</a></li>
+        <li><a href="#b-coverage">Coverage</a></li>
+        <li><a href="#b-allergy">Allergy</a></li>
+      </ul>
+      <a href="#b-demo" class="btn btn-ghost btn-sm">Request access</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="vb-mesh"></div>
+    <div class="vb-container">
+      <div class="hero-grid">
+        <div>
+          <div class="micro"><span class="line"></span> Verification of Benefits · Allergy &amp; Immunology</div>
+          <h1>The verification nightmare,<br /><span class="serif italic em">quietly handled.</span></h1>
+          <p>Ivy verifies eligibility, calculates patient responsibility, and emails the cost estimate — all before the patient walks in. Live in 22+ practices, 98 payer plans deep.</p>
+          <div class="ctas">
+            <a href="#b-demo" class="btn btn-primary">Request access →</a>
+            <a href="#b-product" class="btn btn-ghost">See the product</a>
+          </div>
+          <div class="trust">
+            <div class="item"><span class="dot"></span><span class="txt">HIPAA · SOC 2 · ISO 27001</span></div>
+            <div class="item"><span class="dot"></span><span class="txt">Live in 22+ clinics</span></div>
+            <div class="item"><span class="dot"></span><span class="txt">$80K/mo value generated</span></div>
+          </div>
+        </div>
+
+        <div class="vb-mock">
+          <div class="vb-mock-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">ivy.raga.ai/patient/482-A</span></div>
+          <div class="vb-mock-body">
+            <div class="vb-mock-head">
+              <div><div class="pt-name">Maria Hernandez</div><div class="pt-sub">UnitedHealthcare · Choice Plus PPO</div></div>
+              <span class="vb-mock-badge">Verified · 9.2s</span>
+            </div>
+            <div class="vb-mock-stats">
+              <div class="vb-mock-stat"><div class="lbl">Deductible</div><div class="val">$1,250 / $2,500</div></div>
+              <div class="vb-mock-stat"><div class="lbl">Co-Insurance</div><div class="val blue">20%</div></div>
+              <div class="vb-mock-stat"><div class="lbl">Patient Resp.</div><div class="val green">$184</div></div>
+            </div>
+            <div class="vb-mock-rows">
+              <div class="vb-mock-row"><span class="code">95004</span><span class="desc">Percutaneous Testing</span><span class="amt">$420</span><span class="status">COVERED</span></div>
+              <div class="vb-mock-row"><span class="code">95165</span><span class="desc">Serum Preparation</span><span class="amt">$180</span><span class="status">COVERED</span></div>
+              <div class="vb-mock-row"><span class="code">95117</span><span class="desc">Multiple Injections</span><span class="amt">$95</span><span class="status">COVERED</span></div>
+              <div class="vb-mock-row"><span class="code">99213</span><span class="desc">Established Visit</span><span class="amt">$140</span><span class="status">COVERED</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="b-product">
+    <div class="vb-container">
+      <div class="eyebrow"><span class="line"></span> The Problem</div>
+      <h2 class="section">Forty-five minutes on hold. <span class="serif italic em">Thirty percent wrong.</span> Every. Single. Patient.</h2>
+      <p class="section-lede">Manual VOB is broken — and it leaks revenue at every step. We watched the phone calls. Counted the denials. Then built what should have existed years ago.</p>
+
+      <div class="pullquote">
+        <p class="q">"When the staff isn't drowning in phone calls, they smile more. When patients know their costs before they walk in, they trust more. That's what better healthcare actually looks like."</p>
+        <p class="c">— Built by a team that sat with your staff.</p>
+      </div>
+
+      <div class="edit-grid">
+        <div class="edit-cell"><div class="stat">45<span style="font-size:48px;">min</span></div><h3>Time per VOB</h3><p>Staff spends 45–60 minutes calling payers, waiting on hold, and manually transcribing benefits. $15–20 in labor cost — per patient.</p></div>
+        <div class="edit-cell"><div class="stat">30<span style="font-size:48px;">%</span></div><h3>Misrouted benefits</h3><p>Payer portals return wrong information one in three times. Confusion on co-ins and deductibles costs $200–400 per case in rework.</p></div>
+        <div class="edit-cell"><div class="stat">$80<span style="font-size:48px;">k</span></div><h3>At risk monthly</h3><p>For a 500-patient practice. Incorrect VOBs become surprise bills, delayed treatments, and preventable denials.</p></div>
+        <div class="edit-cell"><div class="stat">0<span style="font-size:48px;">%</span></div><h3>Pre-visit verification</h3><p>Most practices only verify after the visit. Patients discover costs too late — and 20% drop off.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="vb-container">
+      <div class="eyebrow"><span class="line"></span> What Ivy Does</div>
+      <h2 class="section">Three workflows. <span class="serif italic em">Run on their own.</span></h2>
+      <p class="section-lede">Every confirmed appointment becomes a verified VOB, a calculated estimate, and a patient email — without anyone picking up the phone.</p>
+      <div class="feat-grid">
+        <div class="feat-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div>
+          <h3>Auto-Verify</h3><p>Eligibility checks run automatically for every confirmed appointment, 1–7 days ahead. Cancelled and self-pay filtered out.</p>
+        </div>
+        <div class="feat-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Cost Estimate</h3><p>Patient responsibility computed with deductible tracking and Rush, Cluster, or Conventional build-path comparison.</p>
+        </div>
+        <div class="feat-card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <h3>Patient Communication</h3><p>VOB documents auto-generated and emailed to patients before the visit. No more surprise bills at check-in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="vb-container">
+      <div class="eyebrow"><span class="line"></span> How It Works</div>
+      <h2 class="section">From appointment to verified — <span class="serif italic em">in five quiet steps.</span></h2>
+      <p class="section-lede">No integration. No retraining. Ivy slots in on day one.</p>
+      <div class="flow">
+        <div class="flow-item"><div class="n">01</div><h4>Sync or upload</h4><p>Ivy connects to your EHR or staff drops a file. Cancelled and self-pay filtered out.</p></div>
+        <div class="flow-item"><div class="n">02</div><h4>Eligibility check</h4><p>Calls run for each patient with allergy-specific CPT codes.</p></div>
+        <div class="flow-item"><div class="n">03</div><h4>Confidence scoring</h4><p>Each VOB scored. High-confidence flows on. Low-confidence flagged.</p></div>
+        <div class="flow-item"><div class="n">04</div><h4>Cost calculation</h4><p>Patient responsibility computed across Rush, Cluster, Conventional.</p></div>
+        <div class="flow-item"><div class="n">05</div><h4>Patient email</h4><p>VOB and estimate delivered before the appointment.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="b-impact">
+    <div class="vb-container">
+      <div class="eyebrow"><span class="line"></span> Impact</div>
+      <h2 class="section">Real numbers from <span class="serif italic em">22+ live clinics.</span></h2>
+      <p class="section-lede">10 locations · 50 physicians · 300,000+ patients · live since 2025.</p>
+      <div class="edit-grid">
+        <div class="edit-cell"><div class="stat">&lt;15<span style="font-size:48px;">s</span></div><h3>Average VOB time</h3><p>Down from 45–60 minutes per verification. Every appointment, every payer.</p></div>
+        <div class="edit-cell"><div class="stat">90<span style="font-size:48px;">%</span></div><h3>Pre-visit coverage</h3><p>A net-new capability for most practices. Patients walk in informed.</p></div>
+        <div class="edit-cell"><div class="stat">$80<span style="font-size:48px;">k/mo</span></div><h3>Value generated</h3><p>Recovered revenue + reduced labor + fewer denials. Per practice.</p></div>
+        <div class="edit-cell"><div class="stat">0.1<span style="font-size:48px;">FTE</span></div><h3>Staffing per provider</h3><p>Down from 0.5 FTE per provider. 80% of staff time freed up.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="b-coverage">
+    <div class="vb-container">
+      <div class="eyebrow"><span class="line"></span> Payer Coverage</div>
+      <h2 class="section">98 plans live across <span class="serif italic em">five major carriers.</span></h2>
+      <p class="section-lede">Growing every week. Built on payer-specific STC mapping for allergy codes.</p>
+      <div class="payer-list">
+        <div class="payer-row"><div class="name">UnitedHealthcare</div><div class="count">42 plans</div><div class="plans">HMO, PPO, Choice Plus, Navigate, Charter, Oxford, AARP Medicare Advantage, Dual Complete, RMHP, GEHA, UMR, Surest</div></div>
+        <div class="payer-row"><div class="name">Cigna</div><div class="count">27 plans</div><div class="plans">HMO, PPO, Open Access, HealthSpring Medicare, Preferred / Premier / TotalCare, SureFit, Global, Allegiance, Luminare</div></div>
+        <div class="payer-row"><div class="name">Aetna</div><div class="count">14 plans</div><div class="plans">HMO, PPO, Medicare HMO/PPO, Student Health, International, Mailhandlers, Senior Supplement, ASR, Better Health KS</div></div>
+        <div class="payer-row"><div class="name">Anthem BCBS</div><div class="count">7 plans</div><div class="plans">BCBS, Ameriben, Medicare Advantage, CU Exclusive, CU Health Medicare PPO, BCBS Federal, BCBS Kansas</div></div>
+        <div class="payer-row"><div class="name">Government</div><div class="count">2 plans</div><div class="plans">Colorado Medicaid, Oscar Insurance · Medicare Novitas, Palmetto, Tricare, Humana, and Kaiser coming next.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="b-allergy">
+    <div class="vb-container">
+      <div class="eyebrow"><span class="line"></span> Built for Allergy &amp; Immunology</div>
+      <h2 class="section">Generic RCM doesn't understand <span class="serif italic em">how allergy works.</span></h2>
+      <p class="section-lede">Build-path cost modeling. Dosage frequency limits per serum type. In-network status by procedure, not just plan. Ivy was built for this — by people who sat in your clinics.</p>
+      <div class="feat-grid">
+        <div class="feat-card"><h3>Build-path modeling</h3><p>Rush, Cluster, and Conventional comparison — modeled on serum schedules, not generic visit codes.</p></div>
+        <div class="feat-card"><h3>15+ allergy CPTs</h3><p>From 95004 percutaneous testing to 95180 rapid desensitization. Plus venom, biologics, pulmonary.</p></div>
+        <div class="feat-card"><h3>Two views, one platform</h3><p>Doctors see one number. MAs see the full editable service table with audit trail.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="b-demo" class="closer">
+    <div class="vb-mesh"></div>
+    <div class="vb-container" style="position:relative;">
+      <h2>Verification, <span class="em">quietly handled.</span></h2>
+      <p>Let Ivy own the insurance complexity. Give your staff back their phone time and your patients back their trust.</p>
+      <div class="ctas">
+        <a href="https://raga.ai" class="btn btn-primary">Request access →</a>
+        <a href="https://raga.ai" class="btn btn-ghost">Visit raga.ai</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="vb-container">
+      <div class="row">
+        <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">by RagaAI</span></div></div>
+        <div class="badges"><span class="badge">HIPAA</span><span class="badge">SOC 2</span><span class="badge">ISO 27001</span></div>
+        <div>© 2026 RagaAI · Built for allergy &amp; immunology</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ============================================================
+     VARIANT C — BENTO
+============================================================ -->
+<div class="variant vc" id="vc">
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="logo-wrap">
+        <div class="logo-mark">I</div>
+        <div class="logo-text">Ivy<span class="by">by RagaAI</span></div>
+      </div>
+      <ul>
+        <li><a href="#c-features">Features</a></li>
+        <li><a href="#c-product">Product</a></li>
+        <li><a href="#c-payers">Payers</a></li>
+        <li><a href="#c-clinics">Customers</a></li>
+      </ul>
+      <a href="#c-demo" class="btn btn-primary btn-sm">Book demo →</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="vc-container hero-inner">
+      <div class="pill-live"><span class="dot"></span>Now live in 22+ allergy clinics<span class="arrow">→</span></div>
+      <h1>VOB done in <span class="grad-text">15 seconds.</span><br />Not 45 minutes.</h1>
+      <p>Ivy automates eligibility verification, cost estimation, and patient communication — purpose-built for allergy &amp; immunology practices. Save $800+ per provider, per month.</p>
+      <div class="ctas">
+        <a href="#c-demo" class="btn btn-primary">Book a demo →</a>
+        <a href="#c-product" class="btn btn-ghost">▶ Watch 2-min demo</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="logo-wall" style="padding:40px 0;">
+    <div class="vc-container">
+      <div class="lbl">98 plans live across 5 carrier families</div>
+      <div class="logo-row">
+        <div class="lg">UnitedHealthcare<span class="sm">42 plans</span></div>
+        <div class="lg">Cigna<span class="sm">27 plans</span></div>
+        <div class="lg">Aetna<span class="sm">14 plans</span></div>
+        <div class="lg">Anthem BCBS<span class="sm">7 plans</span></div>
+        <div class="lg">Medicare<span class="sm">+ Government</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c-features">
+    <div class="vc-container">
+      <div class="section-head">
+        <div class="eyebrow">Everything VOB, automated</div>
+        <h2 class="section">One agent. <span class="grad-text">Eight superpowers.</span></h2>
+        <p class="section-lede">Built specifically for the workflows that break generic RCM platforms.</p>
+      </div>
+
+      <div class="bento">
+        <div class="bento-card col-3 row-2 featured">
+          <div class="label">Headline metric</div>
+          <div class="big">&lt; 15s</div>
+          <h3>Average VOB processing time</h3>
+          <p>Down from 45–60 minutes per patient. Real-time eligibility, deductible tracking, build-path cost modeling, and patient comms — all under fifteen seconds.</p>
+          <div style="margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:24px; flex-wrap:wrap;">
+            <div><div style="font-size:11px; color:#64748B; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">Before</div><div style="font-size:18px; font-weight:600; color:#F87171; text-decoration:line-through;">45 minutes</div></div>
+            <div><div style="font-size:11px; color:#64748B; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">With Ivy</div><div style="font-size:18px; font-weight:600; color:#34D399;">14.2 seconds</div></div>
+          </div>
+        </div>
+
+        <div class="bento-card col-3">
+          <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div>
+          <h3>Auto-verify every appointment</h3>
+          <p>Ivy connects to your EHR and runs eligibility for every confirmed patient, 1–7 days ahead. Cancelled and self-pay filtered automatically.</p>
+        </div>
+
+        <div class="bento-card col-3">
+          <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Build-path cost modeling</h3>
+          <p>Rush, Cluster, Conventional — modeled on serum schedules and dosage frequency, not generic visit codes.</p>
+        </div>
+
+        <div class="bento-card col-2">
+          <div class="label">Coverage</div>
+          <div class="big" style="font-size:44px;">98</div>
+          <h3 style="font-size:16px;">Payer plans live</h3>
+          <p style="font-size:13px;">UHC, Cigna, Aetna, Anthem, Medicare. Growing weekly.</p>
+        </div>
+
+        <div class="bento-card col-2">
+          <div class="label">Allergy DNA</div>
+          <div class="big" style="font-size:44px;">15+</div>
+          <h3 style="font-size:16px;">Allergy-specific CPTs</h3>
+          <p style="font-size:13px;">From 95004 percutaneous to 95180 rapid desens.</p>
+        </div>
+
+        <div class="bento-card col-2">
+          <div class="label">Confidence</div>
+          <div class="big" style="font-size:44px;">AI</div>
+          <h3 style="font-size:16px;">Confidence scoring</h3>
+          <p style="font-size:13px;">High auto-flows. Low gets flagged for review.</p>
+        </div>
+
+        <div class="bento-card col-3">
+          <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <h3>Patient gets the email first</h3>
+          <p>VOB documents auto-generated and emailed to patients before the visit. No more surprise bills at check-in.</p>
+        </div>
+
+        <div class="bento-card col-3">
+          <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></div>
+          <h3>Works with any EHR</h3>
+          <p>Auto-Sync, File Upload, or Live VOB. Athena, NextGen, eCW, or homegrown — Ivy fits in day one. No integration project required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="vc-container">
+      <div class="section-head">
+        <div class="eyebrow">Before vs After</div>
+        <h2 class="section">Same staff. <span class="grad-text">10× the throughput.</span></h2>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col before">
+          <span class="tag">Before Ivy</span>
+          <h3>Manual VOB workflow</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>45–60 minutes per patient on hold</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>30% of benefits misrouted</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>0.5 FTE per provider on VOB</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Patients find out cost at check-in</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>$15K–25K/month in denied revenue</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>~20% patient drop-off</li>
+          </ul>
+        </div>
+
+        <div class="compare-arrow"><div class="a">→</div></div>
+
+        <div class="compare-col after">
+          <span class="tag">With Ivy</span>
+          <h3>Automated VOB workflow</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>&lt; 15 seconds per patient</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AI confidence-scored accuracy</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>0.1 FTE per provider — 80% time freed</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Patients get cost estimate before visit</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>$80K/month value generated per practice</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>90% pre-visit VOB coverage</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="vc-container">
+      <div class="stat-strip">
+        <div class="stat-cell"><div class="num">&lt; 15s</div><div class="lbl">Avg VOB time</div></div>
+        <div class="stat-cell"><div class="num">$80K</div><div class="lbl">Monthly value / practice</div></div>
+        <div class="stat-cell"><div class="num">90%</div><div class="lbl">Pre-visit coverage</div></div>
+        <div class="stat-cell"><div class="num">22+</div><div class="lbl">Live clinics</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c-product">
+    <div class="vc-container">
+      <div class="section-head">
+        <div class="eyebrow">Inside Ivy</div>
+        <h2 class="section">Doctors see one number. <span class="grad-text">Staff sees the details.</span></h2>
+        <p class="section-lede">Two views. One platform. Built for how allergy teams actually work.</p>
+      </div>
+
+      <div class="mock-wrap">
+        <div class="mock-tabs">
+          <div class="t active">Doctor View</div>
+          <div class="t">MA / Edit View</div>
+          <div class="t">Audit Trail</div>
+        </div>
+        <div class="mock-content">
+          <div class="mock-left">
+            <h4>CPT Services — Maria Hernandez · UHC Choice Plus PPO</h4>
+            <div class="mock-tbl">
+              <div class="h"><span>CPT</span><span>Description</span><span style="text-align:right;">Billed</span><span style="text-align:right;">Patient</span><span style="text-align:center;">Status</span></div>
+              <div class="r"><span class="code">95004</span><span>Percutaneous Testing</span><span class="amt">$420</span><span class="amt">$84</span><span class="pill ok">Covered</span></div>
+              <div class="r"><span class="code">95017</span><span>Prick — Inhalants</span><span class="amt">$310</span><span class="amt">$62</span><span class="pill ok">Covered</span></div>
+              <div class="r"><span class="code">95165</span><span>Serum Preparation</span><span class="amt">$180</span><span class="amt">$36</span><span class="pill ok">Covered</span></div>
+              <div class="r"><span class="code">95117</span><span>Multiple Injections</span><span class="amt">$95</span><span class="amt">$19</span><span class="pill warn">Prior auth</span></div>
+              <div class="r"><span class="code">99213</span><span>Established Visit</span><span class="amt">$140</span><span class="amt">$28</span><span class="pill ok">Covered</span></div>
+            </div>
+          </div>
+          <div class="mock-right">
+            <div class="mock-stat">
+              <div class="lbl">Patient Responsibility</div>
+              <div class="val g">$229</div>
+              <div class="sub">After deductible + 20% co-ins</div>
+            </div>
+            <div class="mock-stat">
+              <div class="lbl">Deductible</div>
+              <div class="val">$1,250 / $2,500</div>
+              <div class="mock-bar"><div style="width:50%"></div></div>
+              <div class="sub">50% met</div>
+            </div>
+            <div class="mock-stat">
+              <div class="lbl">Confidence Score</div>
+              <div class="val b">94%</div>
+              <div class="sub">Auto-proceed · no review needed</div>
+            </div>
+            <div class="mock-stat">
+              <div class="lbl">Build Path</div>
+              <div class="val" style="font-size:16px;">Cluster recommended</div>
+              <div class="sub">Rush $640 · Cluster $480 · Conventional $360</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c-clinics">
+    <div class="vc-container">
+      <div class="section-head">
+        <div class="eyebrow">From the practices</div>
+        <h2 class="section">Live in <span class="grad-text">22+ clinics.</span> Built with allergists.</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi featured">
+          <p class="quote">"When the staff isn't drowning in phone calls, they smile more. When patients know their costs before they walk in, they trust more. That's what better healthcare actually looks like."</p>
+          <div class="who">
+            <div class="avi">G</div>
+            <div><div class="name">Dr. Gary N. Gross</div><div class="role">Allergist · Dallas Allergy &amp; Asthma · RagaAI Advisor</div></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p class="quote">"We went from a full-time staffer on the phone to an inbox of confirmed VOBs. The math on day one was obvious."</p>
+          <div class="who">
+            <div class="avi">A</div>
+            <div><div class="name">Practice Administrator</div><div class="role">Multi-location allergy group</div></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p class="quote">"Patients show up knowing what they owe. Cancellations dropped. Collections sped up. That's the whole story."</p>
+          <div class="who">
+            <div class="avi">M</div>
+            <div><div class="name">Front Office Manager</div><div class="role">Allergy &amp; immunology clinic</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c-demo" class="closer">
+    <div class="vc-container">
+      <div class="closer-card">
+        <h2>Stop verifying.<br /><span class="grad-text">Start treating.</span></h2>
+        <p>See Ivy verify a patient in under 15 seconds. We'll show you the live demo on your own payer mix.</p>
+        <div class="ctas">
+          <a href="https://raga.ai" class="btn btn-primary">Book a demo →</a>
+          <a href="https://raga.ai" class="btn btn-ghost">Visit raga.ai</a>
+        </div>
+        <div style="margin-top:32px; font-size:12px; color:#64748B; letter-spacing:0.04em;">
+          HIPAA · SOC 2 · ISO 27001 · Live in 22+ allergy clinics since 2025
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="vc-container">
+      <div class="row">
+        <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">by RagaAI</span></div></div>
+        <div class="badges"><span class="badge">HIPAA</span><span class="badge">SOC 2</span><span class="badge">ISO 27001</span></div>
+        <div>© 2026 RagaAI · Built for allergy &amp; immunology</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Variant switcher
+  const buttons = document.querySelectorAll('.switcher button');
+  const variants = document.querySelectorAll('.variant');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.target;
+      buttons.forEach(b => b.classList.toggle('active', b === btn));
+      variants.forEach(v => v.classList.toggle('active', v.id === target));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Update URL hash without scrolling
+      history.replaceState(null, '', '#' + target);
+    });
+  });
+
+  // Load variant from URL hash on page load
+  const hash = (location.hash || '#va').replace('#', '');
+  if (['va', 'vb', 'vc'].includes(hash)) {
+    document.querySelectorAll('.switcher button').forEach(b => b.classList.toggle('active', b.dataset.target === hash));
+    document.querySelectorAll('.variant').forEach(v => v.classList.toggle('active', v.id === hash));
+  }
+</script>
+
+</body>
+</html>
