@@ -482,7 +482,35 @@ img { max-width: 100%; display: block; }
   padding: 40px 0;
 }
 .vc .logo-wall .lbl { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #64748B; text-align: center; margin-bottom: 24px; }
-.vc .logo-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px; align-items: center; }
+.vc .logo-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; align-items: center; }
+.vc .logo-row .lg-more {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-decoration: none; cursor: pointer;
+  padding: 6px 10px; border-radius: 12px;
+  border: 1px dashed rgba(96,165,250,0.35);
+  background: rgba(96,165,250,0.04);
+  transition: all 0.25s;
+  text-align: center;
+}
+.vc .logo-row .lg-more:hover {
+  background: rgba(96,165,250,0.12);
+  border-color: rgba(96,165,250,0.7);
+  border-style: solid;
+  transform: translateY(-2px);
+}
+.vc .logo-row .lg-more .plus-btn {
+  display: inline-grid; place-items: center;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, #3C83F6, #7C3BED);
+  color: #fff; font-size: 20px; font-weight: 700;
+  line-height: 1; margin-bottom: 8px;
+  box-shadow: 0 4px 12px -2px rgba(60,131,246,0.5);
+}
+.vc .logo-row .lg-more .sm {
+  font-size: 11px; font-weight: 600; color: #93C5FD;
+  letter-spacing: 0.04em; opacity: 1;
+}
+.vc .logo-row .lg-more:hover .sm { color: #fff; }
 .vc .logo-row .lg {
   text-align: center; font-weight: 700; letter-spacing: -0.01em;
   color: #64748B; font-size: 18px;
@@ -658,7 +686,7 @@ img { max-width: 100%; display: block; }
   .vc .stat-cell { border-bottom: 1px solid rgba(255,255,255,0.06); }
   .vc .mock-content { grid-template-columns: 1fr; }
   .vc .testi-grid { grid-template-columns: 1fr; }
-  .vc .logo-row { grid-template-columns: repeat(2, 1fr); }
+  .vc .logo-row { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 560px) {
   .vc .bento { grid-template-columns: 1fr; }
@@ -1009,7 +1037,7 @@ img { max-width: 100%; display: block; }
       <div class="payers-head">
         <div>
           <h2 class="section">Verified across <span class="grad">major carriers.</span></h2>
-          <p class="section-lede" style="margin-bottom:0;">125+ payer plans live across 5 major carrier families, and growing every week.</p>
+          <p class="section-lede" style="margin-bottom:0;">125+ payer plans live across various major carrier families, and growing every week.</p>
         </div>
         <div style="text-align:right;"><div class="big-num">125+</div><div class="lbl">Payers Live</div></div>
       </div>
@@ -1243,7 +1271,7 @@ img { max-width: 100%; display: block; }
   <section id="b-coverage">
     <div class="vb-container">
       <div class="eyebrow"><span class="line"></span> Payer Coverage</div>
-      <h2 class="section">125+ plans live across <span class="serif italic em">five major carriers.</span></h2>
+      <h2 class="section">125+ plans live across <span class="serif italic em">various major carriers.</span></h2>
       <p class="section-lede">Growing every week. Built on payer-specific STC mapping for allergy codes.</p>
       <div class="payer-list">
         <div class="payer-row"><div class="name">UnitedHealthcare</div><div class="count">42 plans</div><div class="plans">HMO, PPO, Choice Plus, Navigate, Charter, Oxford, AARP Medicare Advantage, Dual Complete, RMHP, GEHA, UMR, Surest</div></div>
@@ -1335,13 +1363,14 @@ img { max-width: 100%; display: block; }
   </section>
   <section class="logo-wall" style="padding:40px 0;">
     <div class="vc-container">
-      <div class="lbl">125+ plans live across 5 carrier families</div>
+      <div class="lbl">125+ plans live across various carrier families</div>
       <div class="logo-row">
         <div class="lg">UnitedHealthcare<span class="sm">42 plans</span></div>
         <div class="lg">Cigna<span class="sm">27 plans</span></div>
         <div class="lg">Aetna<span class="sm">14 plans</span></div>
         <div class="lg">Anthem BCBS<span class="sm">7 plans</span></div>
         <div class="lg">Medicare<span class="sm">+ Government</span></div>
+        <a href="#c-demo" class="lg lg-more" title="More carriers added every week"><span class="plus-btn">+</span><span class="sm">More coming</span></a>
       </div>
     </div>
   </section>
