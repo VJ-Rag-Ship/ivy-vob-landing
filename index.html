@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ivy by RagaAI, Verification of Benefits</title>
-<meta name="description" content="Ivy automates VOB for allergy & immunology practices. Three landing page concepts." />
+<title>Ivy, powered by RagaAI, Benefits Verification</title>
+<meta name="description" content="Ivy automates benefits verification for allergy & immunology practices. Three landing page concepts." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -665,6 +665,181 @@ img { max-width: 100%; display: block; }
   .vc .bento-card.col-3, .vc .bento-card.col-2, .vc .bento-card.col-4, .vc .bento-card.col-6 { grid-column: span 1; }
   .vc .stat-strip { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   MAP, CALCULATOR, FAQ — added for Variant C
+============================================================ */
+
+/* US Map */
+.vc .map-wrap {
+  background: linear-gradient(180deg, #0E1424, #0A0F1E);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 32px;
+  position: relative; overflow: hidden;
+}
+.vc .map-wrap::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(800px 400px at 50% 50%, rgba(60,131,246,0.08), transparent 70%);
+  pointer-events: none;
+}
+.vc .us-map { width: 100%; height: auto; display: block; position: relative; max-width: 100%; }
+.vc .us-map .map-shape { fill: url(#map-dots); stroke: rgba(96,165,250,0.3); stroke-width: 1.5; }
+.vc .us-map .pin-ring { fill: rgba(96,165,250,0.35); animation: pin-pulse 2.6s ease-in-out infinite; }
+.vc .us-map .pin-ring.delay-1 { animation-delay: 0.3s; }
+.vc .us-map .pin-ring.delay-2 { animation-delay: 0.6s; }
+.vc .us-map .pin-ring.delay-3 { animation-delay: 0.9s; }
+.vc .us-map .pin-ring.delay-4 { animation-delay: 1.2s; }
+.vc .us-map .pin-dot { fill: #60A5FA; filter: drop-shadow(0 0 6px #60A5FA); }
+.vc .us-map .pin-label {
+  fill: #94A3B8; font-size: 12px; font-family: 'Inter', sans-serif;
+  font-weight: 500; pointer-events: none;
+  transition: fill 0.2s, font-weight 0.2s;
+}
+.vc .us-map .pin { cursor: default; }
+.vc .us-map .pin:hover .pin-label { fill: #fff; font-weight: 600; }
+.vc .us-map .pin:hover .pin-dot { fill: #93C5FD; }
+@keyframes pin-pulse {
+  0%, 100% { r: 8; opacity: 0.5; }
+  50% { r: 18; opacity: 0.1; }
+}
+
+.vc .map-legend {
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06);
+  flex-wrap: wrap;
+}
+.vc .map-legend-items { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.vc .map-legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #94A3B8; }
+.vc .map-legend-item .dot { width: 8px; height: 8px; border-radius: 50%; }
+.vc .map-legend-item .dot.live { background: #60A5FA; box-shadow: 0 0 8px #60A5FA; }
+.vc .map-legend-item .dot.soon { background: rgba(96,165,250,0.3); }
+.vc .map-legend-count { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #CBD5E1; }
+.vc .map-legend-count strong { color: #93C5FD; font-weight: 700; }
+
+/* Calculator */
+.vc .calc-wrap {
+  background: linear-gradient(180deg, #0E1424, #0A0F1E);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 0;
+  display: grid; grid-template-columns: 1fr 1.05fr; overflow: hidden;
+}
+.vc .calc-inputs { padding: 40px; border-right: 1px solid rgba(255,255,255,0.06); }
+.vc .calc-outputs {
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(60,131,246,0.06), rgba(124,59,237,0.06));
+  position: relative;
+}
+.vc .calc-row { margin-bottom: 32px; }
+.vc .calc-row:last-child { margin-bottom: 0; }
+.vc .calc-row label {
+  display: block; font-size: 13px; color: #94A3B8;
+  letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+  margin-bottom: 10px;
+}
+.vc .calc-row .calc-val {
+  font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+  color: #fff; margin-bottom: 12px;
+}
+.vc .calc-row .calc-val .unit {
+  font-size: 14px; color: #94A3B8; font-weight: 500; margin-left: 4px;
+}
+.vc .calc-row input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 6px; border-radius: 3px;
+  background: rgba(255,255,255,0.08);
+  outline: none; cursor: pointer;
+}
+.vc .calc-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: linear-gradient(135deg, #60A5FA, #A78BFA);
+  cursor: grab; border: 3px solid #0E1424;
+  box-shadow: 0 4px 12px rgba(60,131,246,0.5);
+}
+.vc .calc-row input[type="range"]::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: linear-gradient(135deg, #60A5FA, #A78BFA);
+  cursor: grab; border: 3px solid #0E1424;
+  box-shadow: 0 4px 12px rgba(60,131,246,0.5);
+}
+.vc .calc-range-labels {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: #64748B; margin-top: 8px;
+}
+
+.vc .calc-out-big {
+  margin-bottom: 28px; padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.vc .calc-out-big .lbl {
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #94A3B8; font-weight: 600; margin-bottom: 8px;
+}
+.vc .calc-out-big .val {
+  font-size: 64px; font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+  background: linear-gradient(135deg, #60A5FA, #A78BFA, #F472B6);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.vc .calc-out-big .sub { font-size: 13px; color: #94A3B8; margin-top: 8px; }
+.vc .calc-out-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.vc .calc-out {
+  padding: 16px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+}
+.vc .calc-out .lbl {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #64748B; margin-bottom: 6px;
+}
+.vc .calc-out .val { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+.vc .calc-out .val.green { color: #34D399; }
+
+.vc .calc-foot {
+  margin-top: 24px; padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 11px; color: #64748B; font-style: italic;
+}
+
+/* FAQ */
+.vc .faq-wrap { max-width: 880px; margin: 0 auto; }
+.vc .faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0;
+}
+.vc .faq-item:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+.vc .faq-item summary {
+  list-style: none; cursor: pointer;
+  padding: 24px 56px 24px 0; position: relative;
+  font-size: 18px; font-weight: 600; letter-spacing: -0.01em;
+  color: #E2E8F0; transition: color 0.2s;
+}
+.vc .faq-item summary::-webkit-details-marker { display: none; }
+.vc .faq-item summary::after {
+  content: ""; position: absolute; right: 8px; top: 50%;
+  width: 14px; height: 14px; transform: translateY(-50%) rotate(0deg);
+  border-right: 2px solid #64748B; border-bottom: 2px solid #64748B;
+  transform-origin: center; transition: transform 0.3s;
+  margin-top: -4px; transform: translateY(-75%) rotate(45deg);
+}
+.vc .faq-item[open] summary::after { transform: translateY(-25%) rotate(225deg); }
+.vc .faq-item summary:hover { color: #fff; }
+.vc .faq-item .faq-answer {
+  padding: 0 24px 24px 0;
+  font-size: 15px; line-height: 1.6; color: #94A3B8;
+  max-width: 720px;
+}
+.vc .faq-item .faq-answer strong { color: #CBD5E1; font-weight: 600; }
+
+@media (max-width: 1000px) {
+  .vc .calc-wrap { grid-template-columns: 1fr; }
+  .vc .calc-inputs { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .vc .calc-out-row { grid-template-columns: 1fr; }
+  .vc .calc-out-big .val { font-size: 48px; }
+  .vc .us-map .pin-label { font-size: 10px; }
+}
 </style>
 </head>
 <body>
@@ -685,7 +860,7 @@ img { max-width: 100%; display: block; }
     <div class="nav-inner">
       <div class="logo-wrap">
         <div class="logo-mark">I</div>
-        <div class="logo-text">Ivy<span class="by">by RagaAI</span></div>
+        <div class="logo-text">Ivy<span class="by">powered by RagaAI</span></div>
       </div>
       <ul>
         <li><a href="#a-problem">The Problem</a></li>
@@ -700,18 +875,18 @@ img { max-width: 100%; display: block; }
 
   <header class="hero">
     <div class="container">
-      <div class="pill"><span class="dot"></span>Live in 22+ allergy clinics</div>
-      <h1>Verification of Benefits,<br /><span class="grad">solved in under 15 seconds.</span></h1>
-      <p class="lede">Ivy automates eligibility verification, cost estimation, and patient communication. Purpose-built for allergy &amp; immunology. Save <strong style="color:#fff;">$800+ per provider per month</strong> on VOBs.</p>
+      <div class="pill"><span class="dot"></span>Live across 100+ physician locations</div>
+      <h1>Benefits Verification,<br /><span class="grad">solved in under 15 seconds.</span></h1>
+      <p class="lede">Ivy automates eligibility verification, cost estimation, and patient communication. Built in close partnership with leading allergists like <strong style="color:#fff;">Dr. Gary N. Gross</strong>. Save $800+ per provider per month on benefits verifications.</p>
       <div class="ctas">
         <a href="#a-demo" class="btn btn-primary">Schedule a Demo →</a>
         <a href="#a-how" class="btn btn-ghost">See How It Works</a>
       </div>
       <div class="hero-stats">
-        <div><div class="num">&lt; 15s</div><div class="lbl">Average VOB Time</div></div>
+        <div><div class="num">&lt; 15s</div><div class="lbl">Average Verification Time</div></div>
         <div><div class="num">90%</div><div class="lbl">Pre-Visit Coverage</div></div>
-        <div><div class="num">98</div><div class="lbl">Payer Plans Live</div></div>
-        <div><div class="num">15+</div><div class="lbl">Allergy CPTs Covered</div></div>
+        <div><div class="num">125+</div><div class="lbl">Payer Plans Live</div></div>
+        <div><div class="num">25+</div><div class="lbl">Allergy CPTs Covered</div></div>
       </div>
     </div>
   </header>
@@ -719,13 +894,13 @@ img { max-width: 100%; display: block; }
   <section id="a-problem">
     <div class="container">
       <span class="eyebrow">The Problem</span>
-      <h2 class="section">Manual VOB is <span class="grad">broken.</span></h2>
+      <h2 class="section">Manual benefits verification is <span class="grad">broken.</span></h2>
       <p class="section-lede">Every allergy practice faces the same verification nightmare: staff buried in phone calls, misrouted benefits, surprise bills, and revenue leaking through the cracks.</p>
       <div class="problem-grid">
-        <div class="problem-card"><div class="big">45+ min</div><h3>Per VOB</h3><p>Staff spends 45–60 minutes per patient calling payers, waiting on hold, and manually transcribing benefits.</p><span class="cost">$15–20 labor cost per verification</span></div>
+        <div class="problem-card"><div class="big">45+ min</div><h3>Per verification</h3><p>Staff spends 45–60 minutes per patient calling payers, waiting on hold, and manually transcribing benefits.</p><span class="cost">$15–20 labor cost per verification</span></div>
         <div class="problem-card"><div class="big">30%</div><h3>Misrouted Benefits</h3><p>Confusion on co-ins and deductibles. Payer portals return wrong info 30% of the time.</p><span class="cost">$200–400 per misrouted benefit in rework</span></div>
-        <div class="problem-card"><div class="big">$80K</div><h3>At Risk Monthly</h3><p>Incorrect VOBs lead to surprise bills, delayed treatment starts, and preventable claim denials.</p><span class="cost">$15K–25K/month in denied revenue</span></div>
-        <div class="problem-card"><div class="big">0%</div><h3>Pre-Visit VOBs</h3><p>Practices only verify after the visit. Patients discover costs too late, eroding trust.</p><span class="cost">~20% patient drop-offs, 15% delayed collections</span></div>
+        <div class="problem-card"><div class="big">$80K</div><h3>At Risk Monthly</h3><p>Incorrect benefits verifications lead to surprise bills, delayed treatment starts, and preventable claim denials.</p><span class="cost">$15K–25K/month in denied revenue</span></div>
+        <div class="problem-card"><div class="big">0%</div><h3>Pre-Visit Checks</h3><p>Practices only verify after the visit. Patients discover costs too late, eroding trust.</p><span class="cost">~20% patient drop-offs, 15% delayed collections</span></div>
       </div>
     </div>
   </section>
@@ -738,7 +913,7 @@ img { max-width: 100%; display: block; }
       <div class="trio">
         <div class="trio-card"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div><h3>Auto-Verify</h3><p>Eligibility checks run automatically for every confirmed appointment, pulled from your EHR or scheduled in advance.</p></div>
         <div class="trio-card"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Cost Estimate</h3><p>Patient responsibility computed with deductible tracking and build-path options: Rush, Cluster, and Conventional.</p></div>
-        <div class="trio-card"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Patient Communication</h3><p>VOB documents auto-generated and emailed to patients before their visit. No more surprise bills.</p></div>
+        <div class="trio-card"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Patient Communication</h3><p>Verification documents auto-generated and emailed to patients before their visit. No more surprise bills.</p></div>
       </div>
     </div>
   </section>
@@ -751,9 +926,9 @@ img { max-width: 100%; display: block; }
       <div class="steps">
         <div class="step"><div class="step-num">1</div><h4>Auto-Sync or Upload</h4><p>Ivy connects to your EHR or staff uploads a file. Cancelled and self-pay filtered out.</p></div>
         <div class="step"><div class="step-num">2</div><h4>Eligibility Check</h4><p>Calls run for each confirmed patient using allergy-specific CPT codes.</p></div>
-        <div class="step"><div class="step-num">3</div><h4>AI Confidence Scoring</h4><p>Each VOB scored. High-confidence auto-proceeds. Low-confidence flagged for review.</p></div>
+        <div class="step"><div class="step-num">3</div><h4>AI Confidence Scoring</h4><p>Each verification scored. High-confidence auto-proceeds. Low-confidence flagged for review.</p></div>
         <div class="step"><div class="step-num">4</div><h4>Cost Calculation</h4><p>Patient responsibility computed with Rush, Cluster, and Conventional build options.</p></div>
-        <div class="step"><div class="step-num">5</div><h4>Patient Communication</h4><p>VOB and cost estimate sent to the patient before their appointment.</p></div>
+        <div class="step"><div class="step-num">5</div><h4>Patient Communication</h4><p>Verification and cost estimate sent to the patient before their appointment.</p></div>
       </div>
     </div>
   </section>
@@ -761,17 +936,17 @@ img { max-width: 100%; display: block; }
   <section id="a-impact">
     <div class="container">
       <span class="eyebrow">Impact at Clinics</span>
-      <h2 class="section">Real numbers from <span class="grad">22+ live clinics.</span></h2>
+      <h2 class="section">Real numbers from <span class="grad">100+ physician locations.</span></h2>
       <p class="section-lede">10 locations &nbsp;•&nbsp; 50 physicians &nbsp;•&nbsp; 300,000+ patients &nbsp;•&nbsp; Live since 2025</p>
       <div class="impact-wrap">
         <div class="impact-grid">
-          <div class="impact-stat"><div class="num">&lt; 15s</div><h4>Average VOB Processing Time</h4><p>Down from 45–60 minutes per verification</p></div>
-          <div class="impact-stat"><div class="num">90%</div><h4>Pre-Visit VOB Coverage</h4><p>A net-new capability for most practices</p></div>
-          <div class="impact-stat"><div class="num">$80K</div><h4>Monthly Value Generated</h4><p>Recovered revenue + reduced labor + fewer denials</p></div>
+          <div class="impact-stat"><div class="num">&lt; 15s</div><h4>Average Verification Time</h4><p>Down from 45–60 minutes per verification</p></div>
+          <div class="impact-stat"><div class="num">90%</div><h4>Pre-Visit Coverage</h4><p>A net-new capability for most practices</p></div>
+          <div class="impact-stat"><div class="num">$80K</div><h4>Monthly Value / 100 Patients</h4><p>Recovered revenue + reduced labor + fewer denials</p></div>
         </div>
         <div class="staffing">
-          <div><h5>VOB Staffing Today</h5><div class="fte before">0.5 FTE / provider</div><p>Roughly 1 staffer for every 2 providers. The clinic standard.</p></div>
-          <div><h5>VOB Staffing With Ivy</h5><div class="fte after">0.1 FTE / provider</div><p>80% of staff time freed up, redirected to patient care.</p></div>
+          <div><h5>Verification Staffing Today</h5><div class="fte before">0.5 FTE / provider</div><p>Roughly 1 staffer for every 2 providers. The clinic standard.</p></div>
+          <div><h5>Verification Staffing With Ivy</h5><div class="fte after">0.1 FTE / provider</div><p>80% of staff time freed up, redirected to patient care.</p></div>
         </div>
       </div>
     </div>
@@ -783,9 +958,9 @@ img { max-width: 100%; display: block; }
       <div class="payers-head">
         <div>
           <h2 class="section">Verified across <span class="grad">major carriers.</span></h2>
-          <p class="section-lede" style="margin-bottom:0;">98 payer plans live across 5 major carrier families, and growing every week.</p>
+          <p class="section-lede" style="margin-bottom:0;">125+ payer plans live across 5 major carrier families, and growing every week.</p>
         </div>
-        <div style="text-align:right;"><div class="big-num">98</div><div class="lbl">Payers Live</div></div>
+        <div style="text-align:right;"><div class="big-num">125+</div><div class="lbl">Payers Live</div></div>
       </div>
       <div class="payers-grid">
         <div class="payer-card"><div class="name">UnitedHealthcare</div><div class="count">42 plans</div><div class="plans">HMO, PPO, Choice Plus, Navigate, Charter, Oxford, AARP Medicare Advantage, Dual Complete, RMHP, GEHA, UMR, Surest</div></div>
@@ -801,11 +976,11 @@ img { max-width: 100%; display: block; }
     <div class="container">
       <span class="eyebrow">Works With Any EHR</span>
       <h2 class="section">No integration required. <span class="grad">Three ways to start.</span></h2>
-      <p class="section-lede">Whether you're on Athena, NextGen, eCW, or a homegrown system, Ivy fits your workflow on day one.</p>
+      <p class="section-lede">Ivy is fully EHR agnostic. Three ways to start on day one, on any system.</p>
       <div class="ehr-grid">
         <div class="ehr-card recommended"><span class="tag tag-rec">Recommended</span><h3>Auto-Sync</h3><p>Ivy connects directly to your EHR and pulls confirmed appointments automatically. Verifications run on your schedule: 1, 3, 5, or 7 days before each appointment.</p></div>
-        <div class="ehr-card"><span class="tag tag-any">Any EHR</span><h3>File Upload</h3><p>Export appointments from any EHR and upload to Ivy. We preview, filter cancelled and self-pay, deduplicate on visit ID, and generate VOBs in bulk.</p></div>
-        <div class="ehr-card"><span class="tag tag-inst">Instant</span><h3>Live VOB</h3><p>Add a patient directly in Ivy and get a full VOB in under 15 seconds. No upload, no waiting. Built for walk-ins, same-day adds, and urgent cases.</p></div>
+        <div class="ehr-card"><span class="tag tag-any">Any EHR</span><h3>File Upload</h3><p>Export appointments from any EHR and upload to Ivy. We preview, filter cancelled and self-pay, deduplicate on visit ID, and generate verifications in bulk.</p></div>
+        <div class="ehr-card"><span class="tag tag-inst">Instant</span><h3>Instant Verification</h3><p>Add a patient directly in Ivy and get a full benefits verification in under 15 seconds. No upload, no waiting. Built for walk-ins, same-day adds, and urgent cases.</p></div>
       </div>
     </div>
   </section>
@@ -814,10 +989,10 @@ img { max-width: 100%; display: block; }
     <div class="container">
       <span class="eyebrow">AI Confidence Scoring</span>
       <h2 class="section">High confidence flows. <span class="grad">Low confidence flags.</span></h2>
-      <p class="section-lede">Every VOB gets a confidence score so your staff only touches the ones that need a human.</p>
+      <p class="section-lede">Every verification gets a confidence score so your staff only touches the ones that need a human.</p>
       <div class="two-col">
         <div class="conf-card high"><div class="conf-head"><span class="conf-badge high">High Confidence</span></div><ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Auto-generated VOB document</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Auto-generated verification document</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cost calculator unlocked</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Patient email sent automatically</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No staff intervention required</li>
@@ -838,7 +1013,7 @@ img { max-width: 100%; display: block; }
       <h2 class="section">Generic RCM doesn't know <span class="grad">how allergy works.</span></h2>
       <p class="section-lede">Build-path cost modeling. Dosage frequency limits per serum type. In-network status by procedure, not just plan. Payer-specific STC mapping for allergy codes.</p>
       <div class="cpt-wrap">
-        <h3 style="font-size:18px; font-weight:600; margin-bottom:20px; color:#D1D7E0; letter-spacing:0.04em;">15+ Allergy-Specific CPT Codes Covered</h3>
+        <h3 style="font-size:18px; font-weight:600; margin-bottom:20px; color:#D1D7E0; letter-spacing:0.04em;">25+ Allergy-Specific CPT Codes Covered</h3>
         <div class="cpt-grid">
           <div class="cpt"><span class="code">95004</span><span class="label">Percutaneous Testing</span></div>
           <div class="cpt"><span class="code">95017</span><span class="label">Prick (Inhalants)</span></div>
@@ -872,7 +1047,7 @@ img { max-width: 100%; display: block; }
   <footer>
     <div class="container">
       <div class="row">
-        <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">by RagaAI</span></div></div>
+        <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">powered by RagaAI</span></div></div>
         <div class="badges"><span class="badge">HIPAA</span><span class="badge">SOC 2</span><span class="badge">ISO 27001</span></div>
         <div>© 2026 RagaAI &nbsp;·&nbsp; Built for allergy &amp; immunology</div>
       </div>
@@ -888,7 +1063,7 @@ img { max-width: 100%; display: block; }
     <div class="nav-inner">
       <div class="logo-wrap">
         <div class="logo-mark">I</div>
-        <div class="logo-text">Ivy<span class="by">by RagaAI</span></div>
+        <div class="logo-text">Ivy<span class="by">powered by RagaAI</span></div>
       </div>
       <ul>
         <li><a href="#b-product">Product</a></li>
@@ -905,16 +1080,16 @@ img { max-width: 100%; display: block; }
     <div class="vb-container">
       <div class="hero-grid">
         <div>
-          <div class="micro"><span class="line"></span> Verification of Benefits · Allergy &amp; Immunology</div>
+          <div class="micro"><span class="line"></span> Benefits Verification · Allergy &amp; Immunology</div>
           <h1>The verification nightmare,<br /><span class="serif italic em">quietly handled.</span></h1>
-          <p>Ivy verifies eligibility, calculates patient responsibility, and emails the cost estimate. All before the patient walks in. Live in 22+ practices, 98 payer plans deep.</p>
+          <p>Ivy verifies eligibility, calculates patient responsibility, and emails the cost estimate. All before the patient walks in. Live in 100+ practices, 125+ payer plans deep.</p>
           <div class="ctas">
             <a href="#b-demo" class="btn btn-primary">Request access →</a>
             <a href="#b-product" class="btn btn-ghost">See the product</a>
           </div>
           <div class="trust">
             <div class="item"><span class="dot"></span><span class="txt">HIPAA · SOC 2 · ISO 27001</span></div>
-            <div class="item"><span class="dot"></span><span class="txt">Live in 22+ clinics</span></div>
+            <div class="item"><span class="dot"></span><span class="txt">Live across 100+ physician locations</span></div>
             <div class="item"><span class="dot"></span><span class="txt">$80K/mo value generated</span></div>
           </div>
         </div>
@@ -947,7 +1122,7 @@ img { max-width: 100%; display: block; }
     <div class="vb-container">
       <div class="eyebrow"><span class="line"></span> The Problem</div>
       <h2 class="section">Forty-five minutes on hold. <span class="serif italic em">Thirty percent wrong.</span> Every. Single. Patient.</h2>
-      <p class="section-lede">Manual VOB is broken, and it leaks revenue at every step. We watched the phone calls. Counted the denials. Then built what should have existed years ago.</p>
+      <p class="section-lede">Manual benefits verification is broken, and it leaks revenue at every step. We watched the phone calls. Counted the denials. Then built what should have existed years ago.</p>
 
       <div class="pullquote">
         <p class="q">"When the staff isn't drowning in phone calls, they smile more. When patients know their costs before they walk in, they trust more. That's what better healthcare actually looks like."</p>
@@ -955,9 +1130,9 @@ img { max-width: 100%; display: block; }
       </div>
 
       <div class="edit-grid">
-        <div class="edit-cell"><div class="stat">45<span style="font-size:48px;">min</span></div><h3>Time per VOB</h3><p>Staff spends 45–60 minutes calling payers, waiting on hold, and manually transcribing benefits. $15–20 in labor cost. Per patient.</p></div>
+        <div class="edit-cell"><div class="stat">45<span style="font-size:48px;">min</span></div><h3>Time per verification</h3><p>Staff spends 45–60 minutes calling payers, waiting on hold, and manually transcribing benefits. $15–20 in labor cost. Per patient.</p></div>
         <div class="edit-cell"><div class="stat">30<span style="font-size:48px;">%</span></div><h3>Misrouted benefits</h3><p>Payer portals return wrong information one in three times. Confusion on co-ins and deductibles costs $200–400 per case in rework.</p></div>
-        <div class="edit-cell"><div class="stat">$80<span style="font-size:48px;">k</span></div><h3>At risk monthly</h3><p>For a 500-patient practice. Incorrect VOBs become surprise bills, delayed treatments, and preventable denials.</p></div>
+        <div class="edit-cell"><div class="stat">$80<span style="font-size:48px;">k</span></div><h3>At risk monthly</h3><p>For a 500-patient practice. Incorrect benefits verifications become surprise bills, delayed treatments, and preventable denials.</p></div>
         <div class="edit-cell"><div class="stat">0<span style="font-size:48px;">%</span></div><h3>Pre-visit verification</h3><p>Most practices only verify after the visit. Patients discover costs too late, and 20% drop off.</p></div>
       </div>
     </div>
@@ -967,7 +1142,7 @@ img { max-width: 100%; display: block; }
     <div class="vb-container">
       <div class="eyebrow"><span class="line"></span> What Ivy Does</div>
       <h2 class="section">Three workflows. <span class="serif italic em">Run on their own.</span></h2>
-      <p class="section-lede">Every confirmed appointment becomes a verified VOB, a calculated estimate, and a patient email. Without anyone picking up the phone.</p>
+      <p class="section-lede">Every confirmed appointment becomes a completed verification, a calculated estimate, and a patient email. Without anyone picking up the phone.</p>
       <div class="feat-grid">
         <div class="feat-card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div>
@@ -979,7 +1154,7 @@ img { max-width: 100%; display: block; }
         </div>
         <div class="feat-card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <h3>Patient Communication</h3><p>VOB documents auto-generated and emailed to patients before the visit. No more surprise bills at check-in.</p>
+          <h3>Patient Communication</h3><p>Verification documents auto-generated and emailed to patients before the visit. No more surprise bills at check-in.</p>
         </div>
       </div>
     </div>
@@ -993,9 +1168,9 @@ img { max-width: 100%; display: block; }
       <div class="flow">
         <div class="flow-item"><div class="n">01</div><h4>Sync or upload</h4><p>Ivy connects to your EHR or staff drops a file. Cancelled and self-pay filtered out.</p></div>
         <div class="flow-item"><div class="n">02</div><h4>Eligibility check</h4><p>Calls run for each patient with allergy-specific CPT codes.</p></div>
-        <div class="flow-item"><div class="n">03</div><h4>Confidence scoring</h4><p>Each VOB scored. High-confidence flows on. Low-confidence flagged.</p></div>
+        <div class="flow-item"><div class="n">03</div><h4>Confidence scoring</h4><p>Each verification scored. High-confidence flows on. Low-confidence flagged.</p></div>
         <div class="flow-item"><div class="n">04</div><h4>Cost calculation</h4><p>Patient responsibility computed across Rush, Cluster, Conventional.</p></div>
-        <div class="flow-item"><div class="n">05</div><h4>Patient email</h4><p>VOB and estimate delivered before the appointment.</p></div>
+        <div class="flow-item"><div class="n">05</div><h4>Patient email</h4><p>Verification and estimate delivered before the appointment.</p></div>
       </div>
     </div>
   </section>
@@ -1003,12 +1178,12 @@ img { max-width: 100%; display: block; }
   <section id="b-impact">
     <div class="vb-container">
       <div class="eyebrow"><span class="line"></span> Impact</div>
-      <h2 class="section">Real numbers from <span class="serif italic em">22+ live clinics.</span></h2>
+      <h2 class="section">Real numbers from <span class="serif italic em">100+ physician locations.</span></h2>
       <p class="section-lede">10 locations · 50 physicians · 300,000+ patients · live since 2025.</p>
       <div class="edit-grid">
-        <div class="edit-cell"><div class="stat">&lt;15<span style="font-size:48px;">s</span></div><h3>Average VOB time</h3><p>Down from 45–60 minutes per verification. Every appointment, every payer.</p></div>
+        <div class="edit-cell"><div class="stat">&lt;15<span style="font-size:48px;">s</span></div><h3>Average verification time</h3><p>Down from 45–60 minutes per verification. Every appointment, every payer.</p></div>
         <div class="edit-cell"><div class="stat">90<span style="font-size:48px;">%</span></div><h3>Pre-visit coverage</h3><p>A net-new capability for most practices. Patients walk in informed.</p></div>
-        <div class="edit-cell"><div class="stat">$80<span style="font-size:48px;">k/mo</span></div><h3>Value generated</h3><p>Recovered revenue + reduced labor + fewer denials. Per practice.</p></div>
+        <div class="edit-cell"><div class="stat">$80<span style="font-size:48px;">k/mo</span></div><h3>Value generated</h3><p>Recovered revenue + reduced labor + fewer denials. Per 100 patients.</p></div>
         <div class="edit-cell"><div class="stat">0.1<span style="font-size:48px;">FTE</span></div><h3>Staffing per provider</h3><p>Down from 0.5 FTE per provider. 80% of staff time freed up.</p></div>
       </div>
     </div>
@@ -1017,7 +1192,7 @@ img { max-width: 100%; display: block; }
   <section id="b-coverage">
     <div class="vb-container">
       <div class="eyebrow"><span class="line"></span> Payer Coverage</div>
-      <h2 class="section">98 plans live across <span class="serif italic em">five major carriers.</span></h2>
+      <h2 class="section">125+ plans live across <span class="serif italic em">five major carriers.</span></h2>
       <p class="section-lede">Growing every week. Built on payer-specific STC mapping for allergy codes.</p>
       <div class="payer-list">
         <div class="payer-row"><div class="name">UnitedHealthcare</div><div class="count">42 plans</div><div class="plans">HMO, PPO, Choice Plus, Navigate, Charter, Oxford, AARP Medicare Advantage, Dual Complete, RMHP, GEHA, UMR, Surest</div></div>
@@ -1036,7 +1211,7 @@ img { max-width: 100%; display: block; }
       <p class="section-lede">Build-path cost modeling. Dosage frequency limits per serum type. In-network status by procedure, not just plan. Ivy was built for this, by people who actually sat in your clinics.</p>
       <div class="feat-grid">
         <div class="feat-card"><h3>Build-path modeling</h3><p>Rush, Cluster, and Conventional comparison. Modeled on serum schedules, not generic visit codes.</p></div>
-        <div class="feat-card"><h3>15+ allergy CPTs</h3><p>From 95004 percutaneous testing to 95180 rapid desensitization. Plus venom, biologics, pulmonary.</p></div>
+        <div class="feat-card"><h3>25+ allergy CPTs</h3><p>From 95004 percutaneous testing to 95180 rapid desensitization. Plus venom, biologics, pulmonary.</p></div>
         <div class="feat-card"><h3>Two views, one platform</h3><p>Doctors see one number. MAs see the full editable service table with audit trail.</p></div>
       </div>
     </div>
@@ -1057,7 +1232,7 @@ img { max-width: 100%; display: block; }
   <footer>
     <div class="vb-container">
       <div class="row">
-        <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">by RagaAI</span></div></div>
+        <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">powered by RagaAI</span></div></div>
         <div class="badges"><span class="badge">HIPAA</span><span class="badge">SOC 2</span><span class="badge">ISO 27001</span></div>
         <div>© 2026 RagaAI · Built for allergy &amp; immunology</div>
       </div>
@@ -1073,13 +1248,14 @@ img { max-width: 100%; display: block; }
     <div class="nav-inner">
       <div class="logo-wrap">
         <div class="logo-mark">I</div>
-        <div class="logo-text">Ivy<span class="by">by RagaAI</span></div>
+        <div class="logo-text">Ivy<span class="by">powered by RagaAI</span></div>
       </div>
       <ul>
         <li><a href="#c-features">Features</a></li>
-        <li><a href="#c-product">Product</a></li>
-        <li><a href="#c-payers">Payers</a></li>
+        <li><a href="#c-map">Coverage</a></li>
+        <li><a href="#c-calc">Savings</a></li>
         <li><a href="#c-clinics">Customers</a></li>
+        <li><a href="#c-faq">FAQ</a></li>
       </ul>
       <a href="#c-demo" class="btn btn-primary btn-sm">Book demo →</a>
     </div>
@@ -1088,19 +1264,19 @@ img { max-width: 100%; display: block; }
   <header class="hero">
     <div class="hero-bg"></div>
     <div class="vc-container hero-inner">
-      <div class="pill-live"><span class="dot"></span>Now live in 22+ allergy clinics<span class="arrow">→</span></div>
-      <h1>VOB done in <span class="grad-text">15 seconds.</span><br />Not 45 minutes.</h1>
-      <p>Ivy automates eligibility verification, cost estimation, and patient communication. Purpose-built for allergy &amp; immunology practices. Save $800+ per provider, per month.</p>
+      <div class="pill-live"><span class="dot"></span>Now live across 100+ physician locations<span class="arrow">→</span></div>
+      <h1>Benefits verification done in <span class="grad-text">15 seconds.</span><br />Not 45 minutes.</h1>
+      <p>Ivy automates eligibility verification, cost estimation, and patient communication. Built in close partnership with leading allergists like <strong style="color:#fff;">Dr. Gary N. Gross</strong>. Save $800+ per provider, per month.</p>
       <div class="ctas">
         <a href="#c-demo" class="btn btn-primary">Book a demo →</a>
-        <a href="#c-product" class="btn btn-ghost">▶ Watch 2-min demo</a>
+        <a href="#c-calc" class="btn btn-ghost">▶ See your savings</a>
       </div>
     </div>
   </header>
 
   <section class="logo-wall" style="padding:40px 0;">
     <div class="vc-container">
-      <div class="lbl">98 plans live across 5 carrier families</div>
+      <div class="lbl">125+ plans live across 5 carrier families</div>
       <div class="logo-row">
         <div class="lg">UnitedHealthcare<span class="sm">42 plans</span></div>
         <div class="lg">Cigna<span class="sm">27 plans</span></div>
@@ -1114,7 +1290,7 @@ img { max-width: 100%; display: block; }
   <section id="c-features">
     <div class="vc-container">
       <div class="section-head">
-        <div class="eyebrow">Everything VOB, automated</div>
+        <div class="eyebrow">Verification, fully automated</div>
         <h2 class="section">One agent. <span class="grad-text">Eight superpowers.</span></h2>
         <p class="section-lede">Built specifically for the workflows that break generic RCM platforms.</p>
       </div>
@@ -1123,7 +1299,7 @@ img { max-width: 100%; display: block; }
         <div class="bento-card col-3 row-2 featured">
           <div class="label">Headline metric</div>
           <div class="big">&lt; 15s</div>
-          <h3>Average VOB processing time</h3>
+          <h3>Average verification processing time</h3>
           <p>Down from 45–60 minutes per patient. Real-time eligibility, deductible tracking, build-path cost modeling, and patient comms. All under fifteen seconds.</p>
           <div style="margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:24px; flex-wrap:wrap;">
             <div><div style="font-size:11px; color:#64748B; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">Before</div><div style="font-size:18px; font-weight:600; color:#F87171; text-decoration:line-through;">45 minutes</div></div>
@@ -1145,14 +1321,14 @@ img { max-width: 100%; display: block; }
 
         <div class="bento-card col-2">
           <div class="label">Coverage</div>
-          <div class="big" style="font-size:44px;">98</div>
+          <div class="big" style="font-size:44px;">125+</div>
           <h3 style="font-size:16px;">Payer plans live</h3>
           <p style="font-size:13px;">UHC, Cigna, Aetna, Anthem, Medicare. Growing weekly.</p>
         </div>
 
         <div class="bento-card col-2">
           <div class="label">Allergy DNA</div>
-          <div class="big" style="font-size:44px;">15+</div>
+          <div class="big" style="font-size:44px;">25+</div>
           <h3 style="font-size:16px;">Allergy-specific CPTs</h3>
           <p style="font-size:13px;">From 95004 percutaneous to 95180 rapid desens.</p>
         </div>
@@ -1167,13 +1343,13 @@ img { max-width: 100%; display: block; }
         <div class="bento-card col-3">
           <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <h3>Patient gets the email first</h3>
-          <p>VOB documents auto-generated and emailed to patients before the visit. No more surprise bills at check-in.</p>
+          <p>Verification documents auto-generated and emailed to patients before the visit. No more surprise bills at check-in.</p>
         </div>
 
         <div class="bento-card col-3">
           <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></div>
-          <h3>Works with any EHR</h3>
-          <p>Auto-Sync, File Upload, or Live VOB. Athena, NextGen, eCW, or homegrown. Ivy fits in day one. No integration project required.</p>
+          <h3>Fully EHR agnostic</h3>
+          <p>Auto-Sync, File Upload, or Instant Verification. Three ways to start on day one, on any EHR. No integration project required.</p>
         </div>
       </div>
     </div>
@@ -1189,11 +1365,11 @@ img { max-width: 100%; display: block; }
       <div class="compare">
         <div class="compare-col before">
           <span class="tag">Before Ivy</span>
-          <h3>Manual VOB workflow</h3>
+          <h3>Manual verification workflow</h3>
           <ul>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>45–60 minutes per patient on hold</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>30% of benefits misrouted</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>0.5 FTE per provider on VOB</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>0.5 FTE per provider on verifications</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Patients find out cost at check-in</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>$15K–25K/month in denied revenue</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>~20% patient drop-off</li>
@@ -1204,14 +1380,14 @@ img { max-width: 100%; display: block; }
 
         <div class="compare-col after">
           <span class="tag">With Ivy</span>
-          <h3>Automated VOB workflow</h3>
+          <h3>Automated verification workflow</h3>
           <ul>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>&lt; 15 seconds per patient</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AI confidence-scored accuracy</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>0.1 FTE per provider, 80% time freed</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Patients get cost estimate before visit</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>$80K/month value generated per practice</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>90% pre-visit VOB coverage</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>$80K/month value generated per 100 patients</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>90% pre-visit coverage</li>
           </ul>
         </div>
       </div>
@@ -1221,64 +1397,169 @@ img { max-width: 100%; display: block; }
   <section>
     <div class="vc-container">
       <div class="stat-strip">
-        <div class="stat-cell"><div class="num">&lt; 15s</div><div class="lbl">Avg VOB time</div></div>
-        <div class="stat-cell"><div class="num">$80K</div><div class="lbl">Monthly value / practice</div></div>
+        <div class="stat-cell"><div class="num">&lt; 15s</div><div class="lbl">Avg verification time</div></div>
+        <div class="stat-cell"><div class="num">$80K</div><div class="lbl">Monthly value / 100 patients</div></div>
         <div class="stat-cell"><div class="num">90%</div><div class="lbl">Pre-visit coverage</div></div>
-        <div class="stat-cell"><div class="num">22+</div><div class="lbl">Live clinics</div></div>
+        <div class="stat-cell"><div class="num">100+</div><div class="lbl">Physician locations</div></div>
       </div>
     </div>
   </section>
 
-  <section id="c-product">
+  <!-- ============ MAP: Live coverage across the US ============ -->
+  <section id="c-map">
     <div class="vc-container">
       <div class="section-head">
-        <div class="eyebrow">Inside Ivy</div>
-        <h2 class="section">Doctors see one number. <span class="grad-text">Staff sees the details.</span></h2>
-        <p class="section-lede">Two views. One platform. Built for how allergy teams actually work.</p>
+        <div class="eyebrow">Coast to coast</div>
+        <h2 class="section">Live across <span class="grad-text">100+ physician locations.</span></h2>
+        <p class="section-lede">From Dallas to Boston, Seattle to Miami. Ivy is verifying real patients today.</p>
       </div>
 
-      <div class="mock-wrap">
-        <div class="mock-tabs">
-          <div class="t active">Doctor View</div>
-          <div class="t">MA / Edit View</div>
-          <div class="t">Audit Trail</div>
+      <div class="map-wrap">
+        <svg viewBox="0 0 950 480" class="us-map" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="map-dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.2" fill="rgba(96,165,250,0.18)"/>
+            </pattern>
+          </defs>
+
+          <!-- Simplified US continental silhouette -->
+          <path class="map-shape" d="M 95,205 C 105,175 130,150 160,142 L 220,128 L 290,116 L 365,108 L 445,104 L 525,104 L 605,108 L 685,116 L 760,128 L 825,145 L 870,170 L 895,200 L 905,235 L 900,272 L 885,305 L 858,332 L 825,348 L 790,358 L 755,365 L 718,372 L 680,380 L 660,400 L 645,425 L 632,448 L 620,452 L 600,448 L 580,438 L 565,422 L 552,405 L 538,392 L 520,395 L 498,402 L 478,408 L 455,408 L 432,402 L 408,392 L 380,378 L 350,365 L 320,355 L 290,348 L 262,342 L 235,330 L 210,312 L 188,290 L 168,265 L 150,238 L 130,212 L 110,200 Z" />
+
+          <!-- Florida bump -->
+          <path class="map-shape" d="M 680,380 L 695,395 L 705,415 L 712,438 L 718,455 L 712,462 L 700,455 L 690,438 L 682,418 L 678,398 Z" />
+
+          <!-- 12 pinned cities -->
+          <g class="pin"><circle class="pin-ring" cx="800" cy="180" r="8"/><circle class="pin-dot" cx="800" cy="180" r="4"/><text class="pin-label" x="800" y="166" text-anchor="middle">New York</text></g>
+          <g class="pin"><circle class="pin-ring delay-1" cx="843" cy="150" r="8"/><circle class="pin-dot" cx="843" cy="150" r="4"/><text class="pin-label" x="843" y="136" text-anchor="middle">Boston</text></g>
+          <g class="pin"><circle class="pin-ring delay-2" cx="600" cy="160" r="8"/><circle class="pin-dot" cx="600" cy="160" r="4"/><text class="pin-label" x="600" y="146" text-anchor="middle">Chicago</text></g>
+          <g class="pin"><circle class="pin-ring delay-3" cx="510" cy="335" r="8"/><circle class="pin-dot" cx="510" cy="335" r="4"/><text class="pin-label" x="510" y="321" text-anchor="middle">Dallas</text></g>
+          <g class="pin"><circle class="pin-ring delay-1" cx="520" cy="390" r="8"/><circle class="pin-dot" cx="520" cy="390" r="4"/><text class="pin-label" x="520" y="408" text-anchor="middle">Houston</text></g>
+          <g class="pin"><circle class="pin-ring delay-2" cx="680" cy="320" r="8"/><circle class="pin-dot" cx="680" cy="320" r="4"/><text class="pin-label" x="680" y="306" text-anchor="middle">Atlanta</text></g>
+          <g class="pin"><circle class="pin-ring delay-4" cx="712" cy="440" r="8"/><circle class="pin-dot" cx="712" cy="440" r="4"/><text class="pin-label" x="715" y="430" text-anchor="end">Miami</text></g>
+          <g class="pin"><circle class="pin-ring delay-3" cx="340" cy="220" r="8"/><circle class="pin-dot" cx="340" cy="220" r="4"/><text class="pin-label" x="340" y="206" text-anchor="middle">Denver</text></g>
+          <g class="pin"><circle class="pin-ring" cx="135" cy="155" r="8"/><circle class="pin-dot" cx="135" cy="155" r="4"/><text class="pin-label" x="135" y="141" text-anchor="middle">Seattle</text></g>
+          <g class="pin"><circle class="pin-ring delay-2" cx="245" cy="330" r="8"/><circle class="pin-dot" cx="245" cy="330" r="4"/><text class="pin-label" x="245" y="316" text-anchor="middle">Phoenix</text></g>
+          <g class="pin"><circle class="pin-ring delay-1" cx="170" cy="295" r="8"/><circle class="pin-dot" cx="170" cy="295" r="4"/><text class="pin-label" x="170" y="281" text-anchor="middle">Los Angeles</text></g>
+          <g class="pin"><circle class="pin-ring delay-4" cx="540" cy="172" r="8"/><circle class="pin-dot" cx="540" cy="172" r="4"/><text class="pin-label" x="540" y="158" text-anchor="middle">Minneapolis</text></g>
+        </svg>
+
+        <div class="map-legend">
+          <div class="map-legend-items">
+            <div class="map-legend-item"><span class="dot live"></span> Live now</div>
+            <div class="map-legend-item"><span class="dot soon"></span> Coming Q3</div>
+          </div>
+          <div class="map-legend-count"><strong>12</strong> of <strong>100+</strong> physician locations shown · <strong>50</strong> states ready</div>
         </div>
-        <div class="mock-content">
-          <div class="mock-left">
-            <h4>CPT Services · Maria Hernandez · UHC Choice Plus PPO</h4>
-            <div class="mock-tbl">
-              <div class="h"><span>CPT</span><span>Description</span><span style="text-align:right;">Billed</span><span style="text-align:right;">Patient</span><span style="text-align:center;">Status</span></div>
-              <div class="r"><span class="code">95004</span><span>Percutaneous Testing</span><span class="amt">$420</span><span class="amt">$84</span><span class="pill ok">Covered</span></div>
-              <div class="r"><span class="code">95017</span><span>Prick (Inhalants)</span><span class="amt">$310</span><span class="amt">$62</span><span class="pill ok">Covered</span></div>
-              <div class="r"><span class="code">95165</span><span>Serum Preparation</span><span class="amt">$180</span><span class="amt">$36</span><span class="pill ok">Covered</span></div>
-              <div class="r"><span class="code">95117</span><span>Multiple Injections</span><span class="amt">$95</span><span class="amt">$19</span><span class="pill warn">Prior auth</span></div>
-              <div class="r"><span class="code">99213</span><span>Established Visit</span><span class="amt">$140</span><span class="amt">$28</span><span class="pill ok">Covered</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SAVINGS CALCULATOR ============ -->
+  <section id="c-calc">
+    <div class="vc-container">
+      <div class="section-head">
+        <div class="eyebrow">Run your numbers</div>
+        <h2 class="section">See what Ivy saves <span class="grad-text">your practice.</span></h2>
+        <p class="section-lede">Adjust the sliders for your verification volume, staff cost, and current workflow. We do the math.</p>
+      </div>
+
+      <div class="calc-wrap">
+        <div class="calc-inputs">
+          <div class="calc-row">
+            <label>Patients verified per month</label>
+            <div class="calc-val"><span id="calc-patients-val">500</span><span class="unit">patients</span></div>
+            <input type="range" id="calc-patients" min="50" max="3000" step="50" value="500"/>
+            <div class="calc-range-labels"><span>50</span><span>3,000</span></div>
+          </div>
+          <div class="calc-row">
+            <label>Minutes per verification today</label>
+            <div class="calc-val"><span id="calc-minutes-val">50</span><span class="unit">minutes</span></div>
+            <input type="range" id="calc-minutes" min="20" max="90" step="5" value="50"/>
+            <div class="calc-range-labels"><span>20 min</span><span>90 min</span></div>
+          </div>
+          <div class="calc-row">
+            <label>Staff hourly cost (fully loaded)</label>
+            <div class="calc-val">$<span id="calc-hourly-val">22</span><span class="unit">/hour</span></div>
+            <input type="range" id="calc-hourly" min="15" max="40" step="1" value="22"/>
+            <div class="calc-range-labels"><span>$15</span><span>$40</span></div>
+          </div>
+          <div class="calc-row">
+            <label>Avg. CPT codes per patient</label>
+            <div class="calc-val"><span id="calc-cpts-val">5</span><span class="unit">codes</span></div>
+            <input type="range" id="calc-cpts" min="3" max="12" step="1" value="5"/>
+            <div class="calc-range-labels"><span>3</span><span>12</span></div>
+          </div>
+        </div>
+
+        <div class="calc-outputs">
+          <div class="calc-out-big">
+            <div class="lbl">Estimated monthly value with Ivy</div>
+            <div class="val" id="calc-total">$79,800</div>
+            <div class="sub" id="calc-total-sub">≈ $957,600 in annual value</div>
+          </div>
+
+          <div class="calc-out-row">
+            <div class="calc-out">
+              <div class="lbl">Staff hours freed</div>
+              <div class="val green" id="calc-hours">396 hrs</div>
+            </div>
+            <div class="calc-out">
+              <div class="lbl">Labor savings / mo</div>
+              <div class="val" id="calc-labor">$8,712</div>
+            </div>
+            <div class="calc-out">
+              <div class="lbl">Denial prevention / mo</div>
+              <div class="val" id="calc-denial">$42,750</div>
+            </div>
+            <div class="calc-out">
+              <div class="lbl">Pre-visit collections / mo</div>
+              <div class="val" id="calc-collect">$28,500</div>
             </div>
           </div>
-          <div class="mock-right">
-            <div class="mock-stat">
-              <div class="lbl">Patient Responsibility</div>
-              <div class="val g">$229</div>
-              <div class="sub">After deductible + 20% co-ins</div>
-            </div>
-            <div class="mock-stat">
-              <div class="lbl">Deductible</div>
-              <div class="val">$1,250 / $2,500</div>
-              <div class="mock-bar"><div style="width:50%"></div></div>
-              <div class="sub">50% met</div>
-            </div>
-            <div class="mock-stat">
-              <div class="lbl">Confidence Score</div>
-              <div class="val b">94%</div>
-              <div class="sub">Auto-proceed · no review needed</div>
-            </div>
-            <div class="mock-stat">
-              <div class="lbl">Build Path</div>
-              <div class="val" style="font-size:16px;">Cluster recommended</div>
-              <div class="sub">Rush $640 · Cluster $480 · Conventional $360</div>
-            </div>
-          </div>
+
+          <div class="calc-foot">Based on 95% Ivy capture rate, 30% misroute baseline, ~$300 avg. rework cost, and 20% pre-visit drop-off prevention.</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="c-faq">
+    <div class="vc-container">
+      <div class="section-head">
+        <div class="eyebrow">Common questions</div>
+        <h2 class="section">Everything you want <span class="grad-text">to know.</span></h2>
+      </div>
+
+      <div class="faq-wrap">
+        <details class="faq-item">
+          <summary>How do I get started?</summary>
+          <div class="faq-answer">Book a 20-minute call with our team. We'll walk through your EHR setup, payer mix, and a 1-week rollout plan. Most practices run their first live verification in under 5 days from kickoff.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How long does integration take?</summary>
+          <div class="faq-answer"><strong>Day one</strong> for File Upload and Instant Verification modes. <strong>3–7 days</strong> for Auto-Sync to your EHR. Ivy is fully EHR agnostic, no technical integration project required from your side.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Does Ivy cover all my payers?</summary>
+          <div class="faq-answer">Ivy is live across <strong>125+ plans</strong> on UnitedHealthcare, Cigna, Aetna, Anthem BCBS, Medicare, and government payers. If a payer in your mix isn't covered yet, we add it for you, typically within 2 weeks. Tricare, Humana, Kaiser, and Centene are next in queue.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How much does Ivy cost?</summary>
+          <div class="faq-answer">Pricing is volume-based: a transparent per-verification rate that scales down as your practice grows. Most practices see <strong>ROI in the first month</strong>. Use the savings calculator above to see your numbers, then book a call for exact pricing.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Is Ivy HIPAA-compliant?</summary>
+          <div class="faq-answer">Yes. RagaAI is <strong>HIPAA, SOC 2, and ISO 27001</strong> certified. All patient data is encrypted in transit (TLS 1.3) and at rest (AES-256). BAA available on request. We never train models on your data.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What happens when Ivy isn't confident about a verification?</summary>
+          <div class="faq-answer">Every verification is AI confidence-scored. <strong>High-confidence cases auto-flow</strong> to a generated document and patient email. <strong>Low-confidence cases are flagged</strong> for your staff with specific data gaps highlighted and a one-click manual trigger. Your team handles the exceptions, not the routine work.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Who built Ivy?</summary>
+          <div class="faq-answer">Ivy was built in close partnership with leading allergists, including <strong>Dr. Gary N. Gross</strong> (Dallas Allergy &amp; Asthma) and other practicing physicians on our healthcare council. The team sat in clinics, watched the phone calls, counted the denials, and built what should have existed years ago.</div>
+        </details>
       </div>
     </div>
   </section>
@@ -1287,7 +1568,7 @@ img { max-width: 100%; display: block; }
     <div class="vc-container">
       <div class="section-head">
         <div class="eyebrow">From the practices</div>
-        <h2 class="section">Live in <span class="grad-text">22+ clinics.</span> Built with allergists.</h2>
+        <h2 class="section">Live across <span class="grad-text">100+ physician locations.</span> Built with allergists.</h2>
       </div>
       <div class="testi-grid">
         <div class="testi featured">
@@ -1298,7 +1579,7 @@ img { max-width: 100%; display: block; }
           </div>
         </div>
         <div class="testi">
-          <p class="quote">"We went from a full-time staffer on the phone to an inbox of confirmed VOBs. The math on day one was obvious."</p>
+          <p class="quote">"We went from a full-time staffer on the phone to an inbox of confirmed verifications. The math on day one was obvious."</p>
           <div class="who">
             <div class="avi">A</div>
             <div><div class="name">Practice Administrator</div><div class="role">Multi-location allergy group</div></div>
@@ -1325,7 +1606,7 @@ img { max-width: 100%; display: block; }
           <a href="https://raga.ai" class="btn btn-ghost">Visit raga.ai</a>
         </div>
         <div style="margin-top:32px; font-size:12px; color:#64748B; letter-spacing:0.04em;">
-          HIPAA · SOC 2 · ISO 27001 · Live in 22+ allergy clinics since 2025
+          HIPAA · SOC 2 · ISO 27001 · Live across 100+ physician locations since 2025
         </div>
       </div>
     </div>
@@ -1334,7 +1615,7 @@ img { max-width: 100%; display: block; }
   <footer>
     <div class="vc-container">
       <div class="row">
-        <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">by RagaAI</span></div></div>
+        <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">powered by RagaAI</span></div></div>
         <div class="badges"><span class="badge">HIPAA</span><span class="badge">SOC 2</span><span class="badge">ISO 27001</span></div>
         <div>© 2026 RagaAI · Built for allergy &amp; immunology</div>
       </div>
@@ -1363,6 +1644,64 @@ img { max-width: 100%; display: block; }
     document.querySelectorAll('.switcher button').forEach(b => b.classList.toggle('active', b.dataset.target === hash));
     document.querySelectorAll('.variant').forEach(v => v.classList.toggle('active', v.id === hash));
   }
+
+  // Savings calculator (Variant C)
+  const calcEls = {
+    patients: document.getElementById('calc-patients'),
+    minutes: document.getElementById('calc-minutes'),
+    hourly: document.getElementById('calc-hourly'),
+    cpts: document.getElementById('calc-cpts'),
+    patientsVal: document.getElementById('calc-patients-val'),
+    minutesVal: document.getElementById('calc-minutes-val'),
+    hourlyVal: document.getElementById('calc-hourly-val'),
+    cptsVal: document.getElementById('calc-cpts-val'),
+    total: document.getElementById('calc-total'),
+    totalSub: document.getElementById('calc-total-sub'),
+    hours: document.getElementById('calc-hours'),
+    labor: document.getElementById('calc-labor'),
+    denial: document.getElementById('calc-denial'),
+    collect: document.getElementById('calc-collect'),
+  };
+
+  function fmtMoney(n) { return '$' + Math.round(n).toLocaleString(); }
+  function fmtNum(n) { return Math.round(n).toLocaleString(); }
+
+  function recalcSavings() {
+    if (!calcEls.patients) return;
+    const p = parseInt(calcEls.patients.value);
+    const m = parseInt(calcEls.minutes.value);
+    const h = parseInt(calcEls.hourly.value);
+    const cpts = parseInt(calcEls.cpts.value);
+    const cptFactor = 0.8 + (cpts / 25);  // more CPTs = slightly more complexity = small bump
+
+    // Hours freed = (min/60) * patients * 0.95 capture rate
+    const hoursFreed = (m / 60) * p * 0.95;
+    // Labor saved per month
+    const laborSaved = hoursFreed * h;
+    // Denial prevention = 30% misroute baseline × $300 avg rework × patients × 0.95 fix rate × cptFactor
+    const denial = p * 0.30 * 300 * 0.95 * cptFactor;
+    // Pre-visit collections = 20% drop-off prevented × $300 patient value × patients × 0.95
+    const collections = p * 0.20 * 300 * 0.95;
+    // Total monthly value
+    const total = laborSaved + denial + collections;
+    const annual = total * 12;
+
+    calcEls.patientsVal.textContent = fmtNum(p);
+    calcEls.minutesVal.textContent = m;
+    calcEls.hourlyVal.textContent = h;
+    calcEls.cptsVal.textContent = cpts;
+    calcEls.total.textContent = fmtMoney(total);
+    calcEls.totalSub.textContent = '≈ ' + fmtMoney(annual) + ' in annual value';
+    calcEls.hours.textContent = fmtNum(hoursFreed) + ' hrs';
+    calcEls.labor.textContent = fmtMoney(laborSaved);
+    calcEls.denial.textContent = fmtMoney(denial);
+    calcEls.collect.textContent = fmtMoney(collections);
+  }
+
+  ['patients', 'minutes', 'hourly', 'cpts'].forEach(key => {
+    if (calcEls[key]) calcEls[key].addEventListener('input', recalcSavings);
+  });
+  recalcSavings();
 </script>
 
 </body>
