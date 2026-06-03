@@ -482,7 +482,10 @@ img { max-width: 100%; display: block; }
   padding: 40px 0;
 }
 .vc .logo-wall .lbl { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #64748B; text-align: center; margin-bottom: 24px; }
-.vc .logo-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; align-items: center; }
+.vc .logo-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+.vc .logo-row .lg { padding: 18px 16px; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; background: rgba(255,255,255,0.02); transition: all 0.25s; min-height: 92px; display: flex; flex-direction: column; justify-content: center; }
+.vc .logo-row .lg:hover { border-color: rgba(96,165,250,0.3); background: rgba(96,165,250,0.04); transform: translateY(-2px); color: #fff; }
+.vc .logo-row .lg .sm { font-size: 11px; line-height: 1.4; margin-top: 6px; opacity: 0.7; }
 .vc .logo-row .lg-more {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-decoration: none; cursor: pointer;
@@ -686,7 +689,7 @@ img { max-width: 100%; display: block; }
   .vc .stat-cell { border-bottom: 1px solid rgba(255,255,255,0.06); }
   .vc .mock-content { grid-template-columns: 1fr; }
   .vc .testi-grid { grid-template-columns: 1fr; }
-  .vc .logo-row { grid-template-columns: repeat(3, 1fr); }
+  .vc .logo-row { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 560px) {
   .vc .bento { grid-template-columns: 1fr; }
@@ -1108,6 +1111,67 @@ img { max-width: 100%; display: block; }
   .vc .advisor-tagline { margin-left: auto; margin-right: auto; }
   .vc .advisor-creds { justify-content: center; }
 }
+
+/* Bento-only mode (hide A and B, force C visible) */
+.switcher { display: none !important; }
+.variant.va, .variant.vb { display: none !important; }
+.variant.vc { display: block !important; padding-top: 0 !important; }
+
+/* Benefits Accuracy bento card (full-width) */
+.vc .bento-card.accuracy-card {
+  padding: 36px 40px;
+  background: linear-gradient(135deg, rgba(60,131,246,0.06), rgba(124,59,237,0.06), rgba(248,113,113,0.04));
+  border: 1px solid rgba(96,165,250,0.25);
+  position: relative; overflow: hidden;
+}
+.vc .bento-card.accuracy-card::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(400px 200px at 0% 50%, rgba(248,113,113,0.10), transparent 60%),
+    radial-gradient(400px 200px at 100% 50%, rgba(16,183,127,0.10), transparent 60%);
+  pointer-events: none;
+}
+.vc .accuracy-grid {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 32px; align-items: center; position: relative;
+}
+.vc .accuracy-side { text-align: left; }
+.vc .accuracy-side.accuracy-after { text-align: right; }
+.vc .accuracy-label {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #64748B; font-weight: 700; margin-bottom: 12px;
+}
+.vc .accuracy-num {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+  margin-bottom: 12px;
+}
+.vc .accuracy-before .accuracy-num { color: #F87171; text-decoration: line-through; text-decoration-thickness: 3px; text-decoration-color: rgba(248,113,113,0.6); }
+.vc .accuracy-after .accuracy-num { background: linear-gradient(135deg, #34D399, #60A5FA); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.vc .accuracy-desc { font-size: 14px; color: #94A3B8; line-height: 1.55; max-width: 360px; }
+.vc .accuracy-after .accuracy-desc { margin-left: auto; }
+.vc .accuracy-divider { display: flex; flex-direction: column; align-items: center; gap: 12px; min-width: 140px; }
+.vc .accuracy-arrow {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, #3C83F6, #7C3BED);
+  display: grid; place-items: center;
+  color: #fff; font-size: 22px; font-weight: 700;
+  box-shadow: 0 10px 24px -6px rgba(124,59,237,0.6);
+}
+.vc .accuracy-tag {
+  padding: 6px 12px; border-radius: 9999px;
+  background: rgba(96,165,250,0.12);
+  border: 1px solid rgba(96,165,250,0.3);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  color: #93C5FD; white-space: nowrap; text-align: center;
+}
+@media (max-width: 760px) {
+  .vc .accuracy-grid { grid-template-columns: 1fr; gap: 24px; }
+  .vc .accuracy-side, .vc .accuracy-side.accuracy-after { text-align: center; }
+  .vc .accuracy-after .accuracy-desc { margin: 0 auto; }
+  .vc .accuracy-divider { flex-direction: row; }
+  .vc .accuracy-arrow { transform: rotate(90deg); }
+}
 </style>
 </head>
 <body>
@@ -1145,7 +1209,7 @@ img { max-width: 100%; display: block; }
     <div class="container">
       <div class="pill"><span class="dot"></span>Live across 100+ physician locations</div>
       <h1>Benefits Verification,<br /><span class="grad">solved in under 15 seconds.</span></h1>
-      <p class="lede">Ivy automates eligibility verification, cost estimation, and patient communication. Save $800+ per provider per month on benefits verifications.</p>
+      <p class="lede">Ivy automates eligibility verification, cost estimation, and patient communication. Save $1,000+ USD per provider per month on benefits verifications.</p>
       <div class="ctas">
         <a href="#a-demo" class="btn btn-primary">Schedule a Demo →</a>
         <a href="#a-how" class="btn btn-ghost">See How It Works</a>
@@ -1299,7 +1363,7 @@ img { max-width: 100%; display: block; }
       <h2 class="section">Generic RCM doesn't know <span class="grad">how allergy works.</span></h2>
       <p class="section-lede">Build-path cost modeling. Dosage frequency limits per serum type. In-network status by procedure, not just plan. Payer-specific STC mapping for allergy codes.</p>
       <div class="cpt-wrap">
-        <h3 style="font-size:18px; font-weight:600; margin-bottom:20px; color:#D1D7E0; letter-spacing:0.04em;">25+ Allergy-Specific CPT Codes Covered</h3>
+        <h3 style="font-size:18px; font-weight:600; margin-bottom:20px; color:#D1D7E0; letter-spacing:0.04em;">Coverage for major Allergy Treatments &amp; Procedures</h3>
         <div class="cpt-grid">
           <div class="cpt"><span class="code">95004</span><span class="label">Percutaneous Testing</span></div>
           <div class="cpt"><span class="code">95017</span><span class="label">Prick (Inhalants)</span></div>
@@ -1552,7 +1616,7 @@ img { max-width: 100%; display: block; }
     <div class="vc-container hero-inner">
       <div class="pill-live"><span class="dot"></span>Now live across 100+ physician locations<span class="arrow">→</span></div>
       <h1>Benefits verification done in <span class="grad-text">15 seconds.</span><br />Not 45 minutes.</h1>
-      <p>Ivy automates eligibility verification, cost estimation, and patient communication. Save $800+ per provider, per month.</p>
+      <p>Ivy automates eligibility verification, cost estimation, and patient communication. Save $1,000+ USD per provider, per month.</p>
       <div class="ctas">
         <a href="#c-demo" class="btn btn-primary">Book a demo →</a>
         <a href="#c-calc" class="btn btn-ghost">▶ See your savings</a>
@@ -1582,11 +1646,14 @@ img { max-width: 100%; display: block; }
     <div class="vc-container">
       <div class="lbl">125+ plans live across various carrier families</div>
       <div class="logo-row">
-        <div class="lg">UnitedHealthcare<span class="sm">42 plans</span></div>
-        <div class="lg">Cigna<span class="sm">27 plans</span></div>
-        <div class="lg">Aetna<span class="sm">14 plans</span></div>
-        <div class="lg">Anthem BCBS<span class="sm">7 plans</span></div>
-        <div class="lg">Medicare<span class="sm">+ Government</span></div>
+        <div class="lg">UnitedHealthcare<span class="sm">All UHC payers &middot; Surest, Oxford, Student Resources, GEHA, UMR</span></div>
+        <div class="lg">Cigna<span class="sm">All major lines &middot; Open Access, HealthSpring, SureFit</span></div>
+        <div class="lg">Aetna<span class="sm">HMO, PPO, Medicare, Student Health, International</span></div>
+        <div class="lg">Anthem BCBS<span class="sm">All 51 states</span></div>
+        <div class="lg">Medicare<span class="sm">+ Government plans</span></div>
+        <div class="lg">Medicaid<span class="sm">All states</span></div>
+        <div class="lg">Centene Group<span class="sm">Ambetter, Wellcare, Fidelis &amp; more</span></div>
+        <div class="lg">Tricare<span class="sm">East, West, For Life</span></div>
         <a href="#c-demo" class="lg lg-more" title="More carriers added every week"><span class="plus-btn">+</span><span class="sm">More coming</span></a>
       </div>
     </div>
@@ -1605,7 +1672,7 @@ img { max-width: 100%; display: block; }
           <div class="label">Headline metric</div>
           <div class="big">&lt; 15s</div>
           <h3>Average verification processing time</h3>
-          <p>Down from 45–60 minutes per patient. Real-time eligibility, deductible tracking, build-path cost modeling, and patient comms. All under fifteen seconds.</p>
+          <p>Down from 45–60 minutes per patient lost on hold with payers, navigating IVR menus, and re-dialing after dropped calls. Ivy delivers real-time eligibility, deductible tracking, and build-path cost modeling. All under fifteen seconds.</p>
           <div style="margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:24px; flex-wrap:wrap;">
             <div><div style="font-size:11px; color:#64748B; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">Before</div><div style="font-size:18px; font-weight:600; color:#F87171; text-decoration:line-through;">45 minutes</div></div>
             <div><div style="font-size:11px; color:#64748B; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">With Ivy</div><div style="font-size:18px; font-weight:600; color:#34D399;">14.2 seconds</div></div>
@@ -1632,10 +1699,10 @@ img { max-width: 100%; display: block; }
         </div>
 
         <div class="bento-card col-2">
-          <div class="label">Allergy DNA</div>
-          <div class="big" style="font-size:44px;">25+</div>
-          <h3 style="font-size:16px;">Allergy-specific CPTs</h3>
-          <p style="font-size:13px;">From 95004 percutaneous to 95180 rapid desens.</p>
+          <div class="label">Allergy coverage</div>
+          <div class="big" style="font-size:36px;">CPT + ICD-10</div>
+          <h3 style="font-size:16px;">Major allergy treatments &amp; procedures</h3>
+          <p style="font-size:13px;">CPT codes, ICD-10, plus biologics &amp; IVIG benefits. Growing weekly.</p>
         </div>
 
         <div class="bento-card col-2">
@@ -1645,10 +1712,29 @@ img { max-width: 100%; display: block; }
           <p style="font-size:13px;">High auto-flows. Low gets flagged for review.</p>
         </div>
 
+        <div class="bento-card col-6 accuracy-card">
+          <div class="accuracy-grid">
+            <div class="accuracy-side accuracy-before">
+              <div class="accuracy-label">Manual workflows</div>
+              <div class="accuracy-num">20–30%</div>
+              <div class="accuracy-desc">error rate from human mistakes, IVR mishears, and stale plan data. Surprise bills appear at claim time.</div>
+            </div>
+            <div class="accuracy-divider">
+              <div class="accuracy-arrow">→</div>
+              <div class="accuracy-tag">Benefits direct from the payer</div>
+            </div>
+            <div class="accuracy-side accuracy-after">
+              <div class="accuracy-label">Ivy verifications</div>
+              <div class="accuracy-num">&lt; 3%</div>
+              <div class="accuracy-desc">deviation in quoted benefits. Multi-stage validation with direct payer integrations for the specific patient plan.</div>
+            </div>
+          </div>
+        </div>
+
         <div class="bento-card col-3">
-          <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <h3>Patient gets the email first</h3>
-          <p>Verification documents auto-generated and emailed to patients before the visit. No more surprise bills at check-in.</p>
+          <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg></div>
+          <h3>Visibility into patient benefits pre-visit</h3>
+          <p>No surprises, no questions on covered treatments. Providers make informed choices on treatments, and patients have benefits pre-verified, ready to hand over at check-in.</p>
         </div>
 
         <div class="bento-card col-3">
@@ -1672,7 +1758,7 @@ img { max-width: 100%; display: block; }
           <span class="tag">Before Ivy</span>
           <h3>Manual verification workflow</h3>
           <ul>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>45–60 minutes per patient on hold</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>45–60 min/patient on hold, on IVR menus, on re-dials</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>30% of benefits misrouted</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>0.5 FTE per provider on verifications</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Patients find out cost at check-in</li>
@@ -1722,30 +1808,27 @@ img { max-width: 100%; display: block; }
       <div class="map-wrap">
         <div class="us-map-frame">
           <img src="assets/us-map.svg?v=2" alt="US states map showing Ivy live coverage" class="us-map-img" />
-          <div class="map-pin" style="left:10.3%;top:10.5%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Seattle</span></div>
-          <div class="map-pin" style="left:10.3%;top:21.9%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Portland</span></div>
-          <div class="map-pin" style="left:8%;top:36.2%;"><span class="ring"></span><span class="dot"></span><span class="lbl">San Francisco</span></div>
-          <div class="map-pin" style="left:15.4%;top:57.1%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Los Angeles</span></div>
-          <div class="map-pin" style="left:24%;top:61.9%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Phoenix</span></div>
-          <div class="map-pin" style="left:34.3%;top:40%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Denver</span></div>
-          <div class="map-pin" style="left:53.7%;top:13.3%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Minneapolis</span></div>
-          <div class="map-pin" style="left:40%;top:57.1%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Dallas</span></div>
-          <div class="map-pin" style="left:44%;top:78.1%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Houston</span></div>
-          <div class="map-pin" style="left:60%;top:38.1%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Chicago</span></div>
-          <div class="map-pin" style="left:69.7%;top:61%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Atlanta</span></div>
-          <div class="map-pin" style="left:72.6%;top:90.5%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Miami</span></div>
-          <div class="map-pin" style="left:80%;top:41%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Washington DC</span></div>
-          <div class="map-pin" style="left:81.1%;top:34.3%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Philadelphia</span></div>
-          <div class="map-pin" style="left:82.9%;top:27.6%;"><span class="ring"></span><span class="dot"></span><span class="lbl">New York</span></div>
-          <div class="map-pin" style="left:88%;top:29.5%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Boston</span></div>
-       </div>
+          <div class="map-pin" style="left:5.7%;top:4.8%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Seattle</span></div>
+          <div class="map-pin" style="left:6.3%;top:17.1%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Portland</span></div>
+          <div class="map-pin" style="left:5.1%;top:41.9%;"><span class="ring"></span><span class="dot"></span><span class="lbl">San Francisco</span></div>
+          <div class="map-pin" style="left:9.7%;top:56.2%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Los Angeles</span></div>
+          <div class="map-pin" style="left:22.3%;top:57.1%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Phoenix</span></div>
+          <div class="map-pin" style="left:35.4%;top:38.1%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Denver</span></div>
+          <div class="map-pin" style="left:56.6%;top:11.4%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Minneapolis</span></div>
+          <div class="map-pin" style="left:42.9%;top:57.1%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Dallas</span></div>
+          <div class="map-pin" style="left:47.4%;top:75.2%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Houston</span></div>
+          <div class="map-pin" style="left:61.7%;top:32.4%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Chicago</span></div>
+          <div class="map-pin" style="left:68%;top:57.1%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Atlanta</span></div>
+          <div class="map-pin" style="left:71.4%;top:83.8%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Miami</span></div>
+          <div class="map-pin" style="left:79.4%;top:41%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Washington DC</span></div>
+          <div class="map-pin" style="left:82.9%;top:36.2%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Philadelphia</span></div>
+          <div class="map-pin" style="left:85.1%;top:33.3%;"><span class="ring"></span><span class="dot"></span><span class="lbl">New York</span></div>
+          <div class="map-pin" style="left:91.4%;top:29.5%;"><span class="ring"></span><span class="dot"></span><span class="lbl">Boston</span></div>
+      </div>
 
         <div class="map-legend">
-          <div class="map-legend-items">
-            <div class="map-legend-item"><span class="dot live"></span> Live now</div>
-            <div class="map-legend-item"><span class="dot soon"></span> Coming next</div>
-          </div>
-          <div class="map-legend-count"><strong>16</strong> cities pinned &middot; <strong>100+</strong> physician locations live &middot; <strong>50</strong> states ready</div>
+          <div class="map-legend-items"></div>
+          <div class="map-legend-count"><strong>100+</strong> physician locations live &middot; <strong>50</strong> states ready</div>
         </div>
       </div>
     </div>
