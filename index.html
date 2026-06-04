@@ -1170,6 +1170,29 @@ img { max-width: 100%; display: block; }
   .vc .accuracy-divider { flex-direction: row; }
   .vc .accuracy-arrow { transform: rotate(90deg); }
 }
+
+/* Demo video section */
+.vc .video-section { padding-top: 64px; padding-bottom: 64px; }
+.vc .video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(180deg, #0E1424, #0A0F1E);
+  border: 1px solid rgba(96,165,250,0.18);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(60,131,246,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.vc .video-wrap::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 2;
+  background: linear-gradient(90deg, transparent, #3C83F6, #7C3BED, transparent);
+}
+.vc .video-wrap iframe {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; border: 0; display: block;
+}
 </style>
 </head>
 <body>
@@ -1617,7 +1640,7 @@ img { max-width: 100%; display: block; }
       <p>Ivy automates eligibility verification, cost estimation, and patient communication. Save $1,000+ USD per provider, per month.</p>
       <div class="ctas">
         <a href="#c-demo" class="btn btn-primary">Book a demo →</a>
-        <a href="#c-calc" class="btn btn-ghost">▶ See your savings</a>
+        <a href="#c-video" class="btn btn-ghost">▶ Watch a 2-min demo</a>
       </div>
     </div>
   </header>
@@ -1715,7 +1738,7 @@ img { max-width: 100%; display: block; }
             <div class="accuracy-side accuracy-before">
               <div class="accuracy-label">Manual workflows</div>
               <div class="accuracy-num">20–30%</div>
-              <div class="accuracy-desc">error rate from human mistakes, IVR mishears, and stale plan data. Surprise bills appear at claim time.</div>
+              <div class="accuracy-desc">error rate from manual transcription mistakes, IVR mishears, and stale plan data. Surprise bills appear at claim time.</div>
             </div>
             <div class="accuracy-divider">
               <div class="accuracy-arrow">→</div>
@@ -1794,7 +1817,28 @@ img { max-width: 100%; display: block; }
     </div>
   </section>
 
-    <!-- ============ MAP: Live coverage across the US ============ -->
+  
+  <!-- ============ DEMO VIDEO ============ -->
+  <section id="c-video" class="video-section">
+    <div class="vc-container">
+      <div class="section-head">
+        <div class="eyebrow">See it in action</div>
+        <h2 class="section">Watch Ivy <span class="grad-text">verify a patient.</span></h2>
+        <p class="section-lede">A short walkthrough of how Ivy automates benefits verification end-to-end.</p>
+      </div>
+
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/uPo2-y0PWvg?rel=0&modestbranding=1"
+          title="Ivy by RagaAI - Benefits verification explainer"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+  <!-- ============ MAP: Live coverage across the US ============ -->
   <section id="c-map">
     <div class="vc-container">
       <div class="section-head">
