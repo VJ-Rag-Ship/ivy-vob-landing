@@ -1193,6 +1193,176 @@ img { max-width: 100%; display: block; }
   position: absolute; top: 0; left: 0;
   width: 100%; height: 100%; border: 0; display: block;
 }
+
+/* ============ ROI CALCULATOR ============ */
+.vc .roi-wrap {
+  background: linear-gradient(180deg, #0E1424, #0A0F1E);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  overflow: hidden;
+}
+.vc .roi-hook {
+  padding: 22px 32px;
+  background: linear-gradient(90deg, rgba(248,113,113,0.06), rgba(60,131,246,0.06));
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 14.5px; color: #CBD5E1; line-height: 1.55;
+}
+.vc .roi-hook strong { color: #fff; font-weight: 700; }
+.vc .roi-hook .accent-red { color: #FCA5A5; font-weight: 700; }
+.vc .roi-hook .accent-green { color: #34D399; font-weight: 700; }
+
+.vc .roi-grid { display: grid; grid-template-columns: 1.05fr 1fr; }
+.vc .roi-inputs { padding: 32px 36px; border-right: 1px solid rgba(255,255,255,0.06); }
+.vc .roi-outputs {
+  padding: 32px 36px;
+  background: linear-gradient(135deg, rgba(60,131,246,0.06), rgba(124,59,237,0.06));
+  position: relative;
+}
+.vc .roi-outputs::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, #3C83F6, #7C3BED, transparent);
+}
+
+.vc .roi-input-row { margin-bottom: 22px; }
+.vc .roi-input-row:last-child { margin-bottom: 0; }
+.vc .roi-input-label {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 12px; color: #94A3B8; letter-spacing: 0.06em;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 10px;
+}
+.vc .roi-input-label .val {
+  color: #fff; font-weight: 700; font-size: 20px; letter-spacing: -0.02em;
+  text-transform: none; font-family: 'JetBrains Mono', monospace;
+}
+.vc .roi-input-row input[type="range"] {
+  width: 100%; height: 4px; border-radius: 2px;
+  background: rgba(255,255,255,0.08); outline: none;
+  -webkit-appearance: none; appearance: none; cursor: grab;
+}
+.vc .roi-input-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+  background: linear-gradient(135deg, #60A5FA, #A78BFA);
+  border: 3px solid #0E1424; cursor: grab;
+  box-shadow: 0 4px 10px rgba(60,131,246,0.5);
+}
+.vc .roi-input-row input[type="range"]::-moz-range-thumb {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: linear-gradient(135deg, #60A5FA, #A78BFA);
+  border: 3px solid #0E1424; cursor: grab;
+}
+
+.vc .roi-pricing {
+  margin-top: 30px; padding: 18px 22px;
+  background: linear-gradient(135deg, rgba(60,131,246,0.12), rgba(124,59,237,0.10));
+  border: 1px solid rgba(96,165,250,0.35); border-radius: 14px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.vc .roi-pricing-label {
+  font-size: 12px; color: #93C5FD; letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 700;
+}
+.vc .roi-pricing-rate { font-size: 15px; color: #E2E8F0; font-weight: 600; margin-top: 4px; }
+.vc .roi-pricing-rate .num { color: #fff; font-size: 22px; font-family: 'JetBrains Mono', monospace; margin-right: 4px; }
+.vc .roi-pricing-total { text-align: right; }
+.vc .roi-pricing-total .lbl { font-size: 11px; color: #94A3B8; letter-spacing: 0.1em; text-transform: uppercase; }
+.vc .roi-pricing-total .amt {
+  font-size: 24px; font-weight: 700; color: #fff;
+  font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em;
+}
+
+/* Outputs */
+.vc .roi-headline {
+  text-align: center; padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px;
+}
+.vc .roi-headline .lbl {
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #93C5FD; margin-bottom: 10px; font-weight: 700;
+}
+.vc .roi-headline .val {
+  font-size: clamp(48px, 6vw, 76px); font-weight: 800;
+  letter-spacing: -0.045em; line-height: 1;
+  background: linear-gradient(135deg, #34D399, #60A5FA, #A78BFA);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  margin-bottom: 10px;
+}
+.vc .roi-headline .sub {
+  font-size: 15px; color: #CBD5E1; font-weight: 500;
+}
+.vc .roi-headline .sub .big {
+  color: #fff; font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.vc .roi-metrics {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;
+}
+.vc .roi-metric {
+  padding: 16px 18px; background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+  text-align: center;
+}
+.vc .roi-metric .lbl {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #64748B; margin-bottom: 6px; font-weight: 600;
+}
+.vc .roi-metric .val {
+  font-size: 28px; font-weight: 800; letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #60A5FA, #A78BFA);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.vc .roi-breakdown {
+  padding: 20px 22px; border-radius: 14px;
+  background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.05);
+}
+.vc .roi-breakdown-title {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #64748B; margin-bottom: 12px; font-weight: 700;
+}
+.vc .roi-breakdown-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.vc .roi-breakdown-row:last-child { border-bottom: 0; }
+.vc .roi-breakdown-row .desc { color: #CBD5E1; }
+.vc .roi-breakdown-row .amt {
+  color: #34D399; font-weight: 700;
+  font-family: 'JetBrains Mono', monospace; letter-spacing: -0.01em;
+}
+.vc .roi-breakdown-row.cost .amt { color: #F87171; }
+.vc .roi-breakdown-row.total {
+  padding-top: 14px; margin-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.15); border-bottom: 0;
+  font-size: 15px; font-weight: 700;
+}
+.vc .roi-breakdown-row.total .desc { color: #fff; }
+.vc .roi-breakdown-row.total .amt { color: #fff; font-size: 18px; }
+
+.vc .roi-cta {
+  margin-top: 24px; text-align: center;
+  padding: 16px 20px; background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;
+  font-size: 13px; color: #94A3B8;
+}
+.vc .roi-cta a { color: #93C5FD; font-weight: 700; text-decoration: none; }
+.vc .roi-cta a:hover { color: #fff; }
+
+.vc .roi-assumptions {
+  margin-top: 16px; padding: 14px 18px;
+  font-size: 11px; color: #64748B; font-style: italic; line-height: 1.5;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+@media (max-width: 900px) {
+  .vc .roi-grid { grid-template-columns: 1fr; }
+  .vc .roi-inputs { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .vc .roi-metrics { grid-template-columns: 1fr; }
+  .vc .roi-pricing { flex-direction: column; align-items: flex-start; }
+  .vc .roi-pricing-total { text-align: left; width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -1949,75 +2119,109 @@ img { max-width: 100%; display: block; }
       </div>
     </div>
   </section>
-  <!-- ============ SAVINGS CALCULATOR ============ -->
+  <!-- ============ ROI CALCULATOR ============ -->
   <section id="c-calc">
     <div class="vc-container">
       <div class="section-head">
-        <div class="eyebrow">Run your numbers</div>
-        <h2 class="section">See what Ivy saves <span class="grad-text">your practice.</span></h2>
-        <p class="section-lede">Adjust the sliders for your verification volume, staff cost, and current workflow. We do the math.</p>
+        <div class="eyebrow">Your ROI in 60 seconds</div>
+        <h2 class="section">Ivy pays for itself <span class="grad-text">in the first billing cycle.</span></h2>
+        <p class="section-lede">The wedge: today, patients walk out without paying because you don't know their exact responsibility. You wait for insurance to process (30-60 days), bill the patient, chase them (60-90 more days), and a chunk turns to bad debt. Ivy hands you the exact amount to collect at check-in.</p>
       </div>
 
-      <div class="calc-wrap">
-        <div class="calc-inputs">
-          <div class="calc-row">
-            <label>Patients verified per month</label>
-            <div class="calc-val"><span id="calc-patients-val">500</span><span class="unit">patients</span></div>
-            <input type="range" id="calc-patients" min="50" max="3000" step="50" value="500"/>
-            <div class="calc-range-labels"><span>50</span><span>3,000</span></div>
+      <div class="roi-wrap">
+        <div class="roi-hook">
+          Today: only <span class="accent-red">~25% of patient responsibility</span> is caught at check-in. The rest sits in AR for 30-90 days, and <span class="accent-red">~8% never comes in at all</span>. Ivy flips this: know the exact copay, deductible, and coinsurance <em>per CPT</em> before the patient walks in. Collect at check-in. <span class="accent-green">Cut bad debt below 3%.</span>
+        </div>
+
+        <div class="roi-grid">
+          <div class="roi-inputs">
+            <div class="roi-input-row">
+              <div class="roi-input-label"><span>Providers</span><span class="val" id="roi-prov-val">10</span></div>
+              <input type="range" id="roi-prov" min="1" max="100" step="1" value="10" />
+            </div>
+            <div class="roi-input-row">
+              <div class="roi-input-label"><span>Patient visits / provider / month</span><span class="val" id="roi-visits-val">150</span></div>
+              <input type="range" id="roi-visits" min="30" max="500" step="10" value="150" />
+            </div>
+            <div class="roi-input-row">
+              <div class="roi-input-label"><span>Avg. patient responsibility / visit</span><span class="val" id="roi-resp-val">$85</span></div>
+              <input type="range" id="roi-resp" min="30" max="250" step="5" value="85" />
+            </div>
+            <div class="roi-input-row">
+              <div class="roi-input-label"><span>% caught at check-in today</span><span class="val" id="roi-checkin-val">25%</span></div>
+              <input type="range" id="roi-checkin" min="5" max="60" step="1" value="25" />
+            </div>
+            <div class="roi-input-row">
+              <div class="roi-input-label"><span>Current bad debt rate</span><span class="val" id="roi-bd-val">8%</span></div>
+              <input type="range" id="roi-bd" min="2" max="20" step="1" value="8" />
+            </div>
+
+            <div class="roi-pricing">
+              <div>
+                <div class="roi-pricing-label">Ivy Pricing</div>
+                <div class="roi-pricing-rate"><span class="num">$249</span>/ provider / month</div>
+              </div>
+              <div class="roi-pricing-total">
+                <div class="lbl">Your practice</div>
+                <div class="amt" id="roi-ivy-cost">$2,490/mo</div>
+              </div>
+            </div>
           </div>
-          <div class="calc-row">
-            <label>Minutes per verification today</label>
-            <div class="calc-val"><span id="calc-minutes-val">50</span><span class="unit">minutes</span></div>
-            <input type="range" id="calc-minutes" min="20" max="90" step="5" value="50"/>
-            <div class="calc-range-labels"><span>20 min</span><span>90 min</span></div>
-          </div>
-          <div class="calc-row">
-            <label>Staff hourly cost (fully loaded)</label>
-            <div class="calc-val">$<span id="calc-hourly-val">22</span><span class="unit">/hour</span></div>
-            <input type="range" id="calc-hourly" min="15" max="40" step="1" value="22"/>
-            <div class="calc-range-labels"><span>$15</span><span>$40</span></div>
-          </div>
-          <div class="calc-row">
-            <label>Avg. CPT codes per patient</label>
-            <div class="calc-val"><span id="calc-cpts-val">5</span><span class="unit">codes</span></div>
-            <input type="range" id="calc-cpts" min="3" max="12" step="1" value="5"/>
-            <div class="calc-range-labels"><span>3</span><span>12</span></div>
+
+          <div class="roi-outputs">
+            <div class="roi-headline">
+              <div class="lbl">Net Monthly Savings with Ivy</div>
+              <div class="val" id="roi-net">$24,687</div>
+              <div class="sub"><span class="big" id="roi-annual">$296,244</span> in year-one net savings</div>
+            </div>
+
+            <div class="roi-metrics">
+              <div class="roi-metric">
+                <div class="lbl">ROI Multiple</div>
+                <div class="val" id="roi-multiple">10.9&times;</div>
+              </div>
+              <div class="roi-metric">
+                <div class="lbl">Payback</div>
+                <div class="val" id="roi-payback">3 days</div>
+              </div>
+            </div>
+
+            <div class="roi-breakdown">
+              <div class="roi-breakdown-title">Monthly savings breakdown</div>
+              <div class="roi-breakdown-row">
+                <div class="desc">Bad debt recovered (6% of pt. responsibility)</div>
+                <div class="amt" id="roi-bd-save">+$7,650</div>
+              </div>
+              <div class="roi-breakdown-row">
+                <div class="desc">Denial prevention (accurate benefits)</div>
+                <div class="amt" id="roi-denial">+$15,300</div>
+              </div>
+              <div class="roi-breakdown-row">
+                <div class="desc">Staff time on AR follow-up</div>
+                <div class="amt" id="roi-staff">+$4,227</div>
+              </div>
+              <div class="roi-breakdown-row cost">
+                <div class="desc">Ivy subscription cost</div>
+                <div class="amt" id="roi-cost-line">&minus;$2,490</div>
+              </div>
+              <div class="roi-breakdown-row total">
+                <div class="desc">Net monthly savings</div>
+                <div class="amt" id="roi-net-line">$24,687</div>
+              </div>
+            </div>
+
+            <div class="roi-cta">
+              Want us to run this on your actual payer mix and volume? <a href="#c-demo">Book a 20-min ROI review &rarr;</a>
+            </div>
           </div>
         </div>
 
-        <div class="calc-outputs">
-          <div class="calc-out-big">
-            <div class="lbl">Estimated monthly value with Ivy</div>
-            <div class="val" id="calc-total">$79,800</div>
-            <div class="sub" id="calc-total-sub">≈ $957,600 in annual value</div>
-          </div>
-
-          <div class="calc-out-row">
-            <div class="calc-out">
-              <div class="lbl">Staff hours freed</div>
-              <div class="val green" id="calc-hours">396 hrs</div>
-            </div>
-            <div class="calc-out">
-              <div class="lbl">Labor savings / mo</div>
-              <div class="val" id="calc-labor">$8,712</div>
-            </div>
-            <div class="calc-out">
-              <div class="lbl">Denial prevention / mo</div>
-              <div class="val" id="calc-denial">$42,750</div>
-            </div>
-            <div class="calc-out">
-              <div class="lbl">Pre-visit collections / mo</div>
-              <div class="val" id="calc-collect">$28,500</div>
-            </div>
-          </div>
-
-          <div class="calc-foot">Based on 95% Ivy capture rate, 30% misroute baseline, ~$300 avg. rework cost, and 20% pre-visit drop-off prevention.</div>
+        <div class="roi-assumptions">
+          Assumptions: bad debt cut from your input to 2% with Ivy. Denial prevention modeled at 5% denial-rate reduction on total revenue (patient responsibility ≈ 25% of gross), 30% of prevented denials actually recovered. Staff cost baseline: 4 hrs/wk/provider on AR follow-up at $30/hr, reduced proportionally to delayed AR volume. Numbers are estimates for planning; we run the exact ROI on your data during the demo.
         </div>
       </div>
     </div>
   </section>
-
   <!-- ============ FAQ ============ -->
   <section id="c-faq">
     <div class="vc-container">
@@ -2108,63 +2312,101 @@ img { max-width: 100%; display: block; }
     document.querySelectorAll('.variant').forEach(v => v.classList.toggle('active', v.id === hash));
   }
 
-  // Savings calculator (Variant C)
-  const calcEls = {
-    patients: document.getElementById('calc-patients'),
-    minutes: document.getElementById('calc-minutes'),
-    hourly: document.getElementById('calc-hourly'),
-    cpts: document.getElementById('calc-cpts'),
-    patientsVal: document.getElementById('calc-patients-val'),
-    minutesVal: document.getElementById('calc-minutes-val'),
-    hourlyVal: document.getElementById('calc-hourly-val'),
-    cptsVal: document.getElementById('calc-cpts-val'),
-    total: document.getElementById('calc-total'),
-    totalSub: document.getElementById('calc-total-sub'),
-    hours: document.getElementById('calc-hours'),
-    labor: document.getElementById('calc-labor'),
-    denial: document.getElementById('calc-denial'),
-    collect: document.getElementById('calc-collect'),
+  // ROI calculator (Variant C)
+  const roiEls = {
+    prov: document.getElementById('roi-prov'),
+    visits: document.getElementById('roi-visits'),
+    resp: document.getElementById('roi-resp'),
+    checkin: document.getElementById('roi-checkin'),
+    bd: document.getElementById('roi-bd'),
   };
 
-  function fmtMoney(n) { return '$' + Math.round(n).toLocaleString(); }
-  function fmtNum(n) { return Math.round(n).toLocaleString(); }
+  function fmt$(n) {
+    const rounded = Math.round(n);
+    const abs = Math.abs(rounded);
+    if (abs >= 1000) return (rounded < 0 ? '-' : '') + '$' + abs.toLocaleString();
+    return (rounded < 0 ? '-' : '') + '$' + abs;
+  }
+  function set(id, txt) { const el = document.getElementById(id); if (el) el.textContent = txt; }
+  function setHtml(id, html) { const el = document.getElementById(id); if (el) el.innerHTML = html; }
 
-  function recalcSavings() {
-    if (!calcEls.patients) return;
-    const p = parseInt(calcEls.patients.value);
-    const m = parseInt(calcEls.minutes.value);
-    const h = parseInt(calcEls.hourly.value);
-    const cpts = parseInt(calcEls.cpts.value);
-    const cptFactor = 0.8 + (cpts / 25);  // more CPTs = slightly more complexity = small bump
+  function recalcRoi() {
+    if (!roiEls.prov) return;
+    const providers = parseInt(roiEls.prov.value);
+    const visits = parseInt(roiEls.visits.value);
+    const resp = parseInt(roiEls.resp.value);
+    const checkin = parseInt(roiEls.checkin.value) / 100;
+    const bd = parseInt(roiEls.bd.value) / 100;
 
-    // Hours freed = (min/60) * patients * 0.95 capture rate
-    const hoursFreed = (m / 60) * p * 0.95;
-    // Labor saved per month
-    const laborSaved = hoursFreed * h;
-    // Denial prevention = 30% misroute baseline × $300 avg rework × patients × 0.95 fix rate × cptFactor
-    const denial = p * 0.30 * 300 * 0.95 * cptFactor;
-    // Pre-visit collections = 20% drop-off prevented × $300 patient value × patients × 0.95
-    const collections = p * 0.20 * 300 * 0.95;
-    // Total monthly value
-    const total = laborSaved + denial + collections;
-    const annual = total * 12;
+    // Update input display values
+    set('roi-prov-val', providers);
+    set('roi-visits-val', visits);
+    set('roi-resp-val', '$' + resp);
+    set('roi-checkin-val', Math.round(checkin * 100) + '%');
+    set('roi-bd-val', Math.round(bd * 100) + '%');
 
-    calcEls.patientsVal.textContent = fmtNum(p);
-    calcEls.minutesVal.textContent = m;
-    calcEls.hourlyVal.textContent = h;
-    calcEls.cptsVal.textContent = cpts;
-    calcEls.total.textContent = fmtMoney(total);
-    calcEls.totalSub.textContent = '≈ ' + fmtMoney(annual) + ' in annual value';
-    calcEls.hours.textContent = fmtNum(hoursFreed) + ' hrs';
-    calcEls.labor.textContent = fmtMoney(laborSaved);
-    calcEls.denial.textContent = fmtMoney(denial);
-    calcEls.collect.textContent = fmtMoney(collections);
+    // Total monthly patient responsibility
+    const totalResp = providers * visits * resp;
+    // Estimated total revenue (patient resp ~= 25% of total revenue)
+    const totalRevenue = totalResp / 0.25;
+
+    // Bad debt savings: (bd% - 2%) * totalResp
+    const bdSavings = Math.max(0, totalResp * (bd - 0.02));
+
+    // Denial prevention: 5% denial-rate reduction on total revenue, 30% actually recovered
+    const denialSavings = totalRevenue * 0.05 * 0.30;
+
+    // Staff time on collections
+    // Baseline: 4 hrs/wk/provider = 16 hrs/mo/provider at $30/hr = $480/mo/provider
+    // Reduction proportional to delayed AR volume
+    const delayedToday = Math.max(0, 1 - checkin - bd);
+    const delayedIvy = 0.08; // Ivy target: 8% delayed
+    const staffToday = providers * 480;
+    const staffIvy = delayedToday > 0 ? staffToday * (delayedIvy / delayedToday) : staffToday * 0.15;
+    const staffSavings = Math.max(0, staffToday - staffIvy);
+
+    // Ivy cost
+    const ivyCost = providers * 249;
+
+    // Totals
+    const gross = bdSavings + denialSavings + staffSavings;
+    const net = gross - ivyCost;
+    const annualNet = net * 12;
+    const roiMult = ivyCost > 0 ? gross / ivyCost : 0;
+    // Payback: how many days into a month does the practice hit break-even
+    const paybackDays = gross > 0 ? Math.max(1, Math.round((ivyCost / gross) * 30)) : 0;
+
+    // Pricing card
+    set('roi-ivy-cost', '$' + ivyCost.toLocaleString() + '/mo');
+
+    // Big number
+    set('roi-net', fmt$(net));
+    set('roi-annual', fmt$(annualNet));
+
+    // Metrics
+    setHtml('roi-multiple', roiMult.toFixed(1) + '&times;');
+    set('roi-payback', paybackDays + ' day' + (paybackDays === 1 ? '' : 's'));
+
+    // Breakdown
+    set('roi-bd-save', '+' + fmt$(bdSavings));
+    set('roi-denial', '+' + fmt$(denialSavings));
+    set('roi-staff', '+' + fmt$(staffSavings));
+    set('roi-cost-line', '−' + fmt$(ivyCost));
+    set('roi-net-line', fmt$(net));
+
+    // Update bad debt breakdown label to show the actual delta
+    const bdDeltaPct = Math.max(0, Math.round((bd - 0.02) * 100));
+    const bdRow = document.querySelector('#roi-bd-save')?.closest('.roi-breakdown-row');
+    if (bdRow) {
+      const desc = bdRow.querySelector('.desc');
+      if (desc) desc.textContent = 'Bad debt recovered (' + bdDeltaPct + '% of pt. responsibility)';
+    }
   }
 
-  ['patients', 'minutes', 'hourly', 'cpts'].forEach(key => {
-    if (calcEls[key]) calcEls[key].addEventListener('input', recalcSavings);
+  ['prov', 'visits', 'resp', 'checkin', 'bd'].forEach(k => {
+    if (roiEls[k]) roiEls[k].addEventListener('input', recalcRoi);
   });
-  recalcSavings();
+  if (roiEls.prov) recalcRoi();
 </script>
 
 </body>
