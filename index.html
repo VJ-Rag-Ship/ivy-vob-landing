@@ -1110,10 +1110,51 @@ img { max-width: 100%; display: block; }
   .vc .advisor-creds { justify-content: center; }
 }
 
-/* Bento-only mode (hide A and B, force C visible) */
+/* Bento-only mode + specialty toggle */
 .switcher { display: none !important; }
 .variant.va, .variant.vb { display: none !important; }
-.variant.vc { display: block !important; padding-top: 0 !important; }
+.variant.vc { display: block !important; padding-top: 56px !important; }
+
+/* Specialty switcher (fixed at top) */
+.spec-switcher {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 12px 24px;
+  background: rgba(5,7,16,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-family: 'Inter', sans-serif;
+}
+.spec-switcher .spec-label {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #94A3B8; margin-right: 12px; font-weight: 600;
+}
+.spec-switcher button {
+  padding: 8px 18px; border-radius: 9999px;
+  background: transparent; color: #D1D7E0;
+  border: 1px solid rgba(255,255,255,0.12);
+  font-family: inherit; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+}
+.spec-switcher button:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.spec-switcher button.active {
+  background: linear-gradient(135deg, #3C83F6, #7C3BED);
+  color: #fff; border-color: transparent;
+  box-shadow: 0 6px 20px -6px rgba(124,59,237,0.6);
+}
+
+/* Show/hide per specialty */
+body[data-specialty="allergy"] .for-derma,
+body[data-specialty="allergy"] .for-ent { display: none !important; }
+body[data-specialty="derma"] .for-allergy,
+body[data-specialty="derma"] .for-ent { display: none !important; }
+body[data-specialty="ent"] .for-allergy,
+body[data-specialty="ent"] .for-derma { display: none !important; }
+
+@media (max-width: 640px) {
+  .spec-switcher { padding: 10px 12px; }
+  .spec-switcher .spec-label { display: none; }
+  .spec-switcher button { padding: 6px 12px; font-size: 12px; }
+}
 
 /* Benefits Accuracy bento card (full-width) */
 .vc .bento-card.accuracy-card {
@@ -1197,12 +1238,12 @@ img { max-width: 100%; display: block; }
 </head>
 <body>
 
-<!-- ==================== VARIANT SWITCHER ==================== -->
-<div class="switcher">
-  <span class="label">Concept</span>
-  <button class="active" data-target="va">A · Signature <span class="badge">House style</span></button>
-  <button data-target="vb">B · Editorial <span class="badge">Stripe/Ramp</span></button>
-  <button data-target="vc">C · Bento <span class="badge">Linear/Cal.com</span></button>
+<!-- ==================== SPECIALTY SWITCHER ==================== -->
+<div class="spec-switcher">
+  <span class="spec-label">Specialty</span>
+  <button class="active" data-spec="allergy">Allergy &amp; Immunology</button>
+  <button data-spec="derma">Dermatology</button>
+  <button data-spec="ent">ENT / Otolaryngology</button>
 </div>
 
 <!-- ============================================================
@@ -1605,7 +1646,7 @@ img { max-width: 100%; display: block; }
       <div class="row">
         <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">powered by RagaAI</span></div></div>
         <div class="badges"><span class="badge">HIPAA</span><span class="badge">SOC 2</span><span class="badge">ISO 27001</span></div>
-        <div>© 2026 RagaAI · Built for allergy &amp; immunology</div>
+        <div>© 2026 RagaAI · Built for specialty practices</div>
       </div>
     </div>
   </footer>
@@ -1645,7 +1686,7 @@ img { max-width: 100%; display: block; }
     </div>
   </header>
 
-  <section class="trust-strip">
+  <section class="trust-strip for-allergy">
     <div class="vc-container">
       <div class="trust-card">
         <div class="trust-avi-stack">
@@ -1660,6 +1701,20 @@ img { max-width: 100%; display: block; }
           <div class="trust-meta"><span class="check">&check;</span> Dallas Allergy &amp; Asthma &middot; RagaAI Healthcare Council &middot; 4 practicing physicians</div>
         </div>
         <a href="#c-council" class="trust-link">Meet the council &rarr;</a>
+      </div>
+    </div>
+  </section>
+  <section class="trust-strip for-ent">
+    <div class="vc-container">
+      <div class="trust-card">
+        <div class="trust-avi-stack">
+          <div class="trust-avi gg-pill" title="Dr. Randall">R</div>
+        </div>
+        <div class="trust-content">
+          <div class="trust-headline">Built in partnership with <strong>Dr. Randall</strong>, our ENT clinical advisor</div>
+          <div class="trust-meta"><span class="check">&check;</span> RagaAI Healthcare Council &middot; ENT practice advisory</div>
+        </div>
+        <a href="#c-advisor" class="trust-link">Meet the advisor &rarr;</a>
       </div>
     </div>
   </section>
@@ -1719,11 +1774,25 @@ img { max-width: 100%; display: block; }
           <p style="font-size:13px;">UHC, Cigna, Aetna, Anthem, Medicare. Growing weekly.</p>
         </div>
 
-        <div class="bento-card col-2">
+        <div class="bento-card col-2 for-allergy">
           <div class="label">Allergy coverage</div>
           <div class="big" style="font-size:36px;">CPT + ICD-10</div>
           <h3 style="font-size:16px;">Major allergy treatments &amp; procedures</h3>
           <p style="font-size:13px;">CPT codes, ICD-10, plus biologics &amp; IVIG benefits. Growing weekly.</p>
+        </div>
+
+        <div class="bento-card col-2 for-derma">
+          <div class="label">Dermatology coverage</div>
+          <div class="big" style="font-size:36px;">CPT + ICD-10</div>
+          <h3 style="font-size:16px;">Major dermatology procedures</h3>
+          <p style="font-size:13px;">Biopsies, excisions, Mohs, phototherapy, plus biologics (Dupixent, Cosentyx, Skyrizi) &amp; injections. Growing weekly.</p>
+        </div>
+
+        <div class="bento-card col-2 for-ent">
+          <div class="label">ENT coverage</div>
+          <div class="big" style="font-size:36px;">CPT + ICD-10</div>
+          <h3 style="font-size:16px;">Major ENT procedures</h3>
+          <p style="font-size:13px;">Audiometry, endoscopy, sinus surgery, allergy shots, plus tympanostomy &amp; sleep studies. Growing weekly.</p>
         </div>
 
         <div class="bento-card col-2">
@@ -1878,8 +1947,8 @@ img { max-width: 100%; display: block; }
 
 
 
-  <!-- ============ LEAD ADVISOR (Dr. Gary N. Gross) ============ -->
-  <section id="c-advisor" class="advisor-section">
+  <!-- ============ LEAD ADVISOR (Dr. Gary N. Gross) - ALLERGY ============ -->
+  <section id="c-advisor" class="advisor-section for-allergy">
     <div class="vc-container">
       <div class="advisor-card">
         <div class="advisor-photo-wrap">
@@ -1904,8 +1973,34 @@ img { max-width: 100%; display: block; }
     </div>
   </section>
 
-  <!-- ============ HEALTHCARE COUNCIL ============ -->
-  <section id="c-council">
+  <!-- ============ LEAD ADVISOR (Dr. Randall) - ENT ============ -->
+  <section class="advisor-section for-ent">
+    <div class="vc-container">
+      <div class="advisor-card">
+        <div class="advisor-photo-wrap">
+          <img src="assets/dr-randall.png" alt="Dr. Randall" class="advisor-photo" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');"/>
+        </div>
+        <div class="advisor-info">
+          <div class="advisor-eyebrow">Advisor &middot; RagaAI</div>
+          <h2 class="advisor-name">Dr. Randall, <span class="grad-text">MD</span></h2>
+          <div class="advisor-role">
+            <span>Otolaryngologist</span>
+            <span class="sep"></span>
+            <span>ENT Practice Advisory</span>
+          </div>
+          <p class="advisor-tagline">Advising RagaAI on ENT practice workflows, coding nuances, and payer dynamics unique to otolaryngology. Ensuring Ivy handles audiometry, endoscopy, and sinus procedures accurately.</p>
+          <div class="advisor-creds">
+            <div class="advisor-cred"><span class="ico">&check;</span> Board Certified Otolaryngologist</div>
+            <div class="advisor-cred"><span class="ico">&check;</span> RagaAI Healthcare Council</div>
+            <div class="advisor-cred"><span class="ico">&check;</span> Practicing ENT physician</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HEALTHCARE COUNCIL (allergy only) ============ -->
+  <section id="c-council" class="for-allergy">
     <div class="vc-container">
       <div class="section-head">
         <div class="eyebrow">Expert Advisory</div>
@@ -2053,7 +2148,9 @@ img { max-width: 100%; display: block; }
         </details>
         <details class="faq-item">
           <summary>Who built Ivy?</summary>
-          <div class="faq-answer">Ivy was built in close partnership with leading allergists, including <strong>Dr. Gary N. Gross</strong> (Dallas Allergy &amp; Asthma) and other practicing physicians on our healthcare council. The team sat in clinics, watched the phone calls, counted the denials, and built what should have existed years ago.</div>
+          <div class="faq-answer for-allergy">Ivy was built in close partnership with leading allergists, including <strong>Dr. Gary N. Gross</strong> (Dallas Allergy &amp; Asthma) and other practicing physicians on our healthcare council. The team sat in clinics, watched the phone calls, counted the denials, and built what should have existed years ago.</div>
+          <div class="faq-answer for-derma">Ivy was built by a team that sat in dermatology clinics, watched the phone calls, counted the denials, and built what should have existed years ago. Coverage for biopsies, excisions, Mohs, phototherapy, and biologics is co-designed with practicing dermatologists.</div>
+          <div class="faq-answer for-ent">Ivy was built in close partnership with practicing ENT physicians, including <strong>Dr. Randall</strong>, our ENT clinical advisor. Coverage for audiometry, endoscopy, sinus procedures, and allergy shots is co-designed with otolaryngologists who understand the practice workflow.</div>
         </details>
       </div>
     </div>
@@ -2080,33 +2177,31 @@ img { max-width: 100%; display: block; }
       <div class="row">
         <div class="logo-wrap"><div class="logo-mark">I</div><div class="logo-text">Ivy<span class="by">powered by RagaAI</span></div></div>
         <div class="badges"><span class="badge">HIPAA</span><span class="badge">SOC 2</span><span class="badge">ISO 27001</span></div>
-        <div>© 2026 RagaAI · Built for allergy &amp; immunology</div>
+        <div>© 2026 RagaAI · Built for specialty practices</div>
       </div>
     </div>
   </footer>
 </div>
 
 <script>
-  // Variant switcher
-  const buttons = document.querySelectorAll('.switcher button');
-  const variants = document.querySelectorAll('.variant');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.target;
-      buttons.forEach(b => b.classList.toggle('active', b === btn));
-      variants.forEach(v => v.classList.toggle('active', v.id === target));
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      // Update URL hash without scrolling
-      history.replaceState(null, '', '#' + target);
+  // Specialty switcher (Allergy / Derma / ENT)
+  function setSpecialty(spec) {
+    if (!['allergy', 'derma', 'ent'].includes(spec)) spec = 'allergy';
+    document.body.setAttribute('data-specialty', spec);
+    document.querySelectorAll('.spec-switcher button').forEach(b => {
+      b.classList.toggle('active', b.dataset.spec === spec);
     });
+    // Update URL hash without scroll jump
+    history.replaceState(null, '', '#' + spec);
+  }
+
+  document.querySelectorAll('.spec-switcher button').forEach(btn => {
+    btn.addEventListener('click', () => setSpecialty(btn.dataset.spec));
   });
 
-  // Load variant from URL hash on page load
-  const hash = (location.hash || '#va').replace('#', '');
-  if (['va', 'vb', 'vc'].includes(hash)) {
-    document.querySelectorAll('.switcher button').forEach(b => b.classList.toggle('active', b.dataset.target === hash));
-    document.querySelectorAll('.variant').forEach(v => v.classList.toggle('active', v.id === hash));
-  }
+  // Load specialty from URL hash on page load; default allergy
+  const specHash = (location.hash || '#allergy').replace('#', '');
+  setSpecialty(['allergy', 'derma', 'ent'].includes(specHash) ? specHash : 'allergy');
 
   // Savings calculator (Variant C)
   const calcEls = {
