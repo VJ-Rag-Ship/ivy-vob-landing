@@ -1253,172 +1253,385 @@ img { max-width: 100%; display: block; }
   }
 
   /* ============================================================
-     DERMA — editorial magazine layout
+     DERMA v2 — sans-serif, product-forward, direct
      ============================================================ */
-  .vc .hero.for-derma { padding: 80px 0 40px; text-align: left; }
-  .vc .hero.for-derma .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(circle at 25% 20%, rgba(236,72,153,0.34), transparent 45%),
-      radial-gradient(circle at 85% 40%, rgba(139,92,246,0.30), transparent 50%),
-      radial-gradient(circle at 50% 100%, rgba(251,191,36,0.10), transparent 55%);
-    pointer-events: none;
-  }
-  .vc .derma-hero-inner {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 72px;
-    align-items: center;
+  .vc .dv2-hero {
+    padding: 60px 0 60px;
     position: relative;
-  }
-  .vc .derma-hero-left .pill-live { margin-bottom: 28px; }
-  .vc .derma-hero-h1 {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: clamp(48px, 6.4vw, 80px);
-    line-height: 1.02;
-    letter-spacing: -0.025em;
-    color: #F8FAFC;
-    margin-bottom: 24px;
     text-align: left;
-  }
-  .vc .derma-hero-lede {
-    font-size: 19px;
-    color: #E5C7D5;
-    max-width: 540px;
-    margin: 0 0 32px 0;
-    line-height: 1.55;
-    text-align: left;
-  }
-  .vc .derma-hero-lede strong { color: #F9A8D4; font-weight: 600; }
-  .vc .derma-hero-ctas { justify-content: flex-start; margin-bottom: 0; }
-  .vc .derma-hero-right { display: flex; flex-direction: column; gap: 14px; }
-  .vc .derma-hero-card {
-    background: rgba(30,10,25,0.55);
-    border: 1px solid rgba(236,72,153,0.28);
-    border-left: 3px solid #EC4899;
-    border-radius: 14px;
-    padding: 20px 24px;
-    backdrop-filter: blur(8px);
-    transition: 0.25s;
-  }
-  .vc .derma-hero-card:hover {
-    border-left-color: #F9A8D4;
-    transform: translateX(4px);
-    background: rgba(30,10,25,0.75);
-  }
-  .vc .derma-hero-card .chip {
-    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: #F9A8D4; font-weight: 600; margin-bottom: 10px;
-  }
-  .vc .derma-hero-card .head {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-style: italic;
-    font-size: 22px;
-    color: #F8FAFC;
-    line-height: 1.15;
-    margin-bottom: 6px;
-  }
-  .vc .derma-hero-card .body {
-    font-size: 13px;
-    color: #C9A9BC;
-    line-height: 1.45;
-  }
-
-  .vc .derma-features { padding: 80px 0; }
-  .vc .derma-features-head { text-align: center; margin-bottom: 48px; }
-  .vc .derma-story-h2 {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-style: italic; font-weight: 400;
-    letter-spacing: -0.025em;
-    font-size: clamp(36px, 5vw, 56px);
-    line-height: 1.05;
-    color: #F8FAFC;
-    margin-bottom: 20px;
-  }
-  .vc .derma-story-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-  .vc .derma-story-card {
-    background: linear-gradient(180deg, rgba(38,15,31,0.6), rgba(30,10,22,0.4));
-    border: 1px solid rgba(236,72,153,0.20);
-    border-top: 3px solid #EC4899;
-    border-radius: 18px;
-    padding: 32px 28px;
-    transition: 0.25s;
-  }
-  .vc .derma-story-card:hover {
-    border-color: rgba(249,168,212,0.4);
-    transform: translateY(-4px);
-    background: linear-gradient(180deg, rgba(52,20,42,0.7), rgba(38,15,28,0.5));
-  }
-  .vc .derma-story-card .story-num {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-style: italic; font-size: 44px;
-    background: linear-gradient(135deg, #F9A8D4, #C4B5FD);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    line-height: 1; margin-bottom: 20px;
-  }
-  .vc .derma-story-card h3 {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-style: italic; font-weight: 400;
-    font-size: 26px; color: #F8FAFC;
-    line-height: 1.15; margin-bottom: 14px;
-    letter-spacing: -0.01em;
-  }
-  .vc .derma-story-card p {
-    color: #D8B8CC; font-size: 15px; line-height: 1.55;
-    margin-bottom: 18px;
-  }
-  .vc .derma-story-card .story-cred {
-    padding-top: 14px;
-    border-top: 1px solid rgba(236,72,153,0.20);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #F9A8D4;
-    letter-spacing: 0.02em;
-  }
-
-  .vc .derma-payer-section { padding: 60px 0 100px; }
-  .vc .derma-payer-table {
-    max-width: 1080px;
-    margin: 0 auto;
-    background: rgba(30,10,25,0.4);
-    border: 1px solid rgba(236,72,153,0.15);
-    border-radius: 20px;
     overflow: hidden;
   }
-  .vc .derma-payer-table .dpt-row {
+  .vc .dv2-hero-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(700px 400px at 15% 20%, rgba(236,72,153,0.20), transparent 60%),
+      radial-gradient(600px 400px at 90% 40%, rgba(139,92,246,0.20), transparent 60%);
+  }
+  .vc .dv2-hero-inner {
     display: grid;
-    grid-template-columns: 220px 1.2fr 1fr;
-    gap: 32px;
-    padding: 22px 32px;
-    border-bottom: 1px solid rgba(236,72,153,0.14);
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+    position: relative;
+  }
+  .vc .dv2-chip {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #F9A8D4;
+    background: rgba(236,72,153,0.10);
+    border: 1px solid rgba(236,72,153,0.30);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .vc .dv2-h1 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(38px, 5.4vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -0.028em;
+    color: #F8FAFC;
+    margin-bottom: 20px;
+    text-align: left;
+    max-width: 560px;
+  }
+  .vc .dv2-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.55;
+    color: #CBB4C6;
+    max-width: 540px;
+    margin: 0 0 28px 0;
+    text-align: left;
+  }
+  .vc .dv2-ctas {
+    display: flex;
+    gap: 12px;
     align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .vc .dv2-btn-primary {
+    display: inline-block;
+    background: #EC4899;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 13px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.2s;
+    box-shadow: 0 12px 28px -10px rgba(236,72,153,0.5);
+  }
+  .vc .dv2-btn-primary:hover {
+    background: #DB2777;
+    transform: translateY(-1px);
+  }
+  .vc .dv2-btn-secondary {
+    color: #F9A8D4;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 13px 4px;
+    text-decoration: none;
     transition: 0.2s;
   }
-  .vc .derma-payer-table .dpt-row:last-child { border-bottom: 0; }
-  .vc .derma-payer-table .dpt-row:hover { background: rgba(236,72,153,0.06); }
-  .vc .derma-payer-table .dpt-header {
+  .vc .dv2-btn-secondary:hover { color: #FBCFE8; }
+  .vc .dv2-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(236,72,153,0.18);
+    max-width: 520px;
+  }
+  .vc .dv2-metric-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: #F8FAFC;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .vc .dv2-metric-lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #B499AA;
+    line-height: 1.35;
+  }
+
+  /* Mock UI on the right of the hero */
+  .vc .dv2-mock {
+    background: #1B0E1A;
+    border: 1px solid rgba(236,72,153,0.22);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px -30px rgba(0,0,0,0.6);
+    font-family: 'Inter', sans-serif;
+  }
+  .vc .dv2-mock-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 18px;
     background: rgba(236,72,153,0.08);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: #F9A8D4; font-weight: 600;
+    border-bottom: 1px solid rgba(236,72,153,0.18);
   }
-  .vc .derma-payer-table .dpt-carrier {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-style: italic; font-size: 26px; color: #F8FAFC;
-    line-height: 1.15;
+  .vc .dv2-mock-title { font-size: 14px; font-weight: 600; color: #F8FAFC; }
+  .vc .dv2-mock-status { font-size: 12px; color: #F9A8D4; }
+  .vc .dv2-mock-list { list-style: none; padding: 0; margin: 0; }
+  .vc .dv2-mock-list li {
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(236,72,153,0.10);
+    color: #D8B8CC;
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  .vc .derma-payer-table .dpt-plans {
-    font-size: 13px; color: #D8B8CC; line-height: 1.5;
+  .vc .dv2-mock-list li:last-child { border-bottom: 0; }
+  .vc .dv2-mock-list li b { color: #F8FAFC; font-weight: 600; margin-left: 4px; }
+  .vc .dv2-chip-g,
+  .vc .dv2-chip-y,
+  .vc .dv2-chip-r {
+    display: inline-block;
+    font-size: 10px; font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex-shrink: 0;
   }
-  .vc .derma-payer-table .dpt-rules {
-    font-size: 13px; color: #F9A8D4; line-height: 1.5;
+  .vc .dv2-chip-g { background: rgba(52,211,153,0.14); color: #34D399; border: 1px solid rgba(52,211,153,0.25); }
+  .vc .dv2-chip-y { background: rgba(251,191,36,0.14); color: #FBBF24; border: 1px solid rgba(251,191,36,0.25); }
+  .vc .dv2-chip-r { background: rgba(248,113,113,0.14); color: #F87171; border: 1px solid rgba(248,113,113,0.25); }
+  .vc .dv2-mock-foot {
+    padding: 12px 18px;
+    background: rgba(236,72,153,0.05);
+    color: #F9A8D4;
+    font-size: 12.5px;
+    text-align: center;
     font-weight: 500;
+  }
+
+  /* Features section */
+  .vc .dv2-features { padding: 80px 0 60px; }
+  .vc .dv2-section-head { max-width: 720px; margin: 0 auto 48px; text-align: center; }
+  .vc .dv2-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: #F9A8D4;
+    margin-bottom: 16px;
+  }
+  .vc .dv2-h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #F8FAFC;
+    margin-bottom: 14px;
+  }
+  .vc .dv2-lede {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: #B499AA;
+    line-height: 1.55;
+  }
+  .vc .dv2-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .vc .dv2-feature-card {
+    background: #1B0E1A;
+    border: 1px solid rgba(236,72,153,0.18);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: 0.2s;
+  }
+  .vc .dv2-feature-card:hover {
+    border-color: rgba(249,168,212,0.4);
+    transform: translateY(-3px);
+  }
+  .vc .dv2-feature-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #F9A8D4;
+  }
+  .vc .dv2-feature-h {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #F8FAFC;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .vc .dv2-feature-p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #C1A4B5;
+    margin: 0 0 6px 0;
+  }
+  .vc .dv2-mini-mock {
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(236,72,153,0.12);
+    border-radius: 10px;
+    padding: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #D8B8CC;
+  }
+  .vc .dv2-mini-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba(236,72,153,0.10);
+  }
+  .vc .dv2-mini-row:last-child { border-bottom: 0; }
+  .vc .dv2-mini-more {
+    justify-content: center;
+    color: #F9A8D4;
+    font-size: 12px;
+    padding-top: 8px;
+    font-weight: 500;
+  }
+  .vc .dv2-mini-line { color: #F8FAFC; font-weight: 600; padding: 4px 0; }
+  .vc .dv2-mini-lineb {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #B499AA;
+    padding: 3px 0;
+  }
+  .vc .dv2-mini-linec { font-size: 11.5px; color: #B499AA; padding: 6px 0; }
+  .vc .dv2-mini-total {
+    padding-top: 10px;
+    margin-top: 6px;
+    border-top: 1px solid rgba(236,72,153,0.18);
+    color: #F9A8D4;
+    font-weight: 600;
+  }
+  .vc .dv2-mini-total b { color: #F8FAFC; font-weight: 800; }
+
+  /* Payer mockup */
+  .vc .dv2-payer { padding: 40px 0 100px; }
+  .vc .dv2-payer-mock {
+    max-width: 1080px;
+    margin: 0 auto;
+    background: #1B0E1A;
+    border: 1px solid rgba(236,72,153,0.22);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px -30px rgba(0,0,0,0.6);
+  }
+  .vc .dv2-payer-mock-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: rgba(236,72,153,0.08);
+    border-bottom: 1px solid rgba(236,72,153,0.18);
+    font-family: 'Inter', sans-serif;
+  }
+  .vc .dv2-payer-carrier {
+    font-weight: 700;
+    font-size: 17px;
+    color: #F8FAFC;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .vc .dv2-payer-patient {
+    font-size: 12.5px;
+    color: #B499AA;
+  }
+  .vc .dv2-payer-patient .mono { font-family: 'JetBrains Mono', monospace; color: #F9A8D4; }
+  .vc .dv2-payer-status {
+    font-size: 12px;
+    color: #34D399;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .vc .dv2-payer-mock-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: rgba(236,72,153,0.12);
+  }
+  .vc .dv2-payer-col {
+    background: #1B0E1A;
+    padding: 22px 24px;
+    font-family: 'Inter', sans-serif;
+  }
+  .vc .dv2-payer-col-lbl {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #F9A8D4;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .vc .dv2-payer-col-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 7px 0;
+    font-size: 13.5px;
+    color: #C1A4B5;
+    border-bottom: 1px dashed rgba(236,72,153,0.10);
+  }
+  .vc .dv2-payer-col-row:last-child { border-bottom: 0; }
+  .vc .dv2-payer-col-row b { color: #F8FAFC; font-weight: 600; }
+  .vc .dv2-payer-col-final {
+    background: linear-gradient(180deg, rgba(236,72,153,0.14), rgba(139,92,246,0.14));
+  }
+  .vc .dv2-payer-final-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 44px;
+    letter-spacing: -0.03em;
+    color: #F8FAFC;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .vc .dv2-payer-final-sub {
+    font-size: 13px;
+    color: #F9A8D4;
+    line-height: 1.5;
+  }
+  .vc .dv2-payer-carriers {
+    max-width: 1080px;
+    margin: 24px auto 0;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #B499AA;
+  }
+  .vc .dv2-payer-carriers .dv2-c {
+    color: #E5C7D5;
+    font-weight: 500;
+  }
+
+  @media (max-width: 960px) {
+    .vc .dv2-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .vc .dv2-feature-grid { grid-template-columns: 1fr; }
+    .vc .dv2-payer-mock-body { grid-template-columns: 1fr; }
+    .vc .dv2-metrics { grid-template-columns: 1fr; }
   }
 
   /* ============================================================
@@ -2155,109 +2368,150 @@ body[data-specialty="ent"] .for-derma { display: none !important; }
   </header>
 
 
-  <!-- ============ DERMA HERO (editorial serif) ============ -->
-  <header class="hero for-derma" id="hero-derma">
-    <div class="hero-bg"></div>
-    <div class="vc-container derma-hero-inner">
-      <div class="derma-hero-left">
-        <div class="pill-live"><span class="dot"></span>Now live in derm clinics<span class="arrow">&rarr;</span></div>
-        <h1 class="derma-hero-h1">Dermatology deserves a VOB that <span class="grad-text">thinks like a dermatologist.</span></h1>
-        <p class="derma-hero-lede">Biopsies. Excisions. Mohs staging. Biologic prior auths. Ivy handles the derm-specific rules generic RCM misses. <strong>Save $1,000+ per provider, per month.</strong></p>
-        <div class="ctas derma-hero-ctas">
-          <a href="#c-demo" class="btn btn-primary">Book a demo &rarr;</a>
-          <a href="#c-video" class="btn btn-ghost">&#9654; Watch a 2-min demo</a>
+  <!-- ============ DERMA HERO v2 (sans-serif, product-forward) ============ -->
+  <header class="hero for-derma dv2-hero" id="hero-derma">
+    <div class="dv2-hero-bg"></div>
+    <div class="vc-container dv2-hero-inner">
+      <div class="dv2-hero-left">
+        <div class="dv2-chip">For derm practice managers</div>
+        <h1 class="dv2-h1">The VOB work you&rsquo;ve been putting off since Monday morning.</h1>
+        <p class="dv2-sub">Biopsies. Mohs staging. Dupixent PAs. Ivy runs verification for every patient on tomorrow&rsquo;s schedule &mdash; before your front desk pours their first coffee.</p>
+        <div class="dv2-ctas">
+          <a href="#c-demo" class="dv2-btn-primary">Book a demo</a>
+          <a href="#c-video" class="dv2-btn-secondary">See it run on a Mohs case &rarr;</a>
+        </div>
+        <div class="dv2-metrics">
+          <div class="dv2-metric">
+            <div class="dv2-metric-num">$1,240</div>
+            <div class="dv2-metric-lbl">saved per provider per month</div>
+          </div>
+          <div class="dv2-metric">
+            <div class="dv2-metric-num">45 min</div>
+            <div class="dv2-metric-lbl">of front-desk time back per patient</div>
+          </div>
+          <div class="dv2-metric">
+            <div class="dv2-metric-num">30%</div>
+            <div class="dv2-metric-lbl">fewer prior-auth denials on biologics</div>
+          </div>
         </div>
       </div>
-      <aside class="derma-hero-right">
-        <article class="derma-hero-card">
-          <div class="chip">Biopsies &middot; Excisions &middot; Destructions</div>
-          <div class="head">Priced per procedure, not per visit</div>
-          <div class="body">11102, 11402, 17110 modeled with the same accuracy as your billing system.</div>
-        </article>
-        <article class="derma-hero-card">
-          <div class="chip">Mohs &middot; Staged pricing</div>
-          <div class="head">Estimates by stage</div>
-          <div class="body">17311+ per additional stage, calculated in real time before the patient walks in.</div>
-        </article>
-        <article class="derma-hero-card">
-          <div class="chip">Biologics &middot; Prior auths</div>
-          <div class="head">Dupixent, Cosentyx, Skyrizi, Tremfya</div>
-          <div class="body">Ivy runs biologic PA workflows and loading vs. maintenance dosing rules.</div>
-        </article>
-      </aside>
+      <div class="dv2-hero-right">
+        <div class="dv2-mock">
+          <div class="dv2-mock-head">
+            <div class="dv2-mock-title">Tomorrow &middot; Tue, June 24</div>
+            <div class="dv2-mock-status">42 patients &middot; 6 need PAs</div>
+          </div>
+          <ul class="dv2-mock-list">
+            <li><span class="dv2-chip-g">Verified</span> M. Torres &middot; Mohs stage 2 &middot; UHC Optum &middot; <b>est $482</b></li>
+            <li><span class="dv2-chip-g">Verified</span> T. Nguyen &middot; Biopsy &middot; Cigna PPO &middot; <b>est $95</b></li>
+            <li><span class="dv2-chip-y">Waiting PA</span> R. Patel &middot; Dupixent renewal &middot; Aetna &middot; <b>due Wed</b></li>
+            <li><span class="dv2-chip-g">Verified</span> J. Rivera &middot; Excision &middot; BCBS &middot; <b>est $156</b></li>
+            <li><span class="dv2-chip-y">Waiting PA</span> S. Kim &middot; Cosentyx loading &middot; UHC &middot; <b>due Fri</b></li>
+            <li><span class="dv2-chip-g">Verified</span> D. Chen &middot; Phototherapy &middot; Medicare &middot; <b>est $0</b></li>
+          </ul>
+          <div class="dv2-mock-foot">See full 42-patient report &rarr;</div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- ============ DERMA FEATURES (three-story narrative) ============ -->
-  <section id="c-features" class="for-derma derma-features">
+  <!-- ============ DERMA FEATURES v2 (three mock UI cards) ============ -->
+  <section id="c-features" class="for-derma dv2-features">
     <div class="vc-container">
-      <div class="section-head derma-features-head">
-        <div class="eyebrow">The derm-specific problem</div>
-        <h2 class="section derma-story-h2">Three things generic RCM <span class="grad-text">breaks in derm.</span></h2>
-        <p class="section-lede">Cosmetic vs. medical necessity. Staged Mohs pricing. Biologic prior auths. Each is a distinct workflow that generic platforms bill as one visit code and undercollect on.</p>
+      <div class="dv2-section-head">
+        <div class="dv2-eyebrow">Before the day starts</div>
+        <h2 class="dv2-h2">Three things Ivy does before you pour your coffee.</h2>
+        <p class="dv2-lede">Not a dashboard you have to log into. A pre-shift report your front desk actually reads.</p>
       </div>
-      <div class="derma-story-grid">
-        <article class="derma-story-card">
-          <div class="story-num">01</div>
-          <h3>The Mohs staging problem</h3>
-          <p>Mohs is priced by stage, not visit. A 3-stage case bills 17311 + 17312 twice. Generic RCM tools quote a single procedure fee and undercollect by hundreds of dollars per case.</p>
-          <div class="story-cred">Ivy prices per stage: 17311, 17312, 17313, 17314, 17315.</div>
-        </article>
-        <article class="derma-story-card">
-          <div class="story-num">02</div>
-          <h3>The biologic PA problem</h3>
-          <p>Dupixent Q2W. Cosentyx loading dose vs. maintenance. Skyrizi Q12W. Each carrier has different loading rules. Ivy maps every PA workflow and catches denial risk before the injection.</p>
-          <div class="story-cred">Coverage: Dupixent, Cosentyx, Skyrizi, Tremfya, Rinvoq, Cibinqo.</div>
-        </article>
-        <article class="derma-story-card">
-          <div class="story-num">03</div>
-          <h3>The cosmetic vs. medical problem</h3>
-          <p>The same procedure is medical for one indication, cosmetic for another. Ivy reads the ICD-10 mix and flags reimbursement risk before the biopsy is coded, not after the denial.</p>
-          <div class="story-cred">Live for 17110 destruction, 11102 biopsy, 15771 fat grafting.</div>
-        </article>
+      <div class="dv2-feature-grid">
+        <div class="dv2-feature-card">
+          <div class="dv2-feature-badge">01 &middot; Verify</div>
+          <h3 class="dv2-feature-h">42 patients checked overnight.</h3>
+          <p class="dv2-feature-p">Runs eligibility across every carrier your clinic accepts. Cancels and self-pay filtered out.</p>
+          <div class="dv2-mini-mock">
+            <div class="dv2-mini-row"><span class="dv2-chip-g">OK</span>M. Torres &middot; UHC Optum</div>
+            <div class="dv2-mini-row"><span class="dv2-chip-g">OK</span>T. Nguyen &middot; Cigna PPO</div>
+            <div class="dv2-mini-row"><span class="dv2-chip-r">Retry</span>A. Ali &middot; Anthem &middot; 271 timeout</div>
+            <div class="dv2-mini-row"><span class="dv2-chip-g">OK</span>J. Rivera &middot; BCBS</div>
+            <div class="dv2-mini-row dv2-mini-more">+ 38 more</div>
+          </div>
+        </div>
+        <div class="dv2-feature-card">
+          <div class="dv2-feature-badge">02 &middot; Flag PAs</div>
+          <h3 class="dv2-feature-h">6 biologic PAs due this week.</h3>
+          <p class="dv2-feature-p">Ivy watches loading vs. maintenance schedules. Flags anything that&rsquo;ll expire before the injection date.</p>
+          <div class="dv2-mini-mock">
+            <div class="dv2-mini-row"><span class="dv2-chip-y">Wed</span>R. Patel &middot; Dupixent renewal</div>
+            <div class="dv2-mini-row"><span class="dv2-chip-y">Fri</span>S. Kim &middot; Cosentyx loading</div>
+            <div class="dv2-mini-row"><span class="dv2-chip-r">Late</span>K. Lee &middot; Skyrizi Q12W</div>
+            <div class="dv2-mini-row"><span class="dv2-chip-y">Fri</span>P. Diaz &middot; Tremfya</div>
+            <div class="dv2-mini-row dv2-mini-more">+ 2 more</div>
+          </div>
+        </div>
+        <div class="dv2-feature-card">
+          <div class="dv2-feature-badge">03 &middot; Estimate</div>
+          <h3 class="dv2-feature-h">3 Mohs cases priced per stage.</h3>
+          <p class="dv2-feature-p">17311 first stage, 17312 additional. Ivy prices what you&rsquo;ll actually bill, not a generic visit code.</p>
+          <div class="dv2-mini-mock">
+            <div class="dv2-mini-line">M. Torres &middot; UHC Optum</div>
+            <div class="dv2-mini-lineb">17311 stage 1 . . . . . . $268</div>
+            <div class="dv2-mini-lineb">17312 stage 2 . . . . . . $154</div>
+            <div class="dv2-mini-linec">Deductible met &middot; 20% coins.</div>
+            <div class="dv2-mini-total">Patient owes: <b>$84.40</b></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ DERMA PAYER TABLE (coverage-by-need editorial) ============ -->
-  <section class="for-derma derma-payer-section">
+  <!-- ============ DERMA PAYER v2 (one big product mockup) ============ -->
+  <section class="for-derma dv2-payer">
     <div class="vc-container">
-      <div class="section-head derma-features-head">
-        <div class="eyebrow">Coverage</div>
-        <h2 class="section derma-story-h2">Every major payer, mapped for <span class="grad-text">derm procedures.</span></h2>
-        <p class="section-lede">Not just plan-level eligibility. Derm-specific PA workflows, cosmetic-vs-medical logic, and biologic dosing rules per carrier.</p>
+      <div class="dv2-section-head">
+        <div class="dv2-eyebrow">Coverage</div>
+        <h2 class="dv2-h2">Real payer, real coverage, real numbers.</h2>
+        <p class="dv2-lede">Not a plan-level eligibility check. Ivy pulls what your patient actually owes for the CPT bundle you&rsquo;re about to bill.</p>
       </div>
-      <div class="derma-payer-table">
-        <div class="dpt-row dpt-header">
-          <div>Carrier family</div>
-          <div>Plans live</div>
-          <div>Derm-specific rules</div>
+      <div class="dv2-payer-mock">
+        <div class="dv2-payer-mock-head">
+          <div>
+            <div class="dv2-payer-carrier">UnitedHealthcare Optum Premium PPO</div>
+            <div class="dv2-payer-patient">Patient: M. Torres &middot; DOB 03/14/1962 &middot; Member #<span class="mono">1234-5678</span></div>
+          </div>
+          <div class="dv2-payer-status">Verified 3 min ago</div>
         </div>
-        <div class="dpt-row">
-          <div class="dpt-carrier">UnitedHealthcare</div>
-          <div class="dpt-plans">All UHC &middot; Surest &middot; Oxford &middot; GEHA &middot; UMR</div>
-          <div class="dpt-rules">Biopsy PA workflow &middot; Biologic dosing &middot; Mohs staged pricing</div>
+        <div class="dv2-payer-mock-body">
+          <div class="dv2-payer-col">
+            <div class="dv2-payer-col-lbl">Plan</div>
+            <div class="dv2-payer-col-row"><span>Deductible</span><b>$2,500 / met</b></div>
+            <div class="dv2-payer-col-row"><span>Coinsurance</span><b>20%</b></div>
+            <div class="dv2-payer-col-row"><span>OOP max</span><b>$6,900 / $3,240 used</b></div>
+            <div class="dv2-payer-col-row"><span>In-network</span><b>Yes</b></div>
+          </div>
+          <div class="dv2-payer-col">
+            <div class="dv2-payer-col-lbl">Bundle &middot; Mohs 2-stage</div>
+            <div class="dv2-payer-col-row"><span>17311 stage 1</span><b>$268</b></div>
+            <div class="dv2-payer-col-row"><span>17312 stage 2</span><b>$154</b></div>
+            <div class="dv2-payer-col-row"><span>Total billed</span><b>$422</b></div>
+            <div class="dv2-payer-col-row"><span>Insurance pays</span><b>$337.60</b></div>
+          </div>
+          <div class="dv2-payer-col dv2-payer-col-final">
+            <div class="dv2-payer-col-lbl">Patient owes today</div>
+            <div class="dv2-payer-final-num">$84.40</div>
+            <div class="dv2-payer-final-sub">Collect at check-in. No statement, no follow-up.</div>
+          </div>
         </div>
-        <div class="dpt-row">
-          <div class="dpt-carrier">Cigna</div>
-          <div class="dpt-plans">All major lines &middot; Open Access &middot; HealthSpring &middot; SureFit</div>
-          <div class="dpt-rules">Cosmetic vs. medical logic &middot; Photodynamic therapy</div>
-        </div>
-        <div class="dpt-row">
-          <div class="dpt-carrier">Aetna</div>
-          <div class="dpt-plans">HMO &middot; PPO &middot; Medicare &middot; Student Health</div>
-          <div class="dpt-rules">Biologic PA &middot; In-office injection admin</div>
-        </div>
-        <div class="dpt-row">
-          <div class="dpt-carrier">Anthem BCBS</div>
-          <div class="dpt-plans">All 51 states</div>
-          <div class="dpt-rules">Per-state medical necessity for cosmetic-adjacent codes</div>
-        </div>
-        <div class="dpt-row">
-          <div class="dpt-carrier">Medicare</div>
-          <div class="dpt-plans">+ Government plans</div>
-          <div class="dpt-rules">Skin-of-color biopsy coding &middot; Site-of-service logic</div>
-        </div>
+      </div>
+      <div class="dv2-payer-carriers">
+        <span>Live on</span>
+        <span class="dv2-c">UnitedHealthcare</span>
+        <span class="dv2-c">Cigna</span>
+        <span class="dv2-c">Aetna</span>
+        <span class="dv2-c">Anthem BCBS</span>
+        <span class="dv2-c">Medicare</span>
+        <span class="dv2-c">Medicaid</span>
+        <span class="dv2-c">Centene</span>
+        <span class="dv2-c">Tricare</span>
       </div>
     </div>
   </section>
@@ -2692,7 +2946,7 @@ body[data-specialty="ent"] .for-derma { display: none !important; }
     <div class="vc-container">
       <div class="advisor-card">
         <div class="advisor-photo-wrap">
-          <img src="assets/dr-randall.png" alt="Dr. Randall" class="advisor-photo" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');"/>
+          <img src="assets/dr-randall.jpg" alt="Dr. Randall" class="advisor-photo" loading="lazy" onerror="this.onerror=null; this.src='assets/dr-randall.png';"/>
         </div>
         <div class="advisor-info">
           <div class="advisor-eyebrow">Advisor &middot; RagaAI</div>
