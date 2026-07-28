@@ -1166,6 +1166,83 @@ img { max-width: 100%; display: block; }
     .vc .advisor-placeholder .advisor-initials { font-size: 52px; }
   }
 
+  
+  /* ============ PER-SPECIALTY VISUAL IDENTITY ============ */
+  /* Allergy = unchanged (blue/purple). Derma = rose/violet. ENT = teal/cyan. */
+
+  /* ---- DERMA THEME (rose → violet) ---- */
+  body[data-specialty="derma"] .vc .logo-mark,
+  body[data-specialty="derma"] .btn-primary,
+  body[data-specialty="derma"] .vc .trust-avi.gg-pill,
+  body[data-specialty="derma"] .vc .advisor-placeholder {
+    background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
+    box-shadow: 0 12px 28px -10px rgba(236,72,153,0.65);
+  }
+  body[data-specialty="derma"] .btn-primary:hover {
+    box-shadow: 0 18px 38px -10px rgba(139,92,246,0.7);
+  }
+  body[data-specialty="derma"] .vc .grad-text,
+  body[data-specialty="derma"] .vc .hero h1 .grad,
+  body[data-specialty="derma"] .vc .advisor-name .grad-text,
+  body[data-specialty="derma"] .vc .bento-card .big {
+    background: linear-gradient(135deg, #F9A8D4 0%, #C4B5FD 55%, #FCD34D 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  body[data-specialty="derma"] .vc .bento-card .ico-tile {
+    background: linear-gradient(135deg, rgba(236,72,153,0.22), rgba(139,92,246,0.22));
+    border-color: rgba(236,72,153,0.35);
+  }
+  body[data-specialty="derma"] .vc .bento-card .ico-tile svg { stroke: #F9A8D4; }
+  body[data-specialty="derma"] .vc .hero-bg {
+    background:
+      radial-gradient(circle at 20% 20%, rgba(236,72,153,0.30), transparent 40%),
+      radial-gradient(circle at 80% 30%, rgba(139,92,246,0.28), transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(251,191,36,0.14), transparent 50%);
+  }
+  body[data-specialty="derma"] .vc .pill-live {
+    background: linear-gradient(135deg, rgba(236,72,153,0.18), rgba(139,92,246,0.18));
+    border: 1px solid rgba(236,72,153,0.35);
+  }
+  body[data-specialty="derma"] .vc .advisor-placeholder .advisor-initials {
+    background: linear-gradient(135deg, #FBCFE8, #DDD6FE);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  body[data-specialty="derma"] .vc .trust-avi.gg-pill { color: #fff; }
+
+  /* ---- ENT THEME (teal → cyan) ---- */
+  body[data-specialty="ent"] .vc .logo-mark,
+  body[data-specialty="ent"] .btn-primary,
+  body[data-specialty="ent"] .vc .trust-avi.gg-pill {
+    background: linear-gradient(135deg, #14B8A6 0%, #06B6D4 100%);
+    box-shadow: 0 12px 28px -10px rgba(20,184,166,0.65);
+  }
+  body[data-specialty="ent"] .btn-primary:hover {
+    box-shadow: 0 18px 38px -10px rgba(6,182,212,0.7);
+  }
+  body[data-specialty="ent"] .vc .grad-text,
+  body[data-specialty="ent"] .vc .hero h1 .grad,
+  body[data-specialty="ent"] .vc .advisor-name .grad-text,
+  body[data-specialty="ent"] .vc .bento-card .big {
+    background: linear-gradient(135deg, #5EEAD4 0%, #67E8F9 55%, #A5F3FC 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  body[data-specialty="ent"] .vc .bento-card .ico-tile {
+    background: linear-gradient(135deg, rgba(20,184,166,0.22), rgba(6,182,212,0.22));
+    border-color: rgba(20,184,166,0.35);
+  }
+  body[data-specialty="ent"] .vc .bento-card .ico-tile svg { stroke: #5EEAD4; }
+  body[data-specialty="ent"] .vc .hero-bg {
+    background:
+      radial-gradient(circle at 20% 20%, rgba(20,184,166,0.30), transparent 40%),
+      radial-gradient(circle at 80% 30%, rgba(6,182,212,0.28), transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(165,243,252,0.14), transparent 50%);
+  }
+  body[data-specialty="ent"] .vc .pill-live {
+    background: linear-gradient(135deg, rgba(20,184,166,0.18), rgba(6,182,212,0.18));
+    border: 1px solid rgba(20,184,166,0.35);
+  }
+  body[data-specialty="ent"] .vc .trust-avi.gg-pill { color: #fff; }
+
   /* Show/hide per specialty */
 body[data-specialty="allergy"] .for-derma,
 body[data-specialty="allergy"] .for-ent { display: none !important; }
@@ -1746,13 +1823,13 @@ body[data-specialty="ent"] .for-derma { display: none !important; }
     <div class="vc-container">
       <div class="trust-card">
         <div class="trust-avi-stack">
-          <div class="trust-avi gg-pill" title="Dermatology Advisory">DA</div>
+          <div class="trust-avi gg-pill" title="Dermatology">Dx</div>
         </div>
         <div class="trust-content">
-          <div class="trust-headline">Built in partnership with our <strong>dermatology clinical advisory board</strong></div>
-          <div class="trust-meta"><span class="check">&check;</span> RagaAI Healthcare Council &middot; Dermatology practice advisory</div>
+          <div class="trust-headline">Purpose-built for <strong>dermatology practices</strong> &mdash; biopsies, excisions, Mohs, phototherapy, biologics</div>
+          <div class="trust-meta"><span class="check">&check;</span> HIPAA &middot; SOC 2 Type II &middot; ISO 27001 &middot; Live in derm clinics today</div>
         </div>
-        <a href="#c-advisor" class="trust-link">Meet the advisor &rarr;</a>
+        <a href="#c-coverage-derma" class="trust-link">See coverage &rarr;</a>
       </div>
     </div>
   </section>
@@ -2047,26 +2124,26 @@ body[data-specialty="ent"] .for-derma { display: none !important; }
     </div>
   </section>
 
-  <!-- ============ LEAD ADVISOR - DERMA ============ -->
-  <section class="advisor-section for-derma">
+  <!-- ============ COVERAGE DEEP-DIVE - DERMA (no fake advisor board) ============ -->
+  <section id="c-coverage-derma" class="advisor-section for-derma">
     <div class="vc-container">
       <div class="advisor-card">
         <div class="advisor-photo-wrap advisor-placeholder">
-          <div class="advisor-initials">DA</div>
+          <div class="advisor-initials">Dx</div>
         </div>
         <div class="advisor-info">
-          <div class="advisor-eyebrow">Advisory &middot; RagaAI</div>
-          <h2 class="advisor-name">Dermatology <span class="grad-text">Advisory Board</span></h2>
+          <div class="advisor-eyebrow">Coverage &middot; Dermatology</div>
+          <h2 class="advisor-name">Purpose-built for <span class="grad-text">the complexity of derm.</span></h2>
           <div class="advisor-role">
-            <span>Practicing Dermatologists</span>
+            <span>Biopsies &middot; Excisions &middot; Mohs</span>
             <span class="sep"></span>
-            <span>US-wide clinics</span>
+            <span>Phototherapy &middot; Biologics</span>
           </div>
-          <p class="advisor-tagline">Advising RagaAI on dermatology practice workflows, coding nuances, and payer dynamics unique to derm. Ensuring Ivy handles biopsies, excisions, Mohs, phototherapy, and biologic prior authorization accurately.</p>
+          <p class="advisor-tagline">Dermatology VOB isn&rsquo;t just a plan-level eligibility check. It&rsquo;s coding cosmetic vs. medical necessity, mapping biologic loading vs. maintenance schedules, and pricing Mohs by stage. Ivy handles the derm-specific rules generic RCM platforms miss.</p>
           <div class="advisor-creds">
-            <div class="advisor-cred"><span class="ico">&check;</span> Board Certified Dermatologists</div>
-            <div class="advisor-cred"><span class="ico">&check;</span> Mohs, general derm, and cosmetic practices represented</div>
-            <div class="advisor-cred"><span class="ico">&check;</span> Live in derm clinics today</div>
+            <div class="advisor-cred"><span class="ico">&check;</span> 11102 biopsy &middot; 11402 excision &middot; 17110 destruction</div>
+            <div class="advisor-cred"><span class="ico">&check;</span> 17311+ Mohs staged pricing &middot; 96900 phototherapy</div>
+            <div class="advisor-cred"><span class="ico">&check;</span> Biologic PAs: Dupixent, Cosentyx, Skyrizi, Tremfya</div>
           </div>
         </div>
       </div>
