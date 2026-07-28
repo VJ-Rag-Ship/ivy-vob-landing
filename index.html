@@ -1142,7 +1142,31 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 6px 20px -6px rgba(124,59,237,0.6);
 }
 
-/* Show/hide per specialty */
+
+  /* ============ ADVISOR PLACEHOLDER (Derma) ============ */
+  .vc .advisor-placeholder {
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, rgba(60,131,246,0.28), rgba(124,59,237,0.28));
+    border: 2px solid rgba(60,131,246,0.35);
+    color: #F8FAFC;
+    font-family: 'Instrument Serif', Georgia, serif;
+  }
+  .vc .advisor-placeholder .advisor-initials {
+    font-size: 68px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    background: linear-gradient(135deg, #93C5FD, #C4B5FD);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  @media (max-width: 760px) {
+    .vc .advisor-placeholder .advisor-initials { font-size: 52px; }
+  }
+
+  /* Show/hide per specialty */
 body[data-specialty="allergy"] .for-derma,
 body[data-specialty="allergy"] .for-ent { display: none !important; }
 body[data-specialty="derma"] .for-allergy,
@@ -1666,7 +1690,7 @@ body[data-specialty="ent"] .for-derma { display: none !important; }
         <li><a href="#c-features">Features</a></li>
         <li><a href="#c-map">Coverage</a></li>
         <li><a href="#c-calc">Savings</a></li>
-        <li><a href="#c-council">Council</a></li>
+        <li class="for-allergy"><a href="#c-council">Council</a></li>
         <li><a href="#c-faq">FAQ</a></li>
       </ul>
       <a href="#c-demo" class="btn btn-primary btn-sm">Book demo →</a>
@@ -1718,6 +1742,20 @@ body[data-specialty="ent"] .for-derma { display: none !important; }
       </div>
     </div>
   </section>
+  <section class="trust-strip for-derma">
+    <div class="vc-container">
+      <div class="trust-card">
+        <div class="trust-avi-stack">
+          <div class="trust-avi gg-pill" title="Dermatology Advisory">DA</div>
+        </div>
+        <div class="trust-content">
+          <div class="trust-headline">Built in partnership with our <strong>dermatology clinical advisory board</strong></div>
+          <div class="trust-meta"><span class="check">&check;</span> RagaAI Healthcare Council &middot; Dermatology practice advisory</div>
+        </div>
+        <a href="#c-advisor" class="trust-link">Meet the advisor &rarr;</a>
+      </div>
+    </div>
+  </section>
   <section class="logo-wall" style="padding:40px 0;">
     <div class="vc-container">
       <div class="lbl">125+ plans live across various carrier families</div>
@@ -1748,7 +1786,7 @@ body[data-specialty="ent"] .for-derma { display: none !important; }
           <div class="label">Headline metric</div>
           <div class="big">&lt; 15s</div>
           <h3>Average verification processing time</h3>
-          <p>Down from 45–60 minutes per patient lost on hold with payers, navigating IVR menus, and re-dialing after dropped calls. Ivy delivers real-time eligibility, deductible tracking, and build-path cost modeling. All under fifteen seconds.</p>
+          <p>Down from 45–60 minutes per patient lost on hold with payers, navigating IVR menus, and re-dialing after dropped calls. Ivy delivers real-time eligibility, deductible tracking, and procedure-level cost estimates. All under fifteen seconds.</p>
           <div style="margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:24px; flex-wrap:wrap;">
             <div><div style="font-size:11px; color:#64748B; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">Before</div><div style="font-size:18px; font-weight:600; color:#F87171; text-decoration:line-through;">45 minutes</div></div>
             <div><div style="font-size:11px; color:#64748B; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;">With Ivy</div><div style="font-size:18px; font-weight:600; color:#34D399;">14.2 seconds</div></div>
@@ -1761,10 +1799,20 @@ body[data-specialty="ent"] .for-derma { display: none !important; }
           <p>Ivy connects to your EHR and runs eligibility for every confirmed patient, 1–7 days ahead. Cancelled and self-pay filtered automatically.</p>
         </div>
 
-        <div class="bento-card col-3">
+        <div class="bento-card col-3 for-allergy">
           <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <h3>Build-path cost modeling</h3>
           <p>Rush, Cluster, Conventional. Modeled on serum schedules and dosage frequency, not generic visit codes.</p>
+        </div>
+        <div class="bento-card col-3 for-derma">
+          <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Biologic + Mohs cost modeling</h3>
+          <p>Dupixent Q2W/Q4W, Cosentyx, Skyrizi loading vs. maintenance. Mohs pricing per stage, not per visit. Modeled on the actual dosing and staging your clinic will bill.</p>
+        </div>
+        <div class="bento-card col-3 for-ent">
+          <div class="ico-tile"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Staged procedure cost modeling</h3>
+          <p>Balloon sinuplasty, FESS staging, audiometry bundles, in-office trays. Priced per patient and per stage, not off generic visit codes.</p>
         </div>
 
         <div class="bento-card col-2">
@@ -1993,6 +2041,32 @@ body[data-specialty="ent"] .for-derma { display: none !important; }
             <div class="advisor-cred"><span class="ico">&check;</span> Board Certified Otolaryngologist</div>
             <div class="advisor-cred"><span class="ico">&check;</span> RagaAI Healthcare Council</div>
             <div class="advisor-cred"><span class="ico">&check;</span> Practicing ENT physician</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEAD ADVISOR - DERMA ============ -->
+  <section class="advisor-section for-derma">
+    <div class="vc-container">
+      <div class="advisor-card">
+        <div class="advisor-photo-wrap advisor-placeholder">
+          <div class="advisor-initials">DA</div>
+        </div>
+        <div class="advisor-info">
+          <div class="advisor-eyebrow">Advisory &middot; RagaAI</div>
+          <h2 class="advisor-name">Dermatology <span class="grad-text">Advisory Board</span></h2>
+          <div class="advisor-role">
+            <span>Practicing Dermatologists</span>
+            <span class="sep"></span>
+            <span>US-wide clinics</span>
+          </div>
+          <p class="advisor-tagline">Advising RagaAI on dermatology practice workflows, coding nuances, and payer dynamics unique to derm. Ensuring Ivy handles biopsies, excisions, Mohs, phototherapy, and biologic prior authorization accurately.</p>
+          <div class="advisor-creds">
+            <div class="advisor-cred"><span class="ico">&check;</span> Board Certified Dermatologists</div>
+            <div class="advisor-cred"><span class="ico">&check;</span> Mohs, general derm, and cosmetic practices represented</div>
+            <div class="advisor-cred"><span class="ico">&check;</span> Live in derm clinics today</div>
           </div>
         </div>
       </div>
