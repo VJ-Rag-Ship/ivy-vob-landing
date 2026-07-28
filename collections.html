@@ -632,7 +632,45 @@
   footer .footer-links a { color: var(--text-3); transition: 0.2s; }
   footer .footer-links a:hover { color: var(--mint); }
 
-  /* Responsive */
+  /* Specialty toggle */
+  .specialty-toggle {
+    display: inline-flex;
+    padding: 3px;
+    border-radius: 999px;
+    background: rgba(16,185,129,0.08);
+    border: 1px solid var(--line-strong);
+    gap: 2px;
+    margin-right: 8px;
+  }
+  .specialty-toggle .stg {
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-3);
+    letter-spacing: 0.05em;
+    transition: 0.2s;
+  }
+  .specialty-toggle .stg:hover { color: var(--text); }
+  .specialty-toggle .stg[aria-pressed="true"] {
+    background: var(--grad);
+    color: #04160E;
+    box-shadow: 0 6px 14px -6px rgba(16,185,129,0.6);
+  }
+
+  /* Show/hide per specialty (default = allergy) */
+  body[data-specialty="allergy"] .for-derma,
+  body[data-specialty="allergy"] .for-ent { display: none !important; }
+  body[data-specialty="derma"] .for-allergy,
+  body[data-specialty="derma"] .for-ent { display: none !important; }
+  body[data-specialty="ent"] .for-allergy,
+  body[data-specialty="ent"] .for-derma { display: none !important; }
+
+    /* Responsive */
   @media (max-width: 960px) {
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-metrics { grid-template-columns: 1fr; max-width: 100%; }
@@ -650,7 +688,7 @@
   }
 </style>
 </head>
-<body>
+<body data-specialty="allergy">
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
@@ -666,9 +704,36 @@
       <li><a href="#compliance">Compliance</a></li>
       <li><a href="#demo">Book demo</a></li>
     </ul>
+    <div class="specialty-toggle" role="tablist" aria-label="Specialty">
+      <button class="stg" data-spec="allergy" aria-pressed="true">Allergy</button>
+      <button class="stg" data-spec="derma" aria-pressed="false">Derma</button>
+      <button class="stg" data-spec="ent" aria-pressed="false">ENT</button>
+    </div>
     <a href="#demo" class="btn btn-primary btn-sm">Book demo &rarr;</a>
   </div>
 </nav>
+
+  <script>
+    (function() {
+      function setSpecialty(spec) {
+        if (!['allergy','derma','ent'].includes(spec)) spec = 'allergy';
+        document.body.setAttribute('data-specialty', spec);
+        document.querySelectorAll('.stg').forEach(b => {
+          b.setAttribute('aria-pressed', b.dataset.spec === spec ? 'true' : 'false');
+        });
+        if (window.location.hash.slice(1) !== spec) {
+          history.replaceState(null, '', spec === 'allergy' ? window.location.pathname : '#' + spec);
+        }
+      }
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.stg').forEach(b => {
+          b.addEventListener('click', function() { setSpecialty(b.dataset.spec); });
+        });
+        var initial = (window.location.hash || '').slice(1);
+        setSpecialty(initial);
+      });
+    })();
+  </script>
 
 <!-- ============ HERO ============ -->
 <header class="hero">
@@ -676,8 +741,8 @@
   <div class="container hero-inner">
     <div class="hero-left">
       <div class="chip"><span class="dot"></span>Live at specialty allergy &amp; asthma practices</div>
-      <h1 class="hero-h1">The patient balances your front desk gave up on. <span class="grad">Collected. Automatically.</span></h1>
-      <p class="hero-sub">Collections Agent runs the entire outreach-to-payment cycle on its own. Balances get resolved before they age out. Your staff spend zero hours on outreach.</p>
+      <h1 class="hero-h1">Your front desk cannot chase every small balance. <span class="grad">Collections Agent does it for them.</span></h1>
+      <p class="hero-sub">Collections Agent texts patients with a link to pay. It follows up when they don&rsquo;t. Balances get paid before they end up at a collection agency. Your front desk never picks up the phone.</p>
       <div class="hero-ctas">
         <a href="#demo" class="btn btn-primary">Book a demo &rarr;</a>
         <a href="#proof" class="btn btn-ghost">See the pilot results</a>
@@ -685,15 +750,15 @@
       <div class="hero-metrics">
         <div>
           <div class="hero-metric-num">$210K+</div>
-          <div class="hero-metric-lbl">collected in first 90 days</div>
+          <div class="hero-metric-lbl">collected in the first 90 days</div>
         </div>
         <div>
           <div class="hero-metric-num">1 in 3</div>
-          <div class="hero-metric-lbl">patients contacted paid</div>
+          <div class="hero-metric-lbl">of patients contacted paid the bill</div>
         </div>
         <div>
           <div class="hero-metric-num">0 hrs</div>
-          <div class="hero-metric-lbl">of staff time on outreach</div>
+          <div class="hero-metric-lbl">of front-desk time spent on this</div>
         </div>
       </div>
     </div>
@@ -726,8 +791,8 @@
 <section class="trust-strip">
   <div class="container">
     <div class="trust-card">
-      <div class="trust-badge">48 HR PILOT</div>
-      <div class="trust-headline"><strong>$17,597 collected from 215 patients</strong> in the first two days at a specialty allergy &amp; asthma practice. Oldest claim recovered: <strong>2019</strong>.</div>
+      <div class="trust-badge">48-HOUR PILOT</div>
+      <div class="trust-headline"><strong>$17,597 collected from 215 patients</strong> in the first two days at one specialty allergy &amp; asthma practice. The oldest balance Collections Agent got paid had been sitting since <strong>2019</strong>.</div>
       <div class="trust-meta">99.7% SMS DELIVERY &middot; 6.2 HRS MEDIAN</div>
     </div>
   </div>
@@ -738,29 +803,29 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">The problem</div>
-      <h2 class="section-h">Traditional collections <span class="grad">is broken.</span></h2>
-      <p class="section-lede">Statement cycles are slow, paper is expensive, agencies keep a third of what they recover, and the whole thing runs on staff hours you don&rsquo;t have.</p>
+      <h2 class="section-h">The way most practices collect balances <span class="grad">wastes time and money.</span></h2>
+      <p class="section-lede">Statements take weeks. Every mailed one costs money. Collection agencies keep a big share of what they recover. And the whole process runs on staff hours the practice cannot spare.</p>
     </div>
     <div class="problem-grid">
       <div class="problem-card">
         <div class="num">01 &middot; SLOW</div>
-        <h3>30 to 45 day cycle</h3>
-        <p>Paper and e-statements run a <b>30&ndash;45 day payment cycle</b> before anyone pays. Balances age. Some age out.</p>
+        <h3>30 to 45 days per statement</h3>
+        <p>Every statement, mailed or electronic, takes at least <b>30 days</b> before the patient pays. Many wait 45 days. Some never pay at all.</p>
       </div>
       <div class="problem-card">
         <div class="num">02 &middot; EXPENSIVE</div>
-        <h3>$0.50&ndash;$1.00 per statement</h3>
-        <p>Each mailed statement costs money to print, stuff, and send. <b>No guarantee it gets paid.</b> Repeat for every cycle.</p>
+        <h3>$0.50 to $1.00 per statement</h3>
+        <p>Every statement costs money to print and mail. <b>Most patients still don&rsquo;t pay after the first one.</b> So the practice sends another. And another.</p>
       </div>
       <div class="problem-card">
         <div class="num">03 &middot; COSTLY LATE</div>
-        <h3>25&ndash;50% agency cut</h3>
-        <p>Once a balance escalates, collection agencies typically keep <b>25 to 50%</b> of whatever they recover.</p>
+        <h3>Agencies keep 25% to 50%</h3>
+        <p>When a balance gets sent to a collection agency, the agency keeps <b>between a quarter and half</b> of whatever the patient eventually pays.</p>
       </div>
       <div class="problem-card">
         <div class="num">04 &middot; MANUAL</div>
-        <h3>Hours every week</h3>
-        <p>Staff spend hours a week chasing balances by hand. <b>It doesn&rsquo;t scale</b> as the practice grows.</p>
+        <h3>Hours of staff time every week</h3>
+        <p>Your front desk spends hours a week calling patients and reprinting statements. <b>When the practice grows, the workload grows with it.</b></p>
       </div>
     </div>
   </div>
@@ -771,53 +836,53 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">What Collections Agent does</div>
-      <h2 class="section-h">The whole outreach-to-payment cycle. <span class="grad">Automated.</span></h2>
-      <p class="section-lede">Not another dashboard for your team to check. Balances get resolved on their own.</p>
+      <h2 class="section-h">Everything from the first text to the paid balance. <span class="grad">Done for you.</span></h2>
+      <p class="section-lede">Not another dashboard for your team to check. Most balances get paid on their own.</p>
     </div>
 
     <div class="bento">
       <div class="bento-card col-3 featured">
         <div class="label">Headline outcome</div>
         <div class="big">1 in 3</div>
-        <h3>patients contacted went on to pay</h3>
-        <p>1,722 of 5,490 patients paid in the 90-day pilot. Average time to pay: 5.9 days from the first message.</p>
+        <h3>patients contacted paid the bill</h3>
+        <p>1,722 of 5,490 patients paid during the 90-day pilot. On average, patients paid 5.9 days after the first text message.</p>
       </div>
       <div class="bento-card col-3">
         <div class="ico-tile">&lt;/&gt;</div>
-        <h3>Automated intelligent outreach</h3>
-        <p>Reminders go out and adjust timing automatically. No manual scheduling, no set-and-forget cron jobs.</p>
+        <h3>Automatic text reminders</h3>
+        <p>Reminders go out on their own. When a patient doesn&rsquo;t respond, the timing of the next text shifts automatically.</p>
       </div>
 
       <div class="bento-card col-2">
         <div class="ico-tile">EHR</div>
-        <h3>Seamless EHR integration</h3>
-        <p>Payments reconcile straight into your existing system of record. No manual re-entry, no batch imports.</p>
+        <h3>Payments post to the EHR</h3>
+        <p>When a patient pays, the payment shows up in your EHR automatically. Nobody has to type it in later.</p>
       </div>
       <div class="bento-card col-2">
         <div class="ico-tile">&check;</div>
-        <h3>Consent-backed charging</h3>
-        <p>Every card charge carries a documented, defensible consent trail. Nothing happens silently.</p>
+        <h3>Every charge has documented consent</h3>
+        <p>The patient sees a notice and confirms before their card is charged. Every step is logged for the practice&rsquo;s records.</p>
       </div>
       <div class="bento-card col-2">
         <div class="ico-tile">&hearts;</div>
-        <h3>Legacy balance discounts</h3>
-        <p>Offer a reduced payoff on aged balances that would otherwise be written off entirely.</p>
+        <h3>Discounts on old balances</h3>
+        <p>For balances that have been sitting for months or years, the practice can offer the patient a reduced payoff. Any dollar collected is better than a write-off.</p>
       </div>
 
       <div class="bento-card col-2">
         <div class="ico-tile">&harr;</div>
-        <h3>Adaptive cadence</h3>
-        <p>Reminder timing shifts based on what&rsquo;s converting for each practice and each patient.</p>
+        <h3>Reminder timing that learns</h3>
+        <p>If patients at your practice tend to pay on weekends, the reminders shift to weekends. The timing gets better over time.</p>
       </div>
       <div class="bento-card col-2">
         <div class="ico-tile">&sum;</div>
-        <h3>Partial payments</h3>
-        <p>Patients can settle a balance in parts, not just pay-in-full-or-nothing.</p>
+        <h3>Partial payments allowed</h3>
+        <p>A patient who cannot pay a $400 bill in one shot can pay $100 today and the rest over time. The practice collects more dollars in the end.</p>
       </div>
       <div class="bento-card col-2">
         <div class="ico-tile">&reg;</div>
-        <h3>Manual override</h3>
-        <p>Staff can trigger a reminder outside the automated cadence when they need to nudge a specific patient.</p>
+        <h3>Staff can send a reminder anytime</h3>
+        <p>If someone at the front desk wants to nudge a specific patient today, they can send a reminder directly without waiting for the automatic schedule.</p>
       </div>
     </div>
   </div>
@@ -828,44 +893,44 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Patient journey</div>
-      <h2 class="section-h">Four steps, <span class="grad">every card charged with consent.</span></h2>
-      <p class="section-lede">Every patient gets a chance to self-pay first. Card-on-file check only runs on non-payers.</p>
+      <h2 class="section-h">Four steps. <span class="grad">A card only gets charged after the patient sees a notice.</span></h2>
+      <p class="section-lede">Every patient gets a chance to pay on their own first. Only patients who never respond move on to the card-on-file step.</p>
     </div>
 
     <div class="journey-list">
       <div class="journey-row">
         <div class="journey-num">01</div>
         <div class="journey-body">
-          <h3>Build the list</h3>
-          <p>Pull outstanding balances directly from the EHR. Active payment-plan patients are automatically excluded. Nothing manual.</p>
+          <h3>Pull the list of unpaid balances</h3>
+          <p>Collections Agent reads unpaid balances straight from your EHR. Patients who are already on a payment plan are left out automatically.</p>
         </div>
       </div>
       <div class="journey-row">
         <div class="journey-num">02</div>
         <div class="journey-body">
-          <h3>Smart reminders</h3>
-          <p>Text messages go out with a secure payment link. Timing adapts automatically to what&rsquo;s converting for that patient and that practice.</p>
+          <h3>Send a text with a payment link</h3>
+          <p>Patients get a text with a secure link they can tap to pay. When they don&rsquo;t respond, the next reminder is sent at a time that works better for them.</p>
         </div>
       </div>
       <div class="journey-row">
         <div class="journey-num">03</div>
         <div class="journey-body">
-          <h3>Card check</h3>
-          <p>For anyone who still hasn&rsquo;t paid, check whether a card is on file. Non-payers only. Never touched before the reminder sequence runs.</p>
+          <h3>Check if a card is on file</h3>
+          <p>Only for patients who never responded to the reminders. Nobody&rsquo;s card is looked at before then.</p>
         </div>
       </div>
       <div class="journey-row">
         <div class="journey-num">04</div>
         <div class="journey-body">
-          <h3>Resolve</h3>
-          <p>Consent-backed charge on the card on file, or for the smallest remaining slice, escalate to collections. Every step logged.</p>
+          <h3>Charge the card, or escalate</h3>
+          <p>If a card is on file, charge it after sending the patient a notice. The few balances that still don&rsquo;t get paid go to a collection agency. Every step is written down.</p>
         </div>
       </div>
     </div>
 
     <div class="journey-guarantee">
       <div class="amber-badge">Guarantee</div>
-      <div><b>No card is ever checked before the reminder sequence runs.</b> Every patient gets a fair chance to self-pay first. Card charges only happen after reminders have gone unanswered, and never without documented consent and a 24-hour notice.</div>
+      <div><b>No patient&rsquo;s card is ever looked at until they have had a chance to pay on their own.</b> Cards only get charged after the reminders have gone unanswered, and never without a 24-hour notice.</div>
     </div>
   </div>
 </section>
@@ -875,46 +940,46 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Pilot results</div>
-      <h2 class="section-h">It&rsquo;s already <span class="grad">working.</span></h2>
-      <p class="section-lede">One specialty allergy &amp; asthma practice. Numbers pulled from the pilot dashboard.</p>
+      <h2 class="section-h">The pilot numbers, straight from the <span class="grad">practice&rsquo;s dashboard.</span></h2>
+      <p class="section-lede">One specialty allergy &amp; asthma practice. Nothing modeled or estimated. The numbers below came out of the pilot dashboard.</p>
     </div>
 
     <div class="proof-block">
       <div class="proof-eyebrow">
         <span class="badge">First 48 hours</span>
-        <span class="label">Cold start &middot; no prior outreach infrastructure</span>
+        <span class="label">Right after go-live &middot; no prior outreach in place</span>
       </div>
       <div class="proof-stats">
         <div class="stat"><div class="n">$17,597</div><div class="l">collected from 215 patients</div></div>
-        <div class="stat"><div class="n">6.2 hrs</div><div class="l">median time to pay from the first message</div></div>
-        <div class="stat"><div class="n">99.7%</div><div class="l">SMS delivery rate</div></div>
-        <div class="stat"><div class="n">2019</div><div class="l">oldest claim recovered &middot; AR that would have been written off</div></div>
+        <div class="stat"><div class="n">6.2 hrs</div><div class="l">the median patient paid within this many hours</div></div>
+        <div class="stat"><div class="n">99.7%</div><div class="l">of text messages delivered</div></div>
+        <div class="stat"><div class="n">2019</div><div class="l">oldest balance we got paid on. Would likely have been written off</div></div>
       </div>
     </div>
 
     <div class="proof-block">
       <div class="proof-eyebrow">
         <span class="badge">Same pilot &middot; 90 days</span>
-        <span class="label">Sustained performance at scale</span>
+        <span class="label">The same practice, three months in</span>
       </div>
       <div class="proof-stats">
         <div class="stat"><div class="n">$210K+</div><div class="l">collected, net of fees, refunds, and disputes</div></div>
-        <div class="stat"><div class="n">1 in 3</div><div class="l">patients contacted went on to pay (1,722 of 5,490)</div></div>
-        <div class="stat"><div class="n">5.9 days</div><div class="l">average time to pay from the first message</div></div>
-        <div class="stat"><div class="n">0 hrs</div><div class="l">of staff time spent on outreach</div></div>
+        <div class="stat"><div class="n">1 in 3</div><div class="l">of patients contacted paid the bill (1,722 of 5,490)</div></div>
+        <div class="stat"><div class="n">5.9 days</div><div class="l">average days from the first text to payment</div></div>
+        <div class="stat"><div class="n">0 hrs</div><div class="l">of staff time spent on this work</div></div>
       </div>
     </div>
 
     <div class="proof-block">
       <div class="proof-eyebrow">
-        <span class="badge">Reach &amp; engagement</span>
-        <span class="label">90-day view</span>
+        <span class="badge">How patients responded</span>
+        <span class="label">Over the same 90 days</span>
       </div>
       <div class="proof-stats">
-        <div class="stat"><div class="n">98.96%</div><div class="l">message delivery rate</div></div>
-        <div class="stat"><div class="n">Instant</div><div class="l">opt-outs honored every time, no exceptions</div></div>
-        <div class="stat"><div class="n">1,722</div><div class="l">total balances resolved</div></div>
-        <div class="stat"><div class="n">0.1%</div><div class="l">opt-out rate vs. 3&ndash;5% SMS industry average</div></div>
+        <div class="stat"><div class="n">98.96%</div><div class="l">of text messages delivered</div></div>
+        <div class="stat"><div class="n">Instant</div><div class="l">when a patient replies STOP, the reminders stop right away</div></div>
+        <div class="stat"><div class="n">1,722</div><div class="l">patients whose balance got paid or handled some other way</div></div>
+        <div class="stat"><div class="n">0.1%</div><div class="l">of patients opted out. The typical text-based rate is 3% to 5%</div></div>
       </div>
     </div>
   </div>
@@ -925,50 +990,102 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">The ROI math</div>
-      <h2 class="section-h">Keep more of what you&rsquo;re owed. <span class="grad">Faster.</span></h2>
+      <h2 class="section-h">Keep more of what patients owe you. <span class="grad">Get it sooner.</span></h2>
       <p class="section-lede">Without giving 20 to 50 cents of every recovered dollar to a collection agency.</p>
     </div>
 
     <div class="roi-grid">
       <div class="roi-card">
-        <div class="n">3.14%</div>
-        <div class="l">Blended cost to collect. Under the effective cost of most EHR-native payment processing.</div>
+        <div class="n">3 cents</div>
+        <div class="l">to collect every dollar. Cheaper than what most EHRs charge for their built-in payment tools.</div>
       </div>
       <div class="roi-card">
         <div class="n">$874</div>
-        <div class="l">Saved vs. EHR-native processing over the 90-day pilot window.</div>
+        <div class="l">The practice saved this much over 90 days compared to their EHR&rsquo;s built-in payment tool.</div>
       </div>
       <div class="roi-card">
         <div class="n">$43,723</div>
-        <div class="l">Agency fees avoided (conservative 20% contingency estimate on recovered balances).</div>
+        <div class="l">If those recovered balances had gone to a collection agency at the standard 20% fee, the agency would have kept this much.</div>
       </div>
     </div>
 
-    <p class="roi-close">Practices keep more of what they&rsquo;re owed, faster, <b>without the agency cut</b>. Numbers scale linearly with practice size and outstanding-balance volume.</p>
+    <p class="roi-close">The practice keeps the money, and gets it sooner. <b>The larger the practice, the more Collections Agent recovers.</b></p>
   </div>
 </section>
 
-<!-- ============ WHY ALLERGY FITS ============ -->
-<section id="fit">
+<!-- ============ WHY IT FITS (three specialty variants) ============ -->
+<section id="fit" class="for-allergy">
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Why allergy &amp; asthma</div>
-      <h2 class="section-h">Small balances, high frequency. <span class="grad">Perfect for automation.</span></h2>
+      <h2 class="section-h">Immunotherapy visits create lots of small balances. <span class="grad">That is exactly what Collections Agent does best on.</span></h2>
     </div>
 
     <div class="fit-block">
       <div class="fit-text">
-        <h3>Immunotherapy makes this a volume game.</h3>
-        <p>Frequent visits (allergy shots, biologics infusions, follow-ups) mean many small recurring patient balances. Expensive to chase manually. Cheap to automate.</p>
-        <p>The kicker: small balances convert best. Balances under $30 pay at <b style="color:var(--mint);">7.2%</b> when nudged by SMS. Balances over $700 pay at just <b style="color:var(--red);">0.9%</b>. Volume is the friend, not the enemy.</p>
-        <p>Legacy balance discounts pick up the long tail of small aged balances that would otherwise sit unrecovered forever.</p>
+        <h3>Immunotherapy is a volume specialty.</h3>
+        <p>Patients come in every one or two weeks for allergy shots. Each visit creates a small copay or coinsurance balance. Chasing these by phone doesn&rsquo;t make sense. Automating them does.</p>
+        <p>The counterintuitive part: small balances get paid at a much higher rate than large ones. When a patient gets a text about a bill under $30, they pay <b style="color:var(--mint);">7.2%</b> of the time. For bills over $700, they pay only <b style="color:var(--red);">0.9%</b> of the time. Small and frequent is where automation helps most.</p>
+        <p>For older balances that have been sitting for months or years, the practice can offer the patient a discount to close them out. Some money is better than none.</p>
       </div>
       <div class="fit-chart">
-        <div class="fit-chart-title">Conversion rate by balance size</div>
+        <div class="fit-chart-title">Patients who paid, by balance size</div>
         <div class="fit-bar"><span class="bar-lbl">Under $30</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">7.2%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$30&ndash;$100</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">4.5%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$100&ndash;$300</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-val">2.8%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$300&ndash;$700</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">1.6%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">$30 to $100</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">4.5%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">$100 to $300</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-val">2.8%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">$300 to $700</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">1.6%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">Over $700</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><span class="bar-val">0.9%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fit-derma" class="for-derma">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Why dermatology</div>
+      <h2 class="section-h">Cosmetic touch-ups and Mohs stages create the balance mix Collections Agent <span class="grad">recovers best on.</span></h2>
+    </div>
+
+    <div class="fit-block">
+      <div class="fit-text">
+        <h3>Derm mixes small recurring balances with occasional large ones.</h3>
+        <p>Cosmetic touch-ups, phototherapy series, and biopsy pathology fees create a steady stream of small patient balances. Mohs cases produce a few larger balances per week. Both need to be collected without adding a full-time biller.</p>
+        <p>The counterintuitive part: small balances get paid at a much higher rate than large ones. When a patient gets a text about a bill under $30, they pay <b style="color:var(--mint);">7.2%</b> of the time. For bills over $700, they pay only <b style="color:var(--red);">0.9%</b> of the time. Automation helps most where derm is already strongest: the small, frequent ones.</p>
+        <p>For the large Mohs balances, partial payments and a documented consent flow do the heavy lifting. Patients settle in parts. The practice collects more.</p>
+      </div>
+      <div class="fit-chart">
+        <div class="fit-chart-title">Patients who paid, by balance size</div>
+        <div class="fit-bar"><span class="bar-lbl">Under $30</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">7.2%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">$30 to $100</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">4.5%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">$100 to $300</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-val">2.8%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">$300 to $700</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">1.6%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">Over $700</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><span class="bar-val">0.9%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fit-ent" class="for-ent">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Why ENT</div>
+      <h2 class="section-h">Audiometry and in-office procedures produce the exact balance pattern <span class="grad">Collections Agent handles well.</span></h2>
+    </div>
+
+    <div class="fit-block">
+      <div class="fit-text">
+        <h3>ENT is a mix of small recurring visits and staged surgical bills.</h3>
+        <p>Audiometry visits, endoscopies, and cerumen removal produce small patient balances that repeat. Sinus surgery and balloon sinuplasty produce larger, staged bills. Both are expensive to chase by phone and cheap to automate.</p>
+        <p>The counterintuitive part: small balances get paid at a much higher rate than large ones. When a patient gets a text about a bill under $30, they pay <b style="color:var(--mint);">7.2%</b> of the time. For bills over $700, they pay only <b style="color:var(--red);">0.9%</b> of the time. Automation is at its most effective on the small recurring ones.</p>
+        <p>For the larger sinus-surgery balances, partial payments and a plain-English consent notice let patients settle in parts. The practice collects more, faster.</p>
+      </div>
+      <div class="fit-chart">
+        <div class="fit-chart-title">Patients who paid, by balance size</div>
+        <div class="fit-bar"><span class="bar-lbl">Under $30</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">7.2%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">$30 to $100</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">4.5%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">$100 to $300</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-val">2.8%</span></div>
+        <div class="fit-bar"><span class="bar-lbl">$300 to $700</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">1.6%</span></div>
         <div class="fit-bar"><span class="bar-lbl">Over $700</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><span class="bar-val">0.9%</span></div>
       </div>
     </div>
@@ -980,51 +1097,51 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Seamless &amp; compliant</div>
-      <h2 class="section-h">Built for practices, <span class="grad">and for regulators.</span></h2>
-      <p class="section-lede">Every step is logged, every consent is documented, every opt-out is honored.</p>
+      <h2 class="section-h">Built to protect the practice <span class="grad">and the patient.</span></h2>
+      <p class="section-lede">Every step gets written down. Every consent is on record. Every opt-out gets honored the moment a patient sends one.</p>
     </div>
 
     <div class="comp-grid">
       <div class="comp-card">
         <div class="comp-check">&check;</div>
         <div class="comp-body">
-          <h3>Documented consent trail</h3>
-          <p>Every card charge is backed by a defensible, timestamped record of patient consent.</p>
+          <h3>Documented consent</h3>
+          <p>Every card charge has a record showing the patient agreed to it, when they agreed, and how.</p>
         </div>
       </div>
       <div class="comp-card">
         <div class="comp-check">&check;</div>
         <div class="comp-body">
-          <h3>Clear pre-charge notice</h3>
-          <p>Patients always get a clear notice before any card is charged. Nothing happens silently.</p>
+          <h3>Notice before every charge</h3>
+          <p>The patient sees a notice before their card is charged. There are no surprise charges.</p>
         </div>
       </div>
       <div class="comp-card">
         <div class="comp-check">&check;</div>
         <div class="comp-body">
           <h3>Instant opt-out</h3>
-          <p>Opt-outs are honored immediately, every time. 0.1% rate in early testing versus 3&ndash;5% SMS industry average.</p>
+          <p>When a patient replies STOP, the reminders stop right away. In the pilot, only 1 patient in 1,000 opted out. The typical text-based rate is 3 to 5 patients in 100.</p>
         </div>
       </div>
       <div class="comp-card">
         <div class="comp-check">&check;</div>
         <div class="comp-body">
-          <h3>Automatic reconciliation</h3>
-          <p>Payments post back into the EHR automatically. Your system of record stays accurate in real time.</p>
+          <h3>Payments post to your EHR</h3>
+          <p>When a patient pays, the payment shows up in your EHR automatically. Your records stay accurate.</p>
         </div>
       </div>
       <div class="comp-card">
         <div class="comp-check">&check;</div>
         <div class="comp-body">
-          <h3>Payment plan awareness</h3>
-          <p>Patients already on active payment plans are automatically excluded from outreach.</p>
+          <h3>Payment-plan aware</h3>
+          <p>Patients already on an active payment plan are left out of the reminder list automatically.</p>
         </div>
       </div>
       <div class="comp-card">
         <div class="comp-check">&check;</div>
         <div class="comp-body">
-          <h3>Low-cost processing</h3>
-          <p>Payment processing typically undercuts EHR-native rates. More of every recovered dollar reaches the practice.</p>
+          <h3>Lower processing cost</h3>
+          <p>The cost of processing a card payment is lower than what most EHRs charge. The practice keeps more of every dollar collected.</p>
         </div>
       </div>
     </div>
@@ -1034,8 +1151,8 @@
 <!-- ============ CLOSER / CTA ============ -->
 <section id="demo" class="closer">
   <div class="container">
-    <h2>See what Collections Agent could <span class="grad">recover for your practice.</span></h2>
-    <p>Custom pricing. Twenty-minute walkthrough on your outstanding-balance report. We&rsquo;ll show you the recovery estimate live.</p>
+    <h2>See what Collections Agent would <span class="grad">recover for your practice.</span></h2>
+    <p>Twenty-minute call. Bring your list of unpaid patient balances. We&rsquo;ll walk through what Collections Agent would recover for you.</p>
     <div class="hero-ctas">
       <a href="https://calendly.com/vijay-srinivas/new-meeting" class="btn btn-primary">Book a demo &rarr;</a>
       <a href="https://raga.ai" class="btn btn-ghost">Visit raga.ai</a>
