@@ -1634,6 +1634,75 @@ img { max-width: 100%; display: block; }
     .vc .dv2-metrics { grid-template-columns: 1fr; }
   }
 
+
+  /* Derma CPT coverage grid */
+  .vc .dv2-cpt-section { padding: 40px 0 60px; }
+  .vc .dv2-cpt-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .vc .dv2-cpt-col {
+    background: #1B0E1A;
+    border: 1px solid rgba(236,72,153,0.18);
+    border-radius: 14px;
+    padding: 22px 20px;
+  }
+  .vc .dv2-cpt-lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #F9A8D4;
+    font-weight: 700;
+    margin: 14px 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(236,72,153,0.24);
+  }
+  .vc .dv2-cpt-lbl:first-child { margin-top: 0; }
+  .vc .dv2-cpt-row {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 12px;
+    padding: 6px 0;
+    align-items: baseline;
+  }
+  .vc .dv2-cpt-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: #F9A8D4;
+    letter-spacing: -0.01em;
+  }
+  .vc .dv2-cpt-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    color: #D8B8CC;
+    line-height: 1.4;
+  }
+  .vc .dv2-cpt-foot {
+    max-width: 1200px;
+    margin: 24px auto 0;
+    padding: 14px 20px;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #F9A8D4;
+    letter-spacing: 0.02em;
+    border: 1px dashed rgba(236,72,153,0.24);
+    border-radius: 10px;
+    background: rgba(236,72,153,0.04);
+  }
+
+  @media (max-width: 960px) {
+    .vc .dv2-cpt-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .vc .dv2-cpt-grid { grid-template-columns: 1fr; }
+  }
+
   /* ============================================================
      ENT — clinical / data-terminal
      ============================================================ */
@@ -2460,6 +2529,94 @@ body[data-specialty="ent"] .for-derma { display: none !important; }
             <div class="dv2-mini-total">Patient owes: <b>$84.40</b></div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DERMA CPT COVERAGE (all codes we cover) ============ -->
+  <section id="c-coverage-derma" class="for-derma dv2-cpt-section">
+    <div class="vc-container">
+      <div class="dv2-section-head">
+        <div class="dv2-eyebrow">Coverage</div>
+        <h2 class="dv2-h2">Every derm procedure your practice codes.</h2>
+        <p class="dv2-lede">60+ dermatology CPT codes. Confidence scoring per code. 125+ payer plans on Day 1.</p>
+      </div>
+
+      <div class="dv2-cpt-grid">
+
+        <div class="dv2-cpt-col">
+          <div class="dv2-cpt-lbl">Biopsies</div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11102</span><span class="dv2-cpt-desc">Tangential biopsy, single</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11103</span><span class="dv2-cpt-desc">Tangential biopsy, each additional</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11104</span><span class="dv2-cpt-desc">Punch biopsy, single</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11105</span><span class="dv2-cpt-desc">Punch biopsy, each additional</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11106</span><span class="dv2-cpt-desc">Incisional biopsy, single</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11107</span><span class="dv2-cpt-desc">Incisional biopsy, each additional</span></div>
+
+          <div class="dv2-cpt-lbl">Excision &mdash; benign</div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11400&ndash;06</span><span class="dv2-cpt-desc">Trunk, arms, legs (by size)</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11420&ndash;26</span><span class="dv2-cpt-desc">Scalp, neck, hands, feet, genitalia</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11440&ndash;46</span><span class="dv2-cpt-desc">Face, ears, eyelids, nose, lips</span></div>
+        </div>
+
+        <div class="dv2-cpt-col">
+          <div class="dv2-cpt-lbl">Excision &mdash; malignant</div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11600&ndash;06</span><span class="dv2-cpt-desc">Trunk, arms, legs</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11620&ndash;26</span><span class="dv2-cpt-desc">Scalp, neck, hands, feet, genitalia</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11640&ndash;46</span><span class="dv2-cpt-desc">Face, ears, eyelids, nose, lips</span></div>
+
+          <div class="dv2-cpt-lbl">Mohs surgery</div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17311</span><span class="dv2-cpt-desc">First stage &middot; head/neck/hands/feet/genitalia</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17312</span><span class="dv2-cpt-desc">Additional stage &middot; head/neck/hands/feet</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17313</span><span class="dv2-cpt-desc">First stage &middot; trunk, arms, legs</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17314</span><span class="dv2-cpt-desc">Additional stage &middot; trunk, arms, legs</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17315</span><span class="dv2-cpt-desc">Each additional block after first 5</span></div>
+        </div>
+
+        <div class="dv2-cpt-col">
+          <div class="dv2-cpt-lbl">Destruction of lesions</div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17000</span><span class="dv2-cpt-desc">Premalignant, first lesion</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17003</span><span class="dv2-cpt-desc">Premalignant, additional 2&ndash;14</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17004</span><span class="dv2-cpt-desc">Premalignant, 15+ lesions</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17110</span><span class="dv2-cpt-desc">Benign, up to 14</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17111</span><span class="dv2-cpt-desc">Benign, 15+</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17250</span><span class="dv2-cpt-desc">Chemical cauterization</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">17340</span><span class="dv2-cpt-desc">Cryotherapy for acne</span></div>
+
+          <div class="dv2-cpt-lbl">Phototherapy &amp; PDT</div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">96900</span><span class="dv2-cpt-desc">Actinotherapy (UV light)</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">96910</span><span class="dv2-cpt-desc">UVB phototherapy</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">96912</span><span class="dv2-cpt-desc">PUVA</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">96913</span><span class="dv2-cpt-desc">PUVA, extensive area</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">96567</span><span class="dv2-cpt-desc">Photodynamic therapy</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">96573</span><span class="dv2-cpt-desc">PDT with debridement</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">96574</span><span class="dv2-cpt-desc">PDT, additional lesion</span></div>
+        </div>
+
+        <div class="dv2-cpt-col">
+          <div class="dv2-cpt-lbl">Repairs &amp; grafts</div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">12001&ndash;57</span><span class="dv2-cpt-desc">Simple &amp; intermediate wound repair</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">14000&ndash;350</span><span class="dv2-cpt-desc">Adjacent tissue transfer</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">15100&ndash;121</span><span class="dv2-cpt-desc">Split-thickness skin grafts</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">15200&ndash;261</span><span class="dv2-cpt-desc">Full-thickness skin grafts</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">15771</span><span class="dv2-cpt-desc">Fat grafting</span></div>
+
+          <div class="dv2-cpt-lbl">Injections &amp; laser</div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11900</span><span class="dv2-cpt-desc">Intralesional injection, up to 7</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">11901</span><span class="dv2-cpt-desc">Intralesional injection, 8+</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">96920</span><span class="dv2-cpt-desc">Laser for psoriasis, &lt;250 cm&sup2;</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">96921</span><span class="dv2-cpt-desc">Laser for psoriasis, 250&ndash;500 cm&sup2;</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">96922</span><span class="dv2-cpt-desc">Laser for psoriasis, 500+ cm&sup2;</span></div>
+
+          <div class="dv2-cpt-lbl">Office visits</div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">99202&ndash;05</span><span class="dv2-cpt-desc">New patient (L1&ndash;L5)</span></div>
+          <div class="dv2-cpt-row"><span class="dv2-cpt-code">99211&ndash;15</span><span class="dv2-cpt-desc">Established patient (L1&ndash;L5)</span></div>
+        </div>
+
+      </div>
+
+      <div class="dv2-cpt-foot">
+        + more added weekly. Every code carries per-payer coverage confidence scoring.
       </div>
     </div>
   </section>
