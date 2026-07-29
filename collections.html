@@ -632,44 +632,6 @@
   footer .footer-links a { color: var(--text-3); transition: 0.2s; }
   footer .footer-links a:hover { color: var(--mint); }
 
-  /* Specialty toggle */
-  .specialty-toggle {
-    display: inline-flex;
-    padding: 3px;
-    border-radius: 999px;
-    background: rgba(16,185,129,0.08);
-    border: 1px solid var(--line-strong);
-    gap: 2px;
-    margin-right: 8px;
-  }
-  .specialty-toggle .stg {
-    padding: 7px 14px;
-    border-radius: 999px;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--text-3);
-    letter-spacing: 0.05em;
-    transition: 0.2s;
-  }
-  .specialty-toggle .stg:hover { color: var(--text); }
-  .specialty-toggle .stg[aria-pressed="true"] {
-    background: var(--grad);
-    color: #04160E;
-    box-shadow: 0 6px 14px -6px rgba(16,185,129,0.6);
-  }
-
-  /* Show/hide per specialty (default = allergy) */
-  body[data-specialty="allergy"] .for-derma,
-  body[data-specialty="allergy"] .for-ent { display: none !important; }
-  body[data-specialty="derma"] .for-allergy,
-  body[data-specialty="derma"] .for-ent { display: none !important; }
-  body[data-specialty="ent"] .for-allergy,
-  body[data-specialty="ent"] .for-derma { display: none !important; }
-
     /* Responsive */
   @media (max-width: 960px) {
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -688,7 +650,7 @@
   }
 </style>
 </head>
-<body data-specialty="allergy">
+<body>
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
@@ -704,36 +666,9 @@
       <li><a href="#compliance">Compliance</a></li>
       <li><a href="#demo">Book demo</a></li>
     </ul>
-    <div class="specialty-toggle" role="tablist" aria-label="Specialty">
-      <button class="stg" data-spec="allergy" aria-pressed="true">Allergy</button>
-      <button class="stg" data-spec="derma" aria-pressed="false">Derma</button>
-      <button class="stg" data-spec="ent" aria-pressed="false">ENT</button>
-    </div>
     <a href="#demo" class="btn btn-primary btn-sm">Book demo &rarr;</a>
   </div>
 </nav>
-
-  <script>
-    (function() {
-      function setSpecialty(spec) {
-        if (!['allergy','derma','ent'].includes(spec)) spec = 'allergy';
-        document.body.setAttribute('data-specialty', spec);
-        document.querySelectorAll('.stg').forEach(b => {
-          b.setAttribute('aria-pressed', b.dataset.spec === spec ? 'true' : 'false');
-        });
-        if (window.location.hash.slice(1) !== spec) {
-          history.replaceState(null, '', spec === 'allergy' ? window.location.pathname : '#' + spec);
-        }
-      }
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.stg').forEach(b => {
-          b.addEventListener('click', function() { setSpecialty(b.dataset.spec); });
-        });
-        var initial = (window.location.hash || '').slice(1);
-        setSpecialty(initial);
-      });
-    })();
-  </script>
 
 <!-- ============ HERO ============ -->
 <header class="hero">
@@ -1014,7 +949,7 @@
 </section>
 
 <!-- ============ WHY IT FITS (three specialty variants) ============ -->
-<section id="fit" class="for-allergy">
+<section id="fit">
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Why allergy &amp; asthma</div>
@@ -1027,58 +962,6 @@
         <p>Patients come in every one or two weeks for allergy shots. Each visit creates a small copay or coinsurance balance. Chasing these by phone doesn&rsquo;t make sense. Automating them does.</p>
         <p>The counterintuitive part: small balances get paid at a much higher rate than large ones. When a patient gets a text about a bill under $30, they pay <b style="color:var(--mint);">7.2%</b> of the time. For bills over $700, they pay only <b style="color:var(--red);">0.9%</b> of the time. Small and frequent is where automation helps most.</p>
         <p>For older balances that have been sitting for months or years, the practice can offer the patient a discount to close them out. Some money is better than none.</p>
-      </div>
-      <div class="fit-chart">
-        <div class="fit-chart-title">Patients who paid, by balance size</div>
-        <div class="fit-bar"><span class="bar-lbl">Under $30</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">7.2%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$30 to $100</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">4.5%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$100 to $300</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-val">2.8%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$300 to $700</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">1.6%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">Over $700</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><span class="bar-val">0.9%</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="fit-derma" class="for-derma">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Why dermatology</div>
-      <h2 class="section-h">Cosmetic touch-ups and Mohs stages create the balance mix Collections Agent <span class="grad">recovers best on.</span></h2>
-    </div>
-
-    <div class="fit-block">
-      <div class="fit-text">
-        <h3>Derm mixes small recurring balances with occasional large ones.</h3>
-        <p>Cosmetic touch-ups, phototherapy series, and biopsy pathology fees create a steady stream of small patient balances. Mohs cases produce a few larger balances per week. Both need to be collected without adding a full-time biller.</p>
-        <p>The counterintuitive part: small balances get paid at a much higher rate than large ones. When a patient gets a text about a bill under $30, they pay <b style="color:var(--mint);">7.2%</b> of the time. For bills over $700, they pay only <b style="color:var(--red);">0.9%</b> of the time. Automation helps most where derm is already strongest: the small, frequent ones.</p>
-        <p>For the large Mohs balances, partial payments and a documented consent flow do the heavy lifting. Patients settle in parts. The practice collects more.</p>
-      </div>
-      <div class="fit-chart">
-        <div class="fit-chart-title">Patients who paid, by balance size</div>
-        <div class="fit-bar"><span class="bar-lbl">Under $30</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">7.2%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$30 to $100</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">4.5%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$100 to $300</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-val">2.8%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$300 to $700</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">1.6%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">Over $700</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><span class="bar-val">0.9%</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="fit-ent" class="for-ent">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Why ENT</div>
-      <h2 class="section-h">Audiometry and in-office procedures produce the exact balance pattern <span class="grad">Collections Agent handles well.</span></h2>
-    </div>
-
-    <div class="fit-block">
-      <div class="fit-text">
-        <h3>ENT is a mix of small recurring visits and staged surgical bills.</h3>
-        <p>Audiometry visits, endoscopies, and cerumen removal produce small patient balances that repeat. Sinus surgery and balloon sinuplasty produce larger, staged bills. Both are expensive to chase by phone and cheap to automate.</p>
-        <p>The counterintuitive part: small balances get paid at a much higher rate than large ones. When a patient gets a text about a bill under $30, they pay <b style="color:var(--mint);">7.2%</b> of the time. For bills over $700, they pay only <b style="color:var(--red);">0.9%</b> of the time. Automation is at its most effective on the small recurring ones.</p>
-        <p>For the larger sinus-surgery balances, partial payments and a plain-English consent notice let patients settle in parts. The practice collects more, faster.</p>
       </div>
       <div class="fit-chart">
         <div class="fit-chart-title">Patients who paid, by balance size</div>
