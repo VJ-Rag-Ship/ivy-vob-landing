@@ -632,7 +632,31 @@
   footer .footer-links a { color: var(--text-3); transition: 0.2s; }
   footer .footer-links a:hover { color: var(--mint); }
 
-    /* Responsive */
+    /* ROI grid override: 2 cards centered */
+  .roi-grid.roi-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* Fit-text solo: no chart, single column centered */
+  .fit-text-solo {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .fit-text-solo h3 {
+    font-size: 26px; font-weight: 700;
+    color: var(--text); margin-bottom: 16px;
+    letter-spacing: -0.015em;
+  }
+  .fit-text-solo p {
+    color: var(--text-2); font-size: 16px;
+    line-height: 1.65; margin-bottom: 16px;
+  }
+  .fit-text-solo p:last-child { margin-bottom: 0; }
+
+  /* Responsive */
   @media (max-width: 960px) {
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-metrics { grid-template-columns: 1fr; max-width: 100%; }
@@ -929,14 +953,10 @@
       <p class="section-lede">Without giving 20 to 50 cents of every recovered dollar to a collection agency.</p>
     </div>
 
-    <div class="roi-grid">
+    <div class="roi-grid roi-grid-2">
       <div class="roi-card">
         <div class="n">3 cents</div>
         <div class="l">to collect every dollar. Cheaper than what most EHRs charge for their built-in payment tools.</div>
-      </div>
-      <div class="roi-card">
-        <div class="n">$874</div>
-        <div class="l">The practice saved this much over 90 days compared to their EHR&rsquo;s built-in payment tool.</div>
       </div>
       <div class="roi-card">
         <div class="n">$43,723</div>
@@ -956,21 +976,11 @@
       <h2 class="section-h">Immunotherapy visits create lots of small balances. <span class="grad">That is exactly what Collections Agent does best on.</span></h2>
     </div>
 
-    <div class="fit-block">
-      <div class="fit-text">
-        <h3>Immunotherapy is a volume specialty.</h3>
-        <p>Patients come in every one or two weeks for allergy shots. Each visit creates a small copay or coinsurance balance. Chasing these by phone doesn&rsquo;t make sense. Automating them does.</p>
-        <p>The counterintuitive part: small balances get paid at a much higher rate than large ones. When a patient gets a text about a bill under $30, they pay <b style="color:var(--mint);">7.2%</b> of the time. For bills over $700, they pay only <b style="color:var(--red);">0.9%</b> of the time. Small and frequent is where automation helps most.</p>
-        <p>For older balances that have been sitting for months or years, the practice can offer the patient a discount to close them out. Some money is better than none.</p>
-      </div>
-      <div class="fit-chart">
-        <div class="fit-chart-title">Patients who paid, by balance size</div>
-        <div class="fit-bar"><span class="bar-lbl">Under $30</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">7.2%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$30 to $100</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">4.5%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$100 to $300</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-val">2.8%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">$300 to $700</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">1.6%</span></div>
-        <div class="fit-bar"><span class="bar-lbl">Over $700</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><span class="bar-val">0.9%</span></div>
-      </div>
+    <div class="fit-text fit-text-solo">
+      <h3>Immunotherapy is a volume specialty.</h3>
+      <p>Patients come in every one or two weeks for allergy shots. Each visit creates a small copay or coinsurance balance. Chasing these by phone doesn&rsquo;t make sense. Automating them does.</p>
+      <p>Small balances also get paid at a much higher rate than large ones. That makes automation especially valuable in a volume specialty like allergy: every extra visit is another small balance that would otherwise take staff time to collect.</p>
+      <p>For older balances that have been sitting for months or years, the practice can offer the patient a discount to close them out. Some money is better than none.</p>
     </div>
   </div>
 </section>
