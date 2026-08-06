@@ -10,25 +10,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #0F0E12;
-    --bg-2: #1A1614;
-    --surface: #1F1B18;
-    --surface-2: #171412;
-    --line: rgba(251,191,36,0.14);
-    --line-strong: rgba(251,191,36,0.32);
-    --text: #F5F3ED;
-    --text-2: #C9BDA5;
-    --text-3: #8E836E;
-    --text-soft: #6A6152;
-    --amber: #F59E0B;
-    --amber-2: #FBBF24;
-    --orange: #EA580C;
-    --gold: #FCD34D;
-    --cream: #FEF3C7;
+    --bg: #05091A;
+    --bg-2: #0A1024;
+    --surface: #10162F;
+    --surface-2: #0D122A;
+    --line: rgba(56,189,248,0.14);
+    --line-strong: rgba(56,189,248,0.32);
+    --text: #F0F5FF;
+    --text-2: #B4C2E0;
+    --text-3: #7A88AA;
+    --text-soft: #5A6480;
+    --blue: #0085FF;
+    --sky: #38BDF8;
+    --indigo: #4F46E5;
+    --sky-light: #93C5FD;
+    --sky-lightest: #DBEAFE;
     --green: #34D399;
     --red: #F87171;
-    --grad: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);
-    --grad-text: linear-gradient(135deg, #FBBF24 0%, #FCD34D 55%, #FEF3C7 100%);
+    --grad: linear-gradient(135deg, #0085FF 0%, #4F46E5 100%);
+    --grad-text: linear-gradient(135deg, #38BDF8 0%, #93C5FD 55%, #DBEAFE 100%);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -48,7 +48,7 @@
   /* Nav */
   nav.nav {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(15,14,18,0.85);
+    background: rgba(5,9,26,0.85);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
   }
@@ -61,17 +61,17 @@
     width: 32px; height: 32px; border-radius: 9px;
     background: var(--grad);
     display: grid; place-items: center;
-    font-weight: 800; font-size: 15px; color: #1A1108;
-    box-shadow: 0 10px 24px -8px rgba(245,158,11,0.6);
+    font-weight: 800; font-size: 15px; color: #FFFFFF;
+    box-shadow: 0 10px 24px -8px rgba(0,133,255,0.6);
   }
   .logo-text { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; display: flex; flex-direction: column; }
   .logo-text .by { font-size: 11px; color: var(--text-3); font-weight: 500; letter-spacing: 0.01em; }
   .nav ul { display: flex; gap: 6px; }
   .nav ul li a {
     padding: 8px 14px; border-radius: 8px;
-    font-size: 14px; color: #E5D5B7; font-weight: 500; transition: 0.2s;
+    font-size: 14px; color: #B4C2E0; font-weight: 500; transition: 0.2s;
   }
-  .nav ul li a:hover { background: rgba(251,191,36,0.10); color: var(--text); }
+  .nav ul li a:hover { background: rgba(56,189,248,0.10); color: var(--text); }
 
   /* Buttons */
   .btn {
@@ -85,15 +85,15 @@
     white-space: nowrap;
   }
   .btn-primary {
-    background: var(--grad); color: #1A1108;
-    box-shadow: 0 14px 30px -10px rgba(245,158,11,0.6);
+    background: var(--grad); color: #FFFFFF;
+    box-shadow: 0 14px 30px -10px rgba(0,133,255,0.6);
   }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 40px -10px rgba(234,88,12,0.75); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 40px -10px rgba(79,70,229,0.75); }
   .btn-ghost {
-    background: transparent; color: var(--gold);
-    border: 1px solid rgba(251,191,36,0.35);
+    background: transparent; color: var(--sky-light);
+    border: 1px solid rgba(56,189,248,0.35);
   }
-  .btn-ghost:hover { background: rgba(251,191,36,0.08); border-color: var(--amber); }
+  .btn-ghost:hover { background: rgba(56,189,248,0.08); border-color: var(--blue); }
   .btn-sm { padding: 10px 18px; font-size: 13.5px; }
 
   /* Hero */
@@ -104,9 +104,9 @@
   .hero-bg {
     position: absolute; inset: 0; pointer-events: none;
     background:
-      radial-gradient(700px 400px at 20% 15%, rgba(245,158,11,0.22), transparent 55%),
-      radial-gradient(600px 400px at 85% 40%, rgba(234,88,12,0.18), transparent 55%),
-      radial-gradient(500px 300px at 50% 100%, rgba(254,243,199,0.06), transparent 60%);
+      radial-gradient(700px 400px at 20% 15%, rgba(0,133,255,0.22), transparent 55%),
+      radial-gradient(600px 400px at 85% 40%, rgba(79,70,229,0.18), transparent 55%),
+      radial-gradient(500px 300px at 50% 100%, rgba(219,234,254,0.06), transparent 60%);
   }
   .hero-inner {
     display: grid; grid-template-columns: 1fr 1fr;
@@ -116,17 +116,17 @@
   .chip {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 6px 12px; border-radius: 999px;
-    background: rgba(251,191,36,0.10);
-    border: 1px solid rgba(251,191,36,0.30);
+    background: rgba(56,189,248,0.10);
+    border: 1px solid rgba(56,189,248,0.30);
     font-size: 12px; font-weight: 600;
     letter-spacing: 0.10em; text-transform: uppercase;
-    color: var(--gold);
+    color: var(--sky-light);
     margin-bottom: 24px;
   }
   .chip .dot {
     width: 6px; height: 6px; border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 10px var(--gold);
+    background: var(--sky-light);
+    box-shadow: 0 0 10px var(--sky-light);
   }
   h1.hero-h1 {
     font-family: 'Inter', sans-serif;
@@ -169,11 +169,11 @@
   .hero-mock-head {
     display: flex; justify-content: space-between; align-items: center;
     padding: 14px 18px;
-    background: rgba(251,191,36,0.06);
+    background: rgba(56,189,248,0.06);
     border-bottom: 1px solid var(--line-strong);
   }
   .hero-mock-title { font-size: 14px; font-weight: 700; color: var(--text); }
-  .hero-mock-status { font-size: 12px; color: var(--gold); font-weight: 600; }
+  .hero-mock-status { font-size: 12px; color: var(--sky-light); font-weight: 600; }
   .hero-mock-patient {
     padding: 14px 18px 6px;
     display: flex; justify-content: space-between; align-items: baseline;
@@ -182,7 +182,7 @@
   .hero-mock-patient .n { font-size: 14px; color: var(--text); font-weight: 600; }
   .hero-mock-patient .d {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; color: var(--gold);
+    font-size: 12px; color: var(--sky-light);
     letter-spacing: 0.02em;
   }
   .hero-mock-list { padding: 8px 0; }
@@ -202,12 +202,12 @@
     flex-shrink: 0;
   }
   .chip-g { background: rgba(52,211,153,0.14); color: var(--green); border: 1px solid rgba(52,211,153,0.30); }
-  .chip-y { background: rgba(251,191,36,0.14); color: var(--gold); border: 1px solid rgba(251,191,36,0.30); }
+  .chip-y { background: rgba(56,189,248,0.14); color: var(--sky-light); border: 1px solid rgba(56,189,248,0.30); }
   .chip-r { background: rgba(248,113,113,0.14); color: var(--red); border: 1px solid rgba(248,113,113,0.30); }
 
   .hero-mock-foot {
     padding: 14px 18px;
-    background: rgba(251,191,36,0.06);
+    background: rgba(56,189,248,0.06);
     border-top: 1px solid var(--line-strong);
     display: flex; justify-content: space-between; align-items: center;
   }
@@ -222,7 +222,7 @@
   .hero-mock-foot .submit {
     padding: 6px 12px;
     background: var(--grad);
-    color: #1A1108;
+    color: #FFFFFF;
     font-size: 12px; font-weight: 700;
     border-radius: 6px;
     letter-spacing: 0.04em;
@@ -235,7 +235,7 @@
   .trust-card {
     display: flex; align-items: center; gap: 22px;
     padding: 20px 28px;
-    background: rgba(251,191,36,0.05);
+    background: rgba(56,189,248,0.05);
     border: 1px solid var(--line);
     border-radius: 14px;
     max-width: 1080px; margin: 0 auto;
@@ -244,7 +244,7 @@
   .trust-badge {
     padding: 6px 12px;
     background: var(--grad);
-    color: #1A1108;
+    color: #FFFFFF;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; font-weight: 700;
     letter-spacing: 0.14em;
@@ -256,7 +256,7 @@
     line-height: 1.5;
     flex: 1;
   }
-  .trust-headline strong { color: var(--gold); font-weight: 700; }
+  .trust-headline strong { color: var(--sky-light); font-weight: 700; }
   .trust-meta {
     display: flex; align-items: center; gap: 10px;
     font-family: 'JetBrains Mono', monospace;
@@ -274,7 +274,7 @@
   .eyebrow {
     font-size: 12px; font-weight: 600;
     letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--gold);
+    color: var(--sky-light);
     margin-bottom: 14px;
   }
   h2.section-h {
@@ -391,7 +391,7 @@
   .bento-card .label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; letter-spacing: 0.16em;
-    color: var(--gold); font-weight: 700;
+    color: var(--sky-light); font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 12px;
   }
@@ -414,16 +414,16 @@
     line-height: 1.55;
   }
   .bento-card.featured {
-    background: linear-gradient(180deg, rgba(245,158,11,0.12), rgba(15,14,18,0.4));
-    border-color: rgba(251,191,36,0.4);
+    background: linear-gradient(180deg, rgba(0,133,255,0.12), rgba(15,14,18,0.4));
+    border-color: rgba(56,189,248,0.4);
   }
   .ico-tile {
     width: 44px; height: 44px; border-radius: 10px;
-    background: linear-gradient(135deg, rgba(245,158,11,0.20), rgba(234,88,12,0.20));
-    border: 1px solid rgba(251,191,36,0.35);
+    background: linear-gradient(135deg, rgba(0,133,255,0.20), rgba(79,70,229,0.20));
+    border: 1px solid rgba(56,189,248,0.35);
     display: grid; place-items: center;
     margin-bottom: 16px;
-    color: var(--gold);
+    color: var(--sky-light);
     font-family: 'JetBrains Mono', monospace;
     font-size: 16px; font-weight: 700;
   }
@@ -439,20 +439,20 @@
     padding: 24px 28px;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-left: 4px solid var(--amber);
+    border-left: 4px solid var(--blue);
     border-radius: 12px;
     transition: 0.2s;
     align-items: baseline;
   }
   .journey-row:hover {
-    border-left-color: var(--gold);
+    border-left-color: var(--sky-light);
     background: var(--surface-2);
     transform: translateX(4px);
   }
   .journey-num {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 700; font-size: 40px;
-    color: var(--amber);
+    color: var(--blue);
     line-height: 1; letter-spacing: -0.02em;
   }
   .journey-body h3 {
@@ -511,12 +511,12 @@
   .cov-copy .named {
     display: inline-block;
     padding: 4px 10px; margin: 3px 4px 3px 0;
-    background: rgba(251,191,36,0.10);
-    border: 1px solid rgba(251,191,36,0.30);
+    background: rgba(56,189,248,0.10);
+    border: 1px solid rgba(56,189,248,0.30);
     border-radius: 6px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
-    color: var(--gold);
+    color: var(--sky-light);
   }
 
   /* Onboarding timeline */
@@ -535,9 +535,9 @@
   .tl-card .badge {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 5px 10px; border-radius: 6px;
-    background: rgba(251,191,36,0.14);
-    border: 1px solid rgba(251,191,36,0.30);
-    color: var(--gold);
+    background: rgba(56,189,248,0.14);
+    border: 1px solid rgba(56,189,248,0.30);
+    color: var(--sky-light);
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; font-weight: 700;
     letter-spacing: 0.12em;
@@ -562,7 +562,7 @@
   .tl-card ul li::before {
     content: "\2192";
     position: absolute; left: 0; top: 6px;
-    color: var(--gold);
+    color: var(--sky-light);
     font-family: 'JetBrains Mono', monospace;
   }
 
@@ -580,9 +580,9 @@
   }
   .comp-check {
     width: 24px; height: 24px; border-radius: 50%;
-    background: rgba(251,191,36,0.14);
-    border: 1px solid rgba(251,191,36,0.35);
-    color: var(--gold);
+    background: rgba(56,189,248,0.14);
+    border: 1px solid rgba(56,189,248,0.35);
+    color: var(--sky-light);
     display: grid; place-items: center;
     font-weight: 800; font-size: 12px;
     flex-shrink: 0;
@@ -607,8 +607,8 @@
   .closer::before {
     content: ""; position: absolute; inset: 0;
     background:
-      radial-gradient(700px 400px at 50% 30%, rgba(245,158,11,0.20), transparent 60%),
-      radial-gradient(500px 300px at 50% 100%, rgba(234,88,12,0.10), transparent 60%);
+      radial-gradient(700px 400px at 50% 30%, rgba(0,133,255,0.20), transparent 60%),
+      radial-gradient(500px 300px at 50% 100%, rgba(79,70,229,0.10), transparent 60%);
     pointer-events: none;
   }
   .closer h2 {
@@ -643,7 +643,7 @@
   }
   footer .footer-links { display: flex; gap: 24px; }
   footer .footer-links a { color: var(--text-3); transition: 0.2s; }
-  footer .footer-links a:hover { color: var(--gold); }
+  footer .footer-links a:hover { color: var(--sky-light); }
 
   /* Responsive */
   @media (max-width: 960px) {
@@ -688,8 +688,8 @@
   <div class="container hero-inner">
     <div class="hero-left">
       <div class="chip"><span class="dot"></span>Automated Prior Auth for Specialty Biologics</div>
-      <h1 class="hero-h1">Biologic prior auths, <span class="grad">without the paperwork treadmill.</span></h1>
-      <p class="hero-sub">Ivy reads the patient chart, submits the PA to the payer, predicts the denial risk, and drafts the appeal if it gets denied. Your MA never fills out another form.</p>
+      <h1 class="hero-h1">Biologic prior authorization, <span class="grad">done without the forms and the phone calls.</span></h1>
+      <p class="hero-sub">Ivy pulls what the payer needs straight from the chart, files the case, scores the likelihood of approval, and drafts the appeal letter if the payer says no. Your staff never fills out another form.</p>
       <div class="hero-ctas">
         <a href="#demo" class="btn btn-primary">Book a demo &rarr;</a>
         <a href="#drugs" class="btn btn-ghost">See supported drugs</a>
@@ -741,8 +741,8 @@
   <div class="container">
     <div class="trust-card">
       <div class="trust-badge">LIVE</div>
-      <div class="trust-headline">Automated prior auth for the <strong>7 biologics allergy &amp; immunology practices actually prescribe</strong>, across every major payer family.</div>
-      <div class="trust-meta">HIPAA &middot; TCPA &middot; EHR-INTEGRATED</div>
+      <div class="trust-headline">Live automated prior authorization for the <strong>7 specialty biologics used most in allergy and immunology practices</strong>, across every major payer family.</div>
+      <div class="trust-meta">HIPAA &middot; SOC 2 &middot; EHR-INTEGRATED</div>
     </div>
   </div>
 </section>
@@ -752,29 +752,29 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">The problem</div>
-      <h2 class="section-h">Biologic prior auth is <span class="grad">the tax on treating hard cases.</span></h2>
-      <p class="section-lede">Every Xolair or Dupixent start comes with a stack of forms, a step-therapy proof, a payer portal, and a 3-to-14 day wait. Most practices lose the MA equivalent of a full FTE to it.</p>
+      <h2 class="section-h">Prior authorization is the <span class="grad">biggest bottleneck</span> between prescribing a biologic and the patient getting it.</h2>
+      <p class="section-lede">Every Xolair or Dupixent start needs a stack of forms, proof of step therapy, a payer portal, and a 3 to 14 day wait. In most practices, a full-time staff member is doing this all day.</p>
     </div>
     <div class="problem-grid">
       <div class="problem-card">
         <div class="num">01 &middot; SLOW</div>
-        <h3>40 minutes per PA</h3>
-        <p>Between chart review, form-filling, portal navigation, and follow-up calls, a single biologic PA <b>eats 30 to 60 minutes of MA time.</b></p>
+        <h3>40 minutes per case</h3>
+        <p>Chart review, form filling, portal navigation, and follow-up calls together take <b>30 to 60 minutes for every biologic prior authorization.</b></p>
       </div>
       <div class="problem-card">
         <div class="num">02 &middot; DENIED</div>
-        <h3>1 in 4 first-pass denials</h3>
-        <p>Missing documentation, ICD-10 mismatches, step-therapy proof errors. <b>15% to 25% of biologic PAs get denied on first submission.</b> Every one is an appeal.</p>
+        <h3>1 in 4 gets denied first pass</h3>
+        <p>Missing documents, ICD-10 mismatches, step-therapy proof errors. <b>Between 15 and 25 percent of biologic prior auths get denied the first time.</b> Every denial means another appeal.</p>
       </div>
       <div class="problem-card">
         <div class="num">03 &middot; DELAYED</div>
         <h3>Patients wait weeks</h3>
-        <p>3 to 14 days for a decision. If it&rsquo;s denied, another cycle. <b>Patients wait weeks for their first injection.</b> Some drop out before they start.</p>
+        <p>Payers take 3 to 14 days to decide. If they deny, the cycle starts over. <b>Patients often wait weeks for their first injection.</b> Some give up before they get it.</p>
       </div>
       <div class="problem-card">
         <div class="num">04 &middot; MANUAL</div>
-        <h3>Appeals eat MA hours</h3>
-        <p>Every denial means an appeal letter, pulled from the chart, cited to policy, faxed to the payer. <b>Two to four hours per denial.</b></p>
+        <h3>Two to four hours per appeal</h3>
+        <p>For every denied case, someone has to pull the chart, cite the payer&rsquo;s policy, write the letter, and fax it. That work runs <b>two to four hours per patient.</b></p>
       </div>
     </div>
   </div>
@@ -785,8 +785,8 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Supported drugs</div>
-      <h2 class="section-h">The 7 specialty biologics <span class="grad">allergy &amp; immunology practices actually use.</span></h2>
-      <p class="section-lede">Full automated PA for the anti-IgE, anti-IL-5, anti-IL-4/13, and anti-TSLP biologics your patients need. New drugs added as they come to market.</p>
+      <h2 class="section-h">The 7 specialty biologics <span class="grad">used most in allergy and immunology.</span></h2>
+      <p class="section-lede">Automated prior authorization for the anti-IgE, anti-IL-5, anti-IL-4/13, and anti-TSLP biologics your patients need. New drugs get added as they come to market.</p>
     </div>
     <div class="drug-grid">
       <div class="drug-card">
@@ -824,8 +824,8 @@
         <div class="generic">specialty biologic</div>
         <div class="use">Full PA coverage across major carrier families.</div>
       </div>
-      <div class="drug-card" style="background: linear-gradient(180deg, rgba(245,158,11,0.10), rgba(15,14,18,0.4)); border-style: dashed;">
-        <div class="name" style="background: linear-gradient(135deg, #FEF3C7, #FED7AA); -webkit-background-clip: text; background-clip: text; color: transparent;">+ more</div>
+      <div class="drug-card" style="background: linear-gradient(180deg, rgba(0,133,255,0.10), rgba(15,14,18,0.4)); border-style: dashed;">
+        <div class="name" style="background: linear-gradient(135deg, #DBEAFE, #FED7AA); -webkit-background-clip: text; background-clip: text; color: transparent;">+ more</div>
         <div class="generic">new drugs onboarded</div>
         <div class="use">Prioritized against your top drug mix during onboarding. New biologics added as they come to market.</div>
       </div>
@@ -838,8 +838,8 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">What Ivy Prior Auth does</div>
-      <h2 class="section-h">The whole PA lifecycle. <span class="grad">Chart to approval to appeal.</span></h2>
-      <p class="section-lede">Not a form-filler. Ivy reads the chart, knows the payer-specific requirements, submits the case, and drafts the appeal if the payer says no.</p>
+      <h2 class="section-h">From the chart, to the approval, <span class="grad">to the appeal if needed.</span></h2>
+      <p class="section-lede">This is not a form-filler. Ivy reads the chart, knows what each payer needs, files the case, and drafts the appeal letter if the payer says no.</p>
     </div>
 
     <div class="bento">
@@ -847,7 +847,7 @@
         <div class="label">Headline capability</div>
         <div class="big">Chart &raquo; PA</div>
         <h3>Ivy reads the chart and files the case</h3>
-        <p>Progress notes, labs, imaging, step-therapy history. Ivy pulls the clinical justification straight from the chart and submits the PA through payer or PBM channels. No manual form-filling, no service reps.</p>
+        <p>Ivy reads progress notes, labs, imaging, and step-therapy history straight from the chart. It writes the clinical justification and files the case with the payer or PBM directly. No manual form filling. No calls to service reps.</p>
       </div>
 
       <div class="bento-card col-3">
@@ -859,33 +859,33 @@
       <div class="bento-card col-2">
         <div class="ico-tile">&#127919;</div>
         <h3>Denial prediction</h3>
-        <p>AI scores each case&rsquo;s approval likelihood using historical payer decision patterns. Low-confidence cases get flagged before they&rsquo;re submitted.</p>
+        <p>For every case, Ivy scores how likely the payer is to approve it based on how that payer has decided similar cases in the past. Low-confidence cases get flagged for review before you submit.</p>
       </div>
       <div class="bento-card col-2">
         <div class="ico-tile">&#9989;</div>
-        <h3>PA readiness analysis</h3>
-        <p>Flags missing documents, ICD-10 to CPT mismatches, and payer-specific requirements before you hit submit. Catches the errors that cause first-pass denials.</p>
+        <h3>Missing document check</h3>
+        <p>Flags missing documents, ICD-10 to CPT mismatches, and anything else the payer needs for that drug, before you hit submit. Catches the errors that cause first-pass denials.</p>
       </div>
       <div class="bento-card col-2">
         <div class="ico-tile">&#9997;</div>
-        <h3>Auto-generated appeals</h3>
-        <p>On denial, Ivy drafts a payer-specific appeal letter with clinical justification pulled from the chart. Ready for physician review and fax.</p>
+        <h3>Auto-drafted appeals</h3>
+        <p>When a payer denies, Ivy drafts the appeal letter with clinical justification pulled from the chart, in the format that payer expects. The physician reviews and signs off.</p>
       </div>
 
       <div class="bento-card col-2">
         <div class="ico-tile">&#128194;</div>
-        <h3>Direct payer &amp; PBM channels</h3>
-        <p>Submits via the payer&rsquo;s or PBM&rsquo;s actual channel: portal API, EDI, or fax. No manual retyping into every different portal.</p>
+        <h3>Submits to payers and PBMs directly</h3>
+        <p>Ivy files through each payer or PBM the way that specific payer accepts submissions: portal, direct data feed, or fax. No retyping the same case into a different portal for each payer.</p>
       </div>
       <div class="bento-card col-2">
         <div class="ico-tile">&#128260;</div>
-        <h3>Buy &amp; Bill, PBM, and in-office</h3>
-        <p>Handles all three benefit pathways: medical buy-and-bill, pharmacy benefit self-administration, and in-office pharmacy benefit. One flow, three billing paths.</p>
+        <h3>Buy &amp; Bill today. Specialty pharmacy in beta.</h3>
+        <p>Live today for medical <b>buy-and-bill</b> (biologics infused or injected in the office). <b>Specialty pharmacy</b> support is in beta and launching in the next few weeks.</p>
       </div>
       <div class="bento-card col-2">
         <div class="ico-tile">&#9881;</div>
-        <h3>Flexible data intake</h3>
-        <p>AI-powered ingest. No IT lift required to start. Auto-sync with your EHR if it&rsquo;s ready; CSV upload or manual entry if it&rsquo;s not.</p>
+        <h3>No IT setup to start</h3>
+        <p>Auto-syncs with your EHR if the integration is ready. Otherwise, upload a CSV or type patients in manually. Nothing needs to be set up on your side to try it.</p>
       </div>
     </div>
   </div>
@@ -897,7 +897,7 @@
     <div class="section-head">
       <div class="eyebrow">How it works</div>
       <h2 class="section-h">Five steps. <span class="grad">One approval.</span></h2>
-      <p class="section-lede">From the moment a biologic gets prescribed to the moment the payer says yes.</p>
+      <p class="section-lede">From the moment a biologic gets prescribed, to the moment the payer says yes.</p>
     </div>
 
     <div class="journey-list">
@@ -905,35 +905,35 @@
         <div class="journey-num">01</div>
         <div class="journey-body">
           <h3>Sync or upload</h3>
-          <p>Ivy connects to your EHR (eClinicalWorks today, more integrations rolling), or your staff uploads a patient CSV. Manual entry works too if nothing else is ready.</p>
+          <p>eClinicalWorks integration is live today. More EHR integrations are being added. If your EHR is not ready yet, upload a patient list as a CSV or add patients manually.</p>
         </div>
       </div>
       <div class="journey-row">
         <div class="journey-num">02</div>
         <div class="journey-body">
-          <h3>Recommended documents &amp; submission intelligence</h3>
-          <p>For each drug-payer combination, Ivy lists what needs to be attached: progress notes, labs, imaging, step-therapy proof. Plus the top three denial reasons for that combo so your team knows what to double-check.</p>
+          <h3>What each payer needs, listed for you</h3>
+          <p>For every drug and payer combination, Ivy lists what needs to be attached: progress notes, labs, imaging, step-therapy proof. It also lists the top three reasons that combination gets denied, so your team knows what to double-check.</p>
         </div>
       </div>
       <div class="journey-row">
         <div class="journey-num">03</div>
         <div class="journey-body">
           <h3>Upload patient documents</h3>
-          <p>Attach progress notes, lab reports, imaging, and anything else the payer wants. Drag-and-drop or pull directly from the EHR.</p>
+          <p>Attach progress notes, lab reports, imaging, and anything else the payer wants. Drag and drop, or pull straight from the EHR.</p>
         </div>
       </div>
       <div class="journey-row">
         <div class="journey-num">04</div>
         <div class="journey-body">
-          <h3>PA denials &amp; readiness analysis</h3>
-          <p>Before submission, Ivy flags missing documents, ICD-10/CPT mismatches, and payer-specific requirements. Scores the case&rsquo;s approval likelihood.</p>
+          <h3>Check the case before submission</h3>
+          <p>Before you submit, Ivy flags missing documents, ICD-10 to CPT mismatches, and anything else that payer needs for that drug. Every case gets a predicted approval score.</p>
         </div>
       </div>
       <div class="journey-row">
         <div class="journey-num">05</div>
         <div class="journey-body">
-          <h3>Auto appeal generation</h3>
-          <p>If the payer denies, Ivy drafts a payer-specific appeal letter with clinical justification pulled from the chart. Physician reviews and signs off. Faxed automatically.</p>
+          <h3>Appeal letter drafted if denied</h3>
+          <p>If the payer denies, Ivy pulls the clinical justification from the chart and drafts an appeal letter in the format that payer expects. The physician reviews and signs off. Ivy faxes it.</p>
         </div>
       </div>
     </div>
@@ -945,8 +945,8 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Payer coverage</div>
-      <h2 class="section-h">Every major carrier family, <span class="grad">every specialty biologic.</span></h2>
-      <p class="section-lede">Not a plan-level eligibility check. Actual automated PA submission across the carriers your patients carry.</p>
+      <h2 class="section-h">Every major carrier family. <span class="grad">Every supported drug.</span></h2>
+      <p class="section-lede">Not just a plan check. Actual automated prior auth submission across the carriers your patients carry.</p>
     </div>
 
     <div class="coverage-block">
@@ -957,7 +957,7 @@
         </div>
         <div class="cov-card">
           <div class="n">30+</div>
-          <div class="l">state BCBS plans live or rolling out</div>
+          <div class="l">state BCBS plans live or launching soon</div>
         </div>
         <div class="cov-card">
           <div class="n">7</div>
@@ -965,12 +965,12 @@
         </div>
         <div class="cov-card">
           <div class="n">Live</div>
-          <div class="l">payer &ndash; drug matrix updates automatically</div>
+          <div class="l">coverage list updates automatically as new combos ship</div>
         </div>
       </div>
       <div class="cov-copy">
-        <h3>Big carriers, live for all 7 drugs.</h3>
-        <p>Full automated PA is live across the major national carrier families and their PBMs. State-level BCBS plans expanding weekly. New payer-drug combinations added as onboarded.</p>
+        <h3>Every major national carrier, live for all 7 drugs.</h3>
+        <p>Automated prior auth is live across every major national carrier family and their PBMs. State-level BCBS plans are added week by week. New drug and payer combinations get added as we onboard them.</p>
         <p style="margin-top:16px;">
           <span class="named">UHC</span>
           <span class="named">Cigna</span>
@@ -980,7 +980,7 @@
           <span class="named">30+ BCBS state plans</span>
           <span class="named">Regional carriers</span>
         </p>
-        <p style="margin-top:16px; color: var(--text-3); font-size: 13px;">Missing a payer or a drug? Flag it during onboarding. Coverage gets prioritized against your actual clinic mix.</p>
+        <p style="margin-top:16px; color: var(--text-3); font-size: 13px;">If a payer or drug you need is not on the list, tell us during onboarding. We prioritize new coverage against your actual clinic mix.</p>
       </div>
     </div>
   </div>
@@ -992,7 +992,7 @@
     <div class="section-head">
       <div class="eyebrow">Getting started</div>
       <h2 class="section-h">Kickoff to go-live <span class="grad">in 7 to 10 days.</span></h2>
-      <p class="section-lede">Three structured sessions. No IT lift required to start.</p>
+      <p class="section-lede">Three sessions. Nothing to set up on your side to start.</p>
     </div>
 
     <div class="timeline-grid">
@@ -1035,8 +1035,8 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Compliant by default</div>
-      <h2 class="section-h">Built for practices, <span class="grad">audited for payers.</span></h2>
-      <p class="section-lede">Every submission is logged. Every appeal is traceable. Every PHI touch is documented.</p>
+      <h2 class="section-h">Built for the clinic. <span class="grad">Audited for the payer.</span></h2>
+      <p class="section-lede">Every submission is written down. Every appeal is traceable. Every time patient information is accessed, it is logged.</p>
     </div>
 
     <div class="comp-grid">
@@ -1065,7 +1065,7 @@
         <div class="comp-check">&check;</div>
         <div class="comp-body">
           <h3>Documented submission trail</h3>
-          <p>Every PA submission, every appeal, every payer response is logged and traceable.</p>
+          <p>Every submission, every appeal, and every payer response is logged and traceable.</p>
         </div>
       </div>
       <div class="comp-card">
@@ -1078,8 +1078,8 @@
       <div class="comp-card">
         <div class="comp-check">&check;</div>
         <div class="comp-body">
-          <h3>Live payer&ndash;drug matrix</h3>
-          <p>Coverage table syncs automatically as new drug-payer combinations come online.</p>
+          <h3>Live coverage table</h3>
+          <p>The list of supported drug and payer combinations syncs automatically as new ones come online.</p>
         </div>
       </div>
     </div>
@@ -1089,8 +1089,8 @@
 <!-- ============ CLOSER / CTA ============ -->
 <section id="demo" class="closer">
   <div class="container">
-    <h2>See Ivy submit a biologic PA <span class="grad">in real time.</span></h2>
-    <p>Twenty-minute call. Bring your top drug mix and top payers. We&rsquo;ll walk through a live PA submission with the readiness analysis and denial prediction.</p>
+    <h2>See Ivy file a biologic prior auth <span class="grad">in real time.</span></h2>
+    <p>Twenty-minute call. Tell us the biologics you prescribe most and the payers you see most. We will walk through a live prior auth submission, the missing-document check, and the denial prediction.</p>
     <div class="hero-ctas">
       <a href="https://calendly.com/vijay-srinivas/new-meeting" class="btn btn-primary">Book a demo &rarr;</a>
       <a href="https://raga.ai" class="btn btn-ghost">Visit raga.ai</a>
